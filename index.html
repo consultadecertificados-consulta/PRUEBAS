@@ -16,6 +16,7 @@
             --gris-btn: #767676;
         }
 
+        /* ESTILOS DE ACCESIBILIDAD */
         .grayscale-mode { filter: grayscale(100%); }
         .high-contrast { background: #000 !important; color: #fff100 !important; }
         .high-contrast * { background-color: #000 !important; color: #fff100 !important; border-color: #fff100 !important; }
@@ -30,7 +31,7 @@
         .acc-trigger { color: white; cursor: pointer; font-size: 20px; margin-left: 15px; }
         .menu-icon { color: white; font-size: 22px; cursor: pointer; }
         
-        .nav-menu { display: none; position: absolute; right: 30px; top: 50px; background: var(--sep-rojo); min-width: 200px; padding: 10px; border-radius: 4px; }
+        .nav-menu { display: none; position: absolute; right: 30px; top: 50px; background: var(--sep-rojo); min-width: 200px; padding: 10px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .nav-menu.show { display: block; }
         .nav-menu a { color: white; text-decoration: none; display: block; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 14px; }
 
@@ -38,6 +39,11 @@
         .menu-dgb-content { display: none; background-color: var(--gob-oro); padding: 10px 30px; }
         .menu-dgb-content.show { display: block; }
         .menu-dgb-content a { color: white; text-decoration: none; display: block; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+        /* PANEL ACCESIBILIDAD */
+        .acc-sidebar { position: fixed; left: -300px; top: 0; width: 280px; height: 100vh; background: #fff; z-index: 2000; transition: 0.3s; padding: 25px; box-shadow: 5px 0 15px rgba(0,0,0,0.2); color: #333; }
+        .acc-sidebar.active { left: 0; }
+        .acc-btn { display: block; width: 100%; padding: 12px; margin-bottom: 10px; cursor: pointer; border: 1px solid #ddd; background: #f9f9f9; font-weight: 500; font-family: 'Montserrat'; }
 
         /* PORTADA Y LEYENDA */
         .header-img { width: 100%; background: #fff; text-align: center; border-bottom: 1px solid #ddd; }
@@ -49,23 +55,22 @@
         .search-box { background: #fff; border: 1px solid #D4C19C; border-radius: 8px; padding: 30px; text-align: center; margin-top: 20px; }
         input[type="text"] { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; margin-bottom: 15px; text-align: center; }
         .btns-row { display: flex; gap: 10px; margin-bottom: 15px; }
-        .btn { flex: 1; padding: 12px; border: none; border-radius: 4px; color: white; cursor: pointer; font-size: 16px; font-weight: 500; }
+        .btn { flex: 1; padding: 12px; border: none; border-radius: 4px; color: white; cursor: pointer; font-size: 16px; font-weight: 500; font-family: 'Montserrat'; }
         .btn-buscar { background-color: var(--verde-btn); }
         .btn-limpiar { background-color: var(--gris-btn); }
-        .ubica-folio { color: var(--gob-oro); text-decoration: none; font-size: 14px; font-weight: 500; }
+        .ubica-folio { color: var(--gob-oro); text-decoration: none; font-size: 14px; font-weight: 500; cursor: pointer; }
 
         /* RESULTADOS */
         #resultado { display: none; margin-top: 30px; background: white; padding: 35px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .linea-adorno { width: 40px; height: 4px; background: var(--gob-oro); margin: 10px 0 30px; }
         .dato-item { margin-bottom: 20px; }
-        .dato-label { font-weight: 600; color: #333; font-size: 15px; display: block; margin-bottom: 2px; text-transform: capitalize; }
+        .dato-label { font-weight: 600; color: #333; font-size: 15px; display: block; margin-bottom: 2px; }
         .dato-valor { color: #666; font-size: 15px; font-weight: 400; }
         
         .cards-row { display: flex; gap: 15px; margin: 25px 0; flex-wrap: wrap; }
         .card { flex: 1; min-width: 200px; padding: 20px; border-radius: 4px; text-align: center; }
         .card-v { background: #E9F4E9; border: 1px solid #D1E7D1; color: #285848; }
         .card-a { background: #E1F1F7; border: 1px solid #D1E9F2; color: #31708F; }
-        .atencion { padding: 20px; background: #D9EDF7; color: #31708F; border-radius: 4px; font-size: 13px; line-height: 1.5; border: 1px solid #BCE8F1; margin-top: 20px; }
 
         /* FOOTER */
         footer { background: var(--sep-rojo); color: white; padding: 50px 30px 30px; margin-top: auto; }
@@ -102,6 +107,16 @@
     </div>
 </div>
 
+<div id="accSidebar" class="acc-sidebar">
+    <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+        <strong>Accesibilidad</strong>
+        <span onclick="toggleAcc()" style="cursor:pointer; font-size: 24px;">&times;</span>
+    </div>
+    <button class="acc-btn" onclick="document.body.classList.toggle('grayscale-mode')">Escala de grises</button>
+    <button class="acc-btn" onclick="document.body.classList.toggle('high-contrast')">Alto contraste</button>
+    <button class="acc-btn" onclick="location.reload()">Restablecer</button>
+</div>
+
 <div class="header-img"><img src="logo.png" alt="SEP"></div>
 <div class="leyenda-superior">Subsecretaría de Educación Media Superior y Superior</div>
 
@@ -112,7 +127,7 @@
             <button class="btn btn-buscar" onclick="buscar()">Buscar</button>
             <button class="btn btn-limpiar" onclick="limpiar()">Restablecer</button>
         </div>
-        <a href="#" class="ubica-folio">Ubica el folio en tu certificado</a>
+        <span class="ubica-folio" onclick="ayudaFolio()">Ubica el folio en tu certificado</span>
     </div>
 
     <div id="resultado">
@@ -164,7 +179,16 @@
 <script src="folios.js"></script>
 <script>
     function toggleMenu(id) { document.getElementById(id).classList.toggle('show'); }
-    function limpiar() { document.getElementById('folioInput').value = ""; document.getElementById('resultado').style.display = 'none'; }
+    function toggleAcc() { document.getElementById('accSidebar').classList.toggle('active'); }
+    
+    function ayudaFolio() {
+        alert("El folio se encuentra generalmente en la parte inferior izquierda de su certificado, debajo del código QR o encima de la firma electrónica.");
+    }
+
+    function limpiar() { 
+        document.getElementById('folioInput').value = ""; 
+        document.getElementById('resultado').style.display = 'none'; 
+    }
 
     function buscar() {
         const folio = document.getElementById('folioInput').value.trim().toUpperCase();
@@ -183,10 +207,10 @@
             document.getElementById('resCalTexto').innerText = calT;
             document.getElementById('resEst').innerText = d.ESTATUS || "REGISTRADO";
             document.getElementById('resultado').style.display = 'block';
+            document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
         } else if (folio !== "") { alert("Folio no encontrado"); }
     }
 
-    // Lógica para que al escanear (URL?folio=XXX) escriba y busque automáticamente
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('folio')) {
