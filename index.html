@@ -54,16 +54,25 @@
         .menu-desplegable-dgb.show { display: block; }
         .menu-desplegable-dgb a { display: block; color: white; text-decoration: none; padding: 15px 0; font-size: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
-        .header-image-container { width: 100%; background: #fff; border-bottom: 1px solid #ddd; }
-        .header-image-container img { width: 100%; height: auto; display: block; object-fit: contain; }
-
-        .acc-trigger { position: fixed; left: 0; top: 50%; transform: translateY(-50%); background: rgba(117, 117, 117, 0.4); color: #FFFFFF; padding: 15px 10px; border-radius: 0 8px 8px 0; cursor: pointer; z-index: 10001; }
-        .acc-panel-sidebar { position: fixed; left: -320px; top: 0; width: 280px; height: 100vh; background: #fff; z-index: 10002; transition: 0.4s; padding: 25px; box-shadow: 5px 0 20px rgba(0,0,0,0.4); }
-        .acc-panel-sidebar.active { left: 0; }
-        .acc-header { font-weight: 700; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; display: flex; justify-content: space-between; color: #333; }
-        .acc-item { display: block; width: 100%; padding: 12px; margin-bottom: 10px; background: #f0f0f0; border-radius: 6px; cursor: pointer; text-align: center; font-weight: 600; border: 1px solid #ddd; color: #333; }
+        .header-image-container { width: 100%; background: #fff; border-bottom: 1px solid #ddd; text-align: left; }
+        
+        /* AJUSTE LOGO: MITAD DE ANCHO, RESPETANDO LARGO */
+        .header-image-container img { 
+            width: 50%; 
+            height: auto; 
+            display: block; 
+        }
 
         main { flex: 1; max-width: 900px; margin: 30px auto; padding: 0 15px; width: 100%; }
+
+        .leyenda-superior {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
         .search-outer-box { background: #ffffff; border: 2px solid #D4C19C; border-radius: 10px; padding: 30px; max-width: 550px; margin: 0 auto 20px; text-align: center; }
         input[type="text"] { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 18px; margin-bottom: 15px; font-family: 'Lora', serif; text-align: center; }
         .btn-new { width: 100%; padding: 14px; border: none; border-radius: 4px; font-size: 20px; cursor: pointer; margin-bottom: 10px; color: white; font-family: 'Montserrat'; font-weight: 500; text-decoration: none; display: block; }
@@ -85,7 +94,12 @@
 
         .leyenda-atencion-azul { margin-top: 30px; padding: 20px; border-radius: 4px; background-color: var(--bg-info-azul); border: 1px solid var(--border-info-azul); color: var(--texto-info-azul); line-height: 1.6; font-family: 'Montserrat', sans-serif; font-size: 14px; }
 
-        /* FOOTER RESTAURADO */
+        .acc-trigger { position: fixed; left: 0; top: 50%; transform: translateY(-50%); background: rgba(117, 117, 117, 0.4); color: #FFFFFF; padding: 15px 10px; border-radius: 0 8px 8px 0; cursor: pointer; z-index: 10001; }
+        .acc-panel-sidebar { position: fixed; left: -320px; top: 0; width: 280px; height: 100vh; background: #fff; z-index: 10002; transition: 0.4s; padding: 25px; box-shadow: 5px 0 20px rgba(0,0,0,0.4); }
+        .acc-panel-sidebar.active { left: 0; }
+        .acc-header { font-weight: 700; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; display: flex; justify-content: space-between; color: #333; }
+        .acc-item { display: block; width: 100%; padding: 12px; margin-bottom: 10px; background: #f0f0f0; border-radius: 6px; cursor: pointer; text-align: center; font-weight: 600; border: 1px solid #ddd; color: #333; }
+
         footer { background: var(--sep-rojo-obscuro); color: white; padding: 50px 30px 20px; margin-top: 50px; }
         .footer-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
         .footer-col h4 { margin-bottom: 20px; font-size: 16px; border-bottom: 1px solid var(--gob-oro); padding-bottom: 10px; display: inline-block; font-weight: 600; }
@@ -119,15 +133,9 @@
 
 <div class="header-image-container"><img src="logo.png" alt="SEP"></div>
 
-<div class="acc-trigger" onclick="toggleAccPanel()"><i class="fas fa-universal-access fa-2x"></i></div>
-<div id="accPanel" class="acc-panel-sidebar">
-    <div class="acc-header"><span>Accesibilidad</span><span onclick="toggleAccPanel()" style="cursor:pointer;">&times;</span></div>
-    <button class="acc-item" onclick="toggleGrayscale()">Escala de grises</button>
-    <button class="acc-item" onclick="toggleContrast()">Alto contraste</button>
-    <button class="acc-item" onclick="resetAcc()">Restablecer</button>
-</div>
-
 <main>
+    <div class="leyenda-superior">Subsecretaría de Educación Media Superior y Superior</div>
+
     <div class="search-outer-box">
         <input type="text" id="folioInput" placeholder="Ingrese el folio" onkeypress="if(event.key==='Enter') buscar()">
         <button class="btn-new btn-buscar" onclick="buscar()">Buscar</button>
@@ -153,6 +161,14 @@
         </div>
     </div>
 </main>
+
+<div class="acc-trigger" onclick="toggleAccPanel()"><i class="fas fa-universal-access fa-2x"></i></div>
+<div id="accPanel" class="acc-panel-sidebar">
+    <div class="acc-header"><span>Accesibilidad</span><span onclick="toggleAccPanel()" style="cursor:pointer;">&times;</span></div>
+    <button class="acc-item" onclick="toggleGrayscale()">Escala de grises</button>
+    <button class="acc-item" onclick="toggleContrast()">Alto contraste</button>
+    <button class="acc-item" onclick="resetAcc()">Restablecer</button>
+</div>
 
 <footer>
     <div class="footer-container">
@@ -226,12 +242,6 @@
             errDiv.style.display = 'block';
         }
     }
-
-    window.onload = function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const f = urlParams.get('folio');
-        if (f) { document.getElementById('folioInput').value = f; buscar(); }
-    };
 </script>
 </body>
 </html>
