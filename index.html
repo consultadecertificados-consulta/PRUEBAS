@@ -118,10 +118,11 @@
         .card-verde { background: var(--bg-verde-tarjeta); border-color: var(--border-verde-tarjeta); color: var(--texto-verde-tarjeta); }
         .card-azul { background: var(--bg-azul-tarjeta); border-color: var(--border-azul-tarjeta); color: var(--texto-azul-tarjeta); }
         
-        .leyenda-validacion { 
-            margin-top: 25px; font-size: 13px; color: #777; font-style: italic; 
-            text-align: center; border-top: 1px dashed #ccc; padding-top: 15px; 
+        .leyenda-atencion { 
+            margin-top: 30px; border: 1px solid #ddd; padding: 20px; border-radius: 6px;
+            background-color: #fcfcfc; line-height: 1.6;
         }
+        .leyenda-atencion strong { color: var(--sep-rojo-obscuro); font-family: 'Montserrat'; }
 
         /* FOOTER */
         footer { background: var(--sep-rojo-obscuro); color: white; padding: 50px 30px 20px; font-family: 'Montserrat'; margin-top: 50px; }
@@ -185,8 +186,9 @@
         <h2 style="font-family:Montserrat; border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; margin-bottom: 20px;">Detalle del documento</h2>
         <div id="infoDetalle"></div>
         <div class="cards-flex-container" id="tarjetasContainer"></div>
-        <div class="leyenda-validacion">
-            La integridad y autoría del presente documento se podrá verificar a través del código QR o en el portal oficial de certificación.
+        
+        <div class="leyenda-atencion">
+            <strong>¡Atención!</strong> La información de los certificados que se muestran en este portal, es el resultado de la integración de información que envían las autoridades educativas de los estados y de la Ciudad de México.
         </div>
     </div>
 </main>
