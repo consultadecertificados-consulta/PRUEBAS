@@ -41,7 +41,7 @@
             flex-direction: column;
         }
 
-        /* STICKY NAV */
+        /* NAVEGACIÓN FIJA */
         .sticky-nav-container { position: sticky; top: 0; z-index: 1000; width: 100%; }
 
         nav.gob-header { background-color: var(--sep-rojo-obscuro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
@@ -63,8 +63,9 @@
         .menu-desplegable-dgb.show { display: block; }
         .menu-desplegable-dgb a { display: block; color: white; text-decoration: none; padding: 15px 0; font-family: 'Montserrat'; font-size: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
-        .header-image-container { width: 100%; background: #fff; border-bottom: 1px solid #ddd; }
-        .header-image-container img { max-width: 100%; height: auto; display: block; }
+        /* PORTADA COMPLETA EN PC */
+        .header-image-container { width: 100%; background: #fff; overflow: hidden; }
+        .header-image-container img { width: 100%; height: auto; display: block; object-fit: contain; }
 
         /* ACCESIBILIDAD PANEL */
         .acc-trigger { position: fixed; left: 0; top: 50%; transform: translateY(-50%); background: rgba(117, 117, 117, 0.4); color: #FFFFFF; padding: 15px 10px; border-radius: 0 8px 8px 0; cursor: pointer; z-index: 10001; }
@@ -79,17 +80,18 @@
         .titulos-sep h2 { font-family: 'Montserrat'; color: #000; font-weight: 700; font-size: 1.8rem; }
         .linea-decorativa { width: 60px; height: 4px; background: var(--gob-oro); margin: 15px auto; }
 
+        /* BUSCADOR */
         .search-container { background: #ffffff; border-top: 5px solid var(--sep-rojo-obscuro); border-radius: 8px; padding: 40px 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; }
         input[type="text"] { width: 100%; max-width: 500px; padding: 15px; border: 2px solid #ddd; border-radius: 6px; font-size: 18px; margin-bottom: 25px; text-align: center; font-family: 'Lora', serif; }
         .botones-flex { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
         .btn-buscar { background: var(--sep-rojo-obscuro); color: white; padding: 12px 30px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; font-family: 'Montserrat'; }
         .btn-limpiar { background: var(--gob-gris-limpiar); color: white; padding: 12px 30px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; font-family: 'Montserrat'; }
 
-        /* RESULTADOS */
+        /* RESULTADOS COMPLETOS */
         #resultado { display: none; margin-top: 40px; background: white; padding: 35px; border-radius: 8px; border-left: 8px solid var(--estatus-verde); text-align: left; }
         .info-item { border-bottom: 1px solid #eee; padding: 12px 0; display: flex; flex-direction: column; }
         .info-label { font-weight: 700; color: #333; font-size: 14px; font-family: 'Montserrat'; text-transform: uppercase; margin-bottom: 2px; }
-        .info-value { font-family: 'Lora', serif; color: #555; font-size: 16px; }
+        .info-value { font-family: 'Lora', serif; color: #555; font-size: 16px; word-break: break-all; }
 
         .cards-flex-container { display: flex; justify-content: center; gap: 15px; margin: 25px 0; flex-wrap: wrap; }
         .card-box { flex: 1; min-width: 200px; padding: 25px 15px; border-radius: 4px; border: 1px solid; text-align: center; }
@@ -225,10 +227,8 @@
         if (typeof baseDatos !== 'undefined' && baseDatos[inputFolio]) {
             const data = baseDatos[inputFolio];
             let listHTML = "";
-            // Recorre todas las llaves del objeto para no dejar información fuera
             for (let clave in data) {
                 const claveUpper = clave.toUpperCase();
-                // Excluir solo lo que va en las tarjetas inferiores
                 if (claveUpper !== 'PROMEDIO' && claveUpper !== 'PROMEDIO_TEXTO' && claveUpper !== 'ESTATUS') {
                     listHTML += `<div class="info-item">
                         <span class="info-label">${clave.replace(/_/g, ' ')}:</span>
