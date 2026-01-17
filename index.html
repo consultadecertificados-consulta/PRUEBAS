@@ -14,9 +14,13 @@
             --gob-oro: #9D843E;   
             --verde-btn: #285848;
             --gris-btn: #767676;
+            /* Colores para el fondo azul de atención */
+            --bg-azul-atencion: #D9EDF7;
+            --borde-azul-atencion: #BCE8F1;
+            --texto-azul-atencion: #31708F;
         }
 
-        /* ESTILOS DE ACCESIBILIDAD */
+        /* ACCESIBILIDAD */
         .grayscale-mode { filter: grayscale(100%); }
         .high-contrast { background: #000 !important; color: #fff100 !important; }
         .high-contrast * { background-color: #000 !important; color: #fff100 !important; border-color: #fff100 !important; }
@@ -45,7 +49,7 @@
         .acc-sidebar.active { left: 0; }
         .acc-btn { display: block; width: 100%; padding: 12px; margin-bottom: 10px; cursor: pointer; border: 1px solid #ddd; background: #f9f9f9; font-weight: 500; font-family: 'Montserrat'; }
 
-        /* PORTADA Y LEYENDA */
+        /* PORTADA Y LEYENDA SUPERIOR */
         .header-img { width: 100%; background: #fff; text-align: center; border-bottom: 1px solid #ddd; }
         .header-img img { max-width: 100%; height: auto; }
         .leyenda-superior { max-width: 900px; margin: 20px auto; text-align: center; font-size: 20px; font-weight: 600; color: #4D4D4D; text-transform: uppercase; border-bottom: 2px solid var(--gob-oro); padding-bottom: 15px; }
@@ -71,6 +75,19 @@
         .card { flex: 1; min-width: 200px; padding: 20px; border-radius: 4px; text-align: center; }
         .card-v { background: #E9F4E9; border: 1px solid #D1E7D1; color: #285848; }
         .card-a { background: #E1F1F7; border: 1px solid #D1E9F2; color: #31708F; }
+
+        /* RECUADRO AZUL DE ATENCIÓN */
+        .atencion-azul { 
+            padding: 20px; 
+            background-color: var(--bg-azul-atencion); 
+            color: var(--texto-azul-atencion); 
+            border-radius: 4px; 
+            font-size: 14px; 
+            line-height: 1.6; 
+            border: 1px solid var(--borde-azul-atencion); 
+            margin-top: 25px; 
+            text-align: left;
+        }
 
         /* FOOTER */
         footer { background: var(--sep-rojo); color: white; padding: 50px 30px 30px; margin-top: auto; }
@@ -146,7 +163,8 @@
                 <div id="resEst" style="font-size:18px; font-weight:600; margin:5px 0;"></div>
             </div>
         </div>
-        <div class="atencion">
+
+        <div class="atencion-azul">
             <strong>¡Atención!</strong> La información de los certificados que se muestran en este portal es resultado de la integración enviada por las autoridades educativas competentes.
         </div>
     </div>
