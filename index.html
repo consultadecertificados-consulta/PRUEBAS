@@ -17,10 +17,9 @@
         .nav > li { left: 0px !important; margin-left: -100px !important; position: relative; }
         .contenedor { margin-top: 50px; }
         .container-top { margin-top: -33vh; }
-        /* Leyendas en Negro Sólido */
         .hdr_title h3, .hdr_title h2 { color: #000 !important; font-weight: bold; text-shadow: none !important; }
         
-        /* Leyenda DGAIR (Mismo tamaño que TÍTULO AUTENTICADO) */
+        /* Leyenda DGAIR (Mismo tamaño que h3) */
         #leyenda-dgair { 
             display: none; 
             font-size: 24px; 
@@ -30,17 +29,26 @@
             text-transform: uppercase;
         }
 
-        /* DISEÑO TARJETA RESULTADO (Estilo imagen enviada anteriormente) */
+        /* DISEÑO TARJETA RESULTADO ORIGINAL */
         #seccion-resultado { display: none; margin-bottom: 50px; }
         .card-documento {
             background: #fff; border: 1px solid #ddd; padding: 40px;
             max-width: 750px; margin: 20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
-        .header-card { background: #1d4d3f; color: #fff; padding: 10px 20px; display: inline-block; margin-bottom: 30px; }
-        .card-label { font-weight: bold; color: #333; margin-top: 20px; font-size: 16px; }
-        .card-value { color: #555; font-size: 15px; text-transform: uppercase; }
+        /* Barra Detalle del Documento Original */
+        .header-card { 
+            background: #1d4d3f; 
+            color: #fff; 
+            padding: 10px 20px; 
+            display: inline-block; 
+            margin-bottom: 30px; 
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .card-label { font-weight: bold; color: #333; margin-top: 20px; font-size: 16px; margin-bottom: 5px; }
+        .card-value { color: #555; font-size: 15px; text-transform: uppercase; margin-bottom: 15px; }
         
-        /* Limpieza Footer solicitada */
+        /* Ocultar sección de enlaces del footer */
         .main-footer .list-info { display: none !important; }
     </style>
 </head>
@@ -72,9 +80,7 @@
         </nav>
     </header>
 
-    <div>
-        <img src="https://siged.sep.gob.mx/SIGED/images/bnr_alumnos.png" style="width: 100%;">
-    </div>
+    <div><img src="https://siged.sep.gob.mx/SIGED/images/bnr_alumnos.png" style="width: 100%;"></div>
 
     <div class="container container-top">
         <div class="row align-items-center">
@@ -105,7 +111,7 @@
                         </div>
                     </div>
                     
-                    <ul class="nav nav-tabs" id="pestañas-originales">
+                    <ul class="nav nav-tabs" id="tabs-original">
                         <li class="active">
                             <a data-toggle="tab" href="#tab-01" class="nav-link active" style="color: white; background-color: #10312B; margin-left: 100px">Búsqueda</a>
                         </li>
