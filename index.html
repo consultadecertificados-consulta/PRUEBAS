@@ -4,12 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIGED - Consulta de Documento Electrónico de Titulación</title>
+    <title>SIGED - Consulta de Documento Electrónico</title>
 
     <link href="https://framework-gb.cdn.gob.mx/gm/v3/assets/styles/main.css" rel="stylesheet">
-    <link href="https://framework-gb.cdn.gob.mx/gm/v3/assets/images/favicon.ico" rel="shortcut icon">
     <link href="https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" type="text/css" href="https://siged.sep.gob.mx/SIGED/css/navbar-settings.css">
     <link rel="stylesheet" type="text/css" href="https://siged.sep.gob.mx/SIGED/css/global_siged.css">
 
@@ -19,27 +17,27 @@
         .container-top { margin-top: -33vh; }
         .hdr_title h3, .hdr_title h2 { color: #000 !important; font-weight: bold; text-shadow: none !important; }
         
-        /* LEYENDA DGAIR (Solo visible en consulta) */
-        #leyenda-dgair { display: none; font-weight: bold; color: #545454; margin-bottom: 5px; font-size: 16px; }
+        /* Leyenda DGAIR igual a TÍTULO AUTENTICADO */
+        #leyenda-dgair { 
+            display: none; 
+            font-size: 24px; 
+            font-weight: bold; 
+            color: #545454; 
+            margin-bottom: 10px; 
+            text-transform: uppercase;
+        }
 
-        /* DISEÑO TARJETA RESULTADO */
+        /* Diseño Tarjeta Resultado */
         #seccion-resultado { display: none; margin-bottom: 50px; }
         .card-documento {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 40px;
-            max-width: 750px;
-            margin: 20px auto;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            background: #fff; border: 1px solid #ddd; padding: 40px;
+            max-width: 750px; margin: 20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
-        .header-card { background: #1d4d3f; color: #fff; padding: 10px 20px; display: inline-block; margin-bottom: 30px; font-size: 14px; }
-        .card-label { font-weight: bold; color: #333; margin-top: 20px; font-size: 16px; margin-bottom: 5px; }
-        .card-value { color: #555; font-size: 15px; margin-bottom: 15px; text-transform: uppercase; }
-        .icon-doc { font-size: 60px; color: #333; margin-bottom: 15px; }
-        
-        #mensaje-error { display: none; margin-top: 20px; }
+        .header-card { background: #1d4d3f; color: #fff; padding: 10px 20px; display: inline-block; margin-bottom: 30px; }
+        .card-label { font-weight: bold; color: #333; margin-top: 20px; font-size: 16px; }
+        .card-value { color: #555; font-size: 15px; text-transform: uppercase; }
 
-        /* Ocultar secciones específicas del footer solicitado */
+        /* Footer Limpio */
         .main-footer .list-info { display: none !important; }
     </style>
 </head>
@@ -51,36 +49,25 @@
         <nav class="navbar navbar-expand-xl navbar-dark bg-light sub-navbar navbar-fixed-top navbar-top-siged">
             <div class="container">
                 <a class="navbar-brand sub-navbar" href="#">SIGED</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#subNavBarSIGED">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#subNavBarSIGED">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="subNavBarSIGED">
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link subnav-link" href="#">¿Quiénes somos?</a></li>
                         <li class="nav-item"><a class="nav-link subnav-link" href="#">Consultas</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link subnav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Aviso de Privacidad</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Simplificado</a>
-                                <a class="dropdown-item" href="#">Integral</a>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <div>
-        <img src="https://siged.sep.gob.mx/SIGED/images/bnr_alumnos.png" style="width: 100%;">
-    </div>
+    <div><img src="https://siged.sep.gob.mx/SIGED/images/bnr_alumnos.png" style="width: 100%;"></div>
 
     <div class="container container-top">
-        <div class="row align-items-center">
-            <div class="column col-lg-12 hdr_title">
-                <h3>Sistema de Información y Gestión Educativa</h3>
-                <h2 class="mt-1">Consulta de documentos académicos electrónicos</h2>
-            </div>
+        <div class="column col-lg-12 hdr_title">
+            <h3>Sistema de Información y Gestión Educativa</h3>
+            <h2>Consulta de documentos académicos electrónicos</h2>
         </div>
     </div>
 
@@ -89,73 +76,44 @@
             <ol class="breadcrumb">
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Consultas</a></li>
-                <li><a href="#">Documentos académicos electrónicos</a></li>
                 <li class="active">Título Autenticado</li>
             </ol>
             
             <div class="form-group">
-                <div class="row col-md-12">
-                    <div id="leyenda-dgair">Consulta de títulos electrónicos autenticados por la DGAIR</div>
-                    
-                    <div class="row">
-                        <div class="col-md-10">
-                            <h3>TÍTULO AUTENTICADO</h3>
-                            <hr class="red">
+                <div id="leyenda-dgair">Consulta de títulos electrónicos autenticados por la DGAIR</div>
+                <h3>TÍTULO AUTENTICADO</h3>
+                <hr class="red">
+                
+                <div id="seccion-busqueda">
+                    <form onsubmit="return ejecutarBusqueda(event)">
+                        <div class="form-group">
+                            <label class="control-label">Folio Digital:</label>
+                            <input class="form-control" id="folioSEP" placeholder="Capture el folio o escanee el QR" type="text">
                         </div>
-                    </div>
-                    
-                    <ul class="nav nav-tabs">
-                        <li class="active">
-                            <a data-bs-toggle="tab" href="#tab-01" class="nav-link active" style="color: white; background-color: #10312B; margin-left: 100px">Búsqueda</a>
-                        </li>
-                    </ul>
+                        <button class="btn btn-primary pull-right" type="submit">Buscar</button>
+                    </form>
+                    <div id="mensaje-error" class="alert alert-danger" style="display:none; clear:both; margin-top:15px;">Folio inválido.</div>
+                </div>
 
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="seccion-busqueda">
-                            <form role="form" onsubmit="return ejecutarBusqueda(event)">
-                                <div class="form-group">
-                                    <label class="control-label" for="folioSEP">Folio Digital:</label>
-                                    <input class="form-control" id="folioSEP" placeholder="Folio Digital del Título Electrónico" type="text">
-                                </div>
-                                <button class="btn btn-primary pull-right" type="submit">Buscar</button>
-                            </form>
-                            <div id="mensaje-error" class="alert alert-danger text-center">
-                                <strong>Folio inválido.</strong>
-                            </div>
-                        </div>
-
-                        <div id="seccion-resultado">
-                            <div class="card-documento">
-                                <div class="header-card">Detalle del documento</div>
-                                <div class="icon-doc"><span class="glyphicon glyphicon-file"></span></div>
-                                
-                                <div class="card-label">Nombre:</div>
-                                <div id="res-nombre" class="card-value"></div>
-                                <div class="card-label">Carrera:</div>
-                                <div id="res-carrera" class="card-value"></div>
-                                <div class="card-label">Nivel:</div>
-                                <div id="res-nivel" class="card-value"></div>
-                                <div class="card-label">Folio Digital:</div>
-                                <div id="res-folio" class="card-value"></div>
-                                <div class="card-label">Institución Emisora:</div>
-                                <div id="res-institucion" class="card-value"></div>
-                            </div>
-                            <div class="text-center">
-                                <button class="btn btn-default" onclick="location.reload()">Regresar</button>
-                            </div>
-                        </div>
+                <div id="seccion-resultado">
+                    <div class="card-documento">
+                        <div class="header-card">Detalle del documento</div>
+                        <div class="card-label">Nombre:</div><div id="res-nombre" class="card-value"></div>
+                        <div class="card-label">Carrera:</div><div id="res-carrera" class="card-value"></div>
+                        <div class="card-label">Nivel:</div><div id="res-nivel" class="card-value"></div>
+                        <div class="card-label">Folio Digital:</div><div id="res-folio" class="card-value"></div>
+                        <div class="card-label">Institución Emisora:</div><div id="res-institucion" class="card-value"></div>
                     </div>
+                    <div class="text-center"><button class="btn btn-default" onclick="window.location.href=window.location.pathname">Nueva Consulta</button></div>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="main-footer">
-        <div class="container">
-            </div>
-    </footer>
+    <footer class="main-footer"></footer>
 
     <script src="https://siged.sep.gob.mx/SIGED/js/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/gm/v3/assets/js/gobmx.js"></script>
     <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
     <script src="folios.js"></script>
