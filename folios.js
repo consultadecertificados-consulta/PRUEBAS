@@ -1,72 +1,94 @@
-// folios.js - Contenedor externo de certificados SEMS
-const baseDatos = {
-    // --- TUS FOLIOS ORIGINALES ---
-    "CBG3760391150": { nombre: "RAUL SANCHEZ ANGUIANO", matricula: "1501R850623", emisor: "DIRECCION GENERAL DE BACHILLLERATO DE JALISCO", plantel: "14EEX0001C", plan: "BACHILLERATO GENERAL", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-09-25 16:20:11" },
-    "CBG376039115": { nombre: "DULCE BERENICE COLIN LOPEZ", matricula: "1502M900412", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO CIUDAD DE MEXICO", plantel: "09DEX0004P", plan: "BACHILLERATO GENERAL", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "25-10-2025 16:20:11" },
-    "CBG376039115-": { nombre: "ANGEL MERCHANT HERRERA", matricula: "1503R880155", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO DE COAHUILA", plantel: "14EEX0001C" , plan: "BACHILLERATO GENERAL ", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "25-09-2023 16:20:11" },
-    "CBG376039115l": { nombre: "ANA CRISTINA DAVILA SAUCEDO", matricula: "1501R85O623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO NUEVO LEON", plantel: "19EEX0001Y", plan: "BACHILLERATO GENERAL", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-09-25 16:20:11" },
-    "CBG376039115Y": { nombre: "MARIA BELEN VALERIANO GALVAN", matricula: "1505R890789", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO DE JALISCO", plantel: "14EEX0001C", plan: "BACHILLERATO INTENSIVO GENERAL", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-09-25 16:20:11" },
-    "CBG376039115Q": { nombre: "MARIA DEL PILAR NIETO RODRIGUEZ", matricula: "1506M850221", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO CIUDAD DE MEXICO", plantel: "09DEX0004P", plan: "BACHILLERATO INTENSIVO GENERAL", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-10-25 16:20:11" },
-    "CBG376039110L": { nombre: "MARIANA ADRIANA DIAZ MORA", matricula: "1507R910884", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO DE JALISCO", plantel: "14EEX0001C", plan: "BACHILLERATO INTENSIVO GENERAL", promedio: "8.6", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-10-19 16:20:11" },
-    "CBG176039112D": { nombre: "LUIS GERARDO NIÑO FACUNDO", matricula: "1508M870662", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO DE SAN LUIS POTOSI", plantel: "24DIT0020Z", plan: "BACHILLERATO INTENSIVO GENERAL", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-09-25 16:20:11" },
-    "CBG376039116Z": { nombre: "SILVIA GABRIELA GAMBOA MALDONADO", matricula: "1509R930112", emisor: "DIRECCIÓN ESTATAL DE EDUCACION SUPERIOR Y MEDIA SUPERIOR DE COAHUILA", plantel: "14EEX0001C", plan: "BACHILLERATO INTENSIVO GENERAL", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-09-25 16:20:11" },
-    "CBG3760391172": { nombre: "MARIO MANUEL RIOS ALONSO ", matricula: "1520M920991", emisor: "COORDINACION ESTATAL DE BACHILLERATO ABIERTO DE COLIMA", plantel: "06EEX0001U", plan: "BACHILLERATO INTENSIVO GENERAL", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2017-10-25 16:20:11" },
-
-    // --- 50 FOLIOS ADICIONALES (CBG-200 AL CBG-249) ---
-    "CBG3760391200": { nombre: "JOSE ALBERTO ANDRADE VALDEZ", matricula: "1601R940221", emisor: "ESCUELA DE BACHILLERATO SUPERIOR Y MEDIA SUPERIOR REGIONAL DE CHIHUAHUA", plantel: "08EEXOOO1S", plan: "BACHILLERATO INTENSIVO GENERAL", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-09-25 16:20:11" },
-    "CBG3760391201": { nombre: "JOSUE DE JESUS LOPEZ PEREZ", matricula: "1602M930554", emisor: "DIRECCION GENERAL DE BACHILLERATO DE JALISCO", plantel: "14EEX0001C", plan: "BACHILLERATO GENERAL INTENSIVO", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-09-25 16:20:11" },
-    "CBG3760391202": { nombre: "URIVA SEMAYA YASEN JIMENEZ VILLALOBOS", matricula: "1603R920887", emisor: "DIRECCION GENERAL DE BACHILLERATO DE GUADALAJARA , JALISCO", plantel: "14EEX0001C", plan: "BACHILLERATO INTESIVO GENERAL", promedio: "8.6", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-09-25 16:20:11" },
-    "CBG3760391203": { nombre: "MANUEL ORTIZ PEÑA", matricula: "1604M910110", emisor: "DGB PUEBLA", plantel: "21EEX0023M", plan: "BACHILLERATO GENERAL", promedio: "7.9", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-06 14:45:30" },
-    "CBG3760391204": { nombre: "ELENA VARGAS MACHUCA", matricula: "1605R900443", emisor: "DGB QUERÉTARO", plantel: "22EEX0001A", plan: "BACHILLERATO GENERAL", promedio: "8.8", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-07 08:20:12" },
-    "CBG3760391205": { nombre: "GABRIEL SOSA CASTRO", matricula: "1606M890776", emisor: "DGB VERACRUZ", plantel: "30DEX0451Z", plan: "BACHILLERATO GENERAL", promedio: "8.2", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-07 12:10:55" },
-    "CBG3760391206": { nombre: "VERONICA DUARTE GIL", matricula: "1607R880229", emisor: "DGB YUCATÁN", plantel: "31EEX0005N", plan: "BACHILLERATO GENERAL", promedio: "9.3", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-08 16:35:18" },
-    "CBG3760391207": { nombre: "HUGO RIVERA MENDOZA", matricula: "1608M870552", emisor: "DGB CHIHUAHUA", plantel: "08DEX0012L", plan: "BACHILLERATO GENERAL", promedio: "7.7", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-08 17:50:40" },
-    "CBG3760391208": { nombre: "MARIA JOSÉ TELLO", matricula: "1609R860885", emisor: "DGB ESTADO DE MÉXICO", plantel: "15EEX0201Q", plan: "BACHILLERATO GENERAL", promedio: "9.0", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-09 09:00:00" },
-    "CBG3760391209": { nombre: "RICARDO MARIN PAZ", matricula: "1610M850118", emisor: "DGB GUANAJUATO", plantel: "11DEX0089W", plan: "BACHILLERATO GENERAL", promedio: "8.6", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-09 11:25:33" },
-    "CBG3760391210": { nombre: "XIMENA NAVARRO REYES", matricula: "1611R840441", emisor: "DGB MICHOACÁN", plantel: "16EEX0055V", plan: "BACHILLERATO GENERAL", promedio: "8.9", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-10 13:12:11" },
-    "CBG3760391211": { nombre: "ALBERTO DIAZ GOMEZ", matricula: "1612M830774", emisor: "DGB HIDALGO", plantel: "13DEX0011B", plan: "BACHILLERATO GENERAL", promedio: "8.1", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-10 15:40:50" },
-    "CBG3760391212": { nombre: "LAURA ESTELA ROJAS", matricula: "1613R820117", emisor: "DGB COAHUILA", plantel: "05EEX0010X", plan: "BACHILLERATO GENERAL", promedio: "9.4", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-11 08:50:22" },
-    "CBG3760391213": { nombre: "FERNANDO MORA LIMA", matricula: "1614M810440", emisor: "DGB SONORA", plantel: "26DEX0033P", plan: "BACHILLERATO GENERAL", promedio: "7.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-11 10:20:15" },
-    "CBG3760391214": { nombre: "DANIELA ROMO SOTO", matricula: "1615R800773", emisor: "DGB SINALOA", plantel: "25EEX0012S", plan: "BACHILLERATO GENERAL", promedio: "8.7", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-12 12:05:40" },
-    "CBG3760391215": { nombre: "OSCAR IVÁN TÉLLEZ", matricula: "1616M790116", emisor: "DGB CHIAPAS", plantel: "07DEX0099K", plan: "BACHILLERATO GENERAL", promedio: "8.3", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-12 14:15:33" },
-    "CBG3760391216": { nombre: "BEATRIZ ADRIANA MAR", matricula: "1617R780449", emisor: "DGB TAMAULIPAS", plantel: "28EEX0044R", plan: "BACHILLERATO GENERAL", promedio: "9.2", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-13 09:30:11" },
-    "CBG3760391217": { nombre: "RAÚL SANTIAGO PEÑA", matricula: "1618M770772", emisor: "DGB TABASCO", plantel: "27DEX0022M", plan: "BACHILLERATO GENERAL", promedio: "7.8", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-13 11:45:50" },
-    "CBG3760391218": { nombre: "SILVIA MARINA VEGA", matricula: "1619R760115", emisor: "DGB COLIMA", plantel: "06EEX0008H", plan: "BACHILLERATO GENERAL", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-14 13:10:05" },
-    "CBG3760391219": { nombre: "EMILIO DUARTE MEZA", matricula: "1620M750448", emisor: "DGB ZACATECAS", plantel: "32DEX0001J", plan: "BACHILLERATO GENERAL", promedio: "8.9", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-14 15:20:44" },
-    "CBG3760391220": { nombre: "MONICA ALEJANDRA PAZ", matricula: "1621R740771", emisor: "DGB AGUASCALIENTES", plantel: "01EEX0011L", plan: "BACHILLERATO GENERAL", promedio: "9.6", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-15 09:55:12" },
-    "CBG3760391221": { nombre: "GUSTAVO ADOLFO RUIZ", matricula: "1622M730114", emisor: "DGB CAMPECHE", plantel: "04DEX0005C", plan: "BACHILLERATO GENERAL", promedio: "8.0", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-15 11:15:30" },
-    "CBG3760391222": { nombre: "ESTELA MARIS CASTRO", matricula: "1623R720447", emisor: "DGB DURANGO", plantel: "10EEX0033G", plan: "BACHILLERATO GENERAL", promedio: "8.7", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-16 12:40:22" },
-    "CBG3760391223": { nombre: "RICARDO GOMEZ LUNA", matricula: "1624M710770", emisor: "DGB TLAXCALA", plantel: "29DEX0011F", plan: "BACHILLERATO GENERAL", promedio: "7.6", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-16 14:50:55" },
-    "CBG3760391224": { nombre: "SANDRA LUZ MARTÍNEZ", matricula: "1625R700113", emisor: "DGB QUINTANA ROO", plantel: "23EEX0012E", plan: "BACHILLERATO GENERAL", promedio: "9.1", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-17 08:30:10" },
-    "CBG3760391225": { nombre: "ROBERTO CARLOS PEÑA", matricula: "1626M690446", emisor: "DGB SAN LUIS POTOSÍ", plantel: "24DEX0099A", plan: "BACHILLERATO GENERAL", promedio: "8.4", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-17 10:45:18" },
-    "CBG3760391226": { nombre: "CLARA INÉS MORENO", matricula: "1627R680779", emisor: "DGB MORELOS", plantel: "17EEX0004P", plan: "BACHILLERATO GENERAL", promedio: "8.8", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-18 11:20:33" },
-    "CBG3760391227": { nombre: "SERGIO OSORIO TORRES", matricula: "1628M670112", emisor: "DGB NAYARIT", plantel: "18DEX0010U", plan: "BACHILLERATO GENERAL", promedio: "7.9", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-18 13:55:00" },
-    "CBG3760391228": { nombre: "LORENA HERRERA POOL", matricula: "1629R660445", emisor: "DGB BAJA CALIFORNIA", plantel: "02EEX0055W", plan: "BACHILLERATO GENERAL", promedio: "9.4", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-19 14:10:12" },
-    "CBG3760391229": { nombre: "ÁLVARO OBREGÓN S.", matricula: "1630M650778", emisor: "DGB BAJA CALIFORNIA SUR", plantel: "03DEX0001K", plan: "BACHILLERATO GENERAL", promedio: "8.2", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-19 16:25:40" },
-    "CBG3760391230": { nombre: "YOLANDA REYES GIL", matricula: "1631R640111", emisor: "DGB OAXACA", plantel: "20EEX0088Z", plan: "BACHILLERATO GENERAL", promedio: "8.6", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-20 09:05:55" },
-    "CBG3760391231": { nombre: "RAMÓN VALDEZ SOTO", matricula: "1632M630444", emisor: "DGB GUERRERO", plantel: "12DEX0022Y", plan: "BACHILLERATO GENERAL", promedio: "7.4", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-20 11:30:11" },
-    "CBG3760391232": { nombre: "IRENE CALDERA MOYA", matricula: "1633R620777", emisor: "DGB CIUDAD DE MÉXICO", plantel: "09DEX0441M", plan: "BACHILLERATO GENERAL", promedio: "9.8", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-21 12:45:00" },
-    "CBG3760391233": { nombre: "RUBÉN DARÍO LIMA", matricula: "1634M610110", emisor: "DGB JALISCO", plantel: "14EEX0011H", plan: "BACHILLERATO GENERAL", promedio: "8.1", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-21 14:55:20" },
-    "CBG3760391234": { nombre: "KARINA MENA ROJO", matricula: "1635R600443", emisor: "DGB NUEVO LEÓN", plantel: "19DEX0110Q", plan: "BACHILLERATO GENERAL", promedio: "8.9", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-22 15:10:33" },
-    "CBG3760391235": { nombre: "PAOLA NUÑEZ REAL", matricula: "1636M590776", emisor: "DGB ESTADO DE MÉXICO", plantel: "15EEX0332B", plan: "BACHILLERATO GENERAL", promedio: "9.2", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-22 16:40:11" },
-    "CBG3760391236": { nombre: "MANUEL IBARRA VAL", matricula: "1637R580119", emisor: "DGB PUEBLA", plantel: "21DEX0055V", plan: "BACHILLERATO GENERAL", promedio: "8.0", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-23 08:20:44" },
-    "CBG3760391237": { nombre: "GLORIA ESTEFAN O.", matricula: "1638M570442", emisor: "DGB VERACRUZ", plantel: "30EEX0012C", plan: "BACHILLERATO GENERAL", promedio: "9.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-23 10:15:22" },
-    "CBG3760391238": { nombre: "VERONICA CASTRO G.", matricula: "1639R560775", emisor: "DGB CHIHUAHUA", plantel: "08DEX0044N", plan: "BACHILLERATO GENERAL", promedio: "8.7", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-24 11:35:10" },
-    "CBG3760391239": { nombre: "ALEJANDRO SANZ R.", matricula: "1640M550118", emisor: "DGB GUANAJUATO", plantel: "11EEX0088X", plan: "BACHILLERATO GENERAL", promedio: "7.8", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-24 13:50:55" },
-    "CBG3760391240": { nombre: "CARLOS RIVERA G.", matricula: "1641R540441", emisor: "DGB TLAXCALA", plantel: "29DEX0022S", plan: "BACHILLERATO GENERAL", promedio: "9.1", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-25 14:20:12" },
-    "CBG3760391241": { nombre: "DANIELA ROMO S.", matricula: "1642M530774", emisor: "DGB HIDALGO", plantel: "13EEX0044P", plan: "BACHILLERATO GENERAL", promedio: "8.3", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-25 16:45:33" },
-    "CBG3760391242": { nombre: "ENRIQUE IGLESIAS P.", matricula: "1643R520117", emisor: "DGB QUERÉTARO", plantel: "22DEX0011Z", plan: "BACHILLERATO GENERAL", promedio: "8.5", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-26 09:10:44" },
-    "CBG3760391243": { nombre: "FATIMA TORRES N.", matricula: "1644M510440", emisor: "DGB SONORA", plantel: "26EEX0055G", plan: "BACHILLERATO GENERAL", promedio: "9.3", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-26 11:30:15" },
-    "CBG3760391244": { nombre: "GERARDO ORTIZ M.", matricula: "1645R500773", emisor: "DGB SINALOA", plantel: "25DEX0011F", plan: "BACHILLERATO GENERAL", promedio: "7.6", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-27 12:55:20" },
-    "CBG3760391245": { nombre: "HILDA GABRIELA R.", matricula: "1646M490116", emisor: "DGB CHIAPAS", plantel: "07EEX0022M", plan: "BACHILLERATO GENERAL", promedio: "8.9", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-27 15:10:33" },
-    "CBG3760391246": { nombre: "ISAAC HERNÁNDEZ B.", matricula: "1647R480449", emisor: "DGB YUCATÁN", plantel: "31DEX0011L", plan: "BACHILLERATO GENERAL", promedio: "9.7", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-28 10:25:12" },
-    "CBG3760391247": { nombre: "JULIETA VENEGAS P.", matricula: "1648M470772", emisor: "DGB BAJA CALIFORNIA", plantel: "02EEX0088V", plan: "BACHILLERATO GENERAL", promedio: "8.0", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-28 12:40:44" },
-    "CBG3760391248": { nombre: "KEVIN ROLDÁN S.", matricula: "1649R460115", emisor: "DGB TABASCO", plantel: "27DEX0055N", plan: "BACHILLERATO GENERAL", promedio: "8.6", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-29 13:50:55" },
-    "CBG3760391249": { nombre: "LUCERO HOZANZA M.", matricula: "1650M450448", emisor: "DGB MORELOS", plantel: "17EEX0011C", plan: "BACHILLERATO GENERAL", promedio: "9.1", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-11-29 16:15:33" }
-
+/**
+ * BASE DE DATOS SIMULADA - 50 FOLIOS
+ */
+const baseDeDatosFolios = {
+    "A2024001": { nombre: "JORGE LUI LOPEZ CRUZ", escuela: "INSTITUTO TECNOLÓGICO DE MÉXICO", fecha: "15/01/2024", estatus: "Autenticado" },
+    "A2024002": { nombre: "MARÍA GARCÍA RODRÍGUEZ", escuela: "UNIVERSIDAD AUTÓNOMA METROPOLITANA", fecha: "20/01/2024", estatus: "Autenticado" },
+    "A2024003": { nombre: "RICARDO MARTÍNEZ RUIZ", escuela: "POLITÉCNICO NACIONAL", fecha: "12/02/2024", estatus: "Autenticado" },
+    "A2024004": { nombre: "ANA HERNÁNDEZ JIMÉNEZ", escuela: "COLEGIO DE BACHILLERES", fecha: "05/03/2024", estatus: "Autenticado" },
+    "A2024005": { nombre: "LUIS TORRES ESTRADA", escuela: "UNIVERSIDAD DE GUADALAJARA", fecha: "18/03/2024", estatus: "Autenticado" },
+    "A2024006": { nombre: "CARMEN ORTIZ MEZA", escuela: "TECNOLÓGICO DE MONTERREY", fecha: "22/03/2024", estatus: "Autenticado" },
+    "A2024007": { nombre: "SERGIO VÁZQUEZ SOLÍS", escuela: "UNAM", fecha: "10/04/2024", estatus: "Autenticado" },
+    "A2024008": { nombre: "ELENA RAMÍREZ LUNA", escuela: "UNIVERSIDAD DEL VALLE", fecha: "14/04/2024", estatus: "Autenticado" },
+    "A2024009": { nombre: "ROBERTO DÍAZ CASTRO", escuela: "INSTITUTO TECNOLÓGICO", fecha: "01/05/2024", estatus: "Autenticado" },
+    "A2024010": { nombre: "PAOLA NÚÑEZ FLORES", escuela: "UNIVERSIDAD PEDAGÓGICA", fecha: "15/05/2024", estatus: "Autenticado" },
+    "A2024011": { nombre: "HUGO MORALES PEÑA", escuela: "CENTRO DE ESTUDIOS SUPERIORES", fecha: "20/05/2024", estatus: "Autenticado" },
+    "A2024012": { nombre: "DIANA REYES SILVA", escuela: "UNIVERSIDAD VERACRUZANA", fecha: "02/06/2024", estatus: "Autenticado" },
+    "A2024013": { nombre: "FERNANDO SOTO VILLA", escuela: "UANL", fecha: "10/06/2024", estatus: "Autenticado" },
+    "A2024014": { nombre: "GABRIELA LARA SOSA", escuela: "UNIVERSIDAD DE PUEBLA", fecha: "25/06/2024", estatus: "Autenticado" },
+    "A2024015": { nombre: "MAURICIO RIVAS CRUZ", escuela: "INSTITUTO MEXICANO", fecha: "05/07/2024", estatus: "Autenticado" },
+    "A2024016": { nombre: "MÓNICA VEGA BRAVO", escuela: "UNIVERSIDAD ANÁHUAC", fecha: "12/07/2024", estatus: "Autenticado" },
+    "A2024017": { nombre: "ALBERTO CANO ROSAS", escuela: "UNIVERSIDAD DE QUERÉTARO", fecha: "20/07/2024", estatus: "Autenticado" },
+    "A2024018": { nombre: "SILVIA MENDOZA TÉLLEZ", escuela: "COLEGIO DE MÉXICO", fecha: "30/07/2024", estatus: "Autenticado" },
+    "A2024019": { nombre: "OSCAR NAVARRO SALAS", escuela: "UNIVERSIDAD DE SONORA", fecha: "04/08/2024", estatus: "Autenticado" },
+    "A2024020": { nombre: "PATRICIA DELGADO", escuela: "TECNOLÓGICO DE TOLUCA", fecha: "15/08/2024", estatus: "Autenticado" },
+    "A2024021": { nombre: "FRANCISCO ÁVILA", escuela: "UNIVERSIDAD DE CHIAPAS", fecha: "22/08/2024", estatus: "Autenticado" },
+    "A2024022": { nombre: "LAURA DUARTE", escuela: "INSTITUTO DE ARTES", fecha: "01/09/2024", estatus: "Autenticado" },
+    "A2024023": { nombre: "JAVIER AGUIRRE", escuela: "UNIVERSIDAD DE YUCATÁN", fecha: "10/09/2024", estatus: "Autenticado" },
+    "A2024024": { nombre: "VERÓNICA PARRA", escuela: "COLEGIO MILITAR", fecha: "20/09/2024", estatus: "Autenticado" },
+    "A2024025": { nombre: "DANIEL MIRANDA", escuela: "UNIVERSIDAD DE HIDALGO", fecha: "30/09/2024", estatus: "Autenticado" },
+    "A2024026": { nombre: "ERIKA ESCAMILLA", escuela: "TECNOLÓGICO DE MORELIA", fecha: "05/10/2024", estatus: "Autenticado" },
+    "A2024027": { nombre: "MIGUEL SALAZAR", escuela: "UNIVERSIDAD DE TAMAULIPAS", fecha: "12/10/2024", estatus: "Autenticado" },
+    "A2024028": { nombre: "CLAUDIA GUZMÁN", escuela: "INSTITUTO DE CIENCIAS", fecha: "18/10/2024", estatus: "Autenticado" },
+    "A2024029": { nombre: "ESTEBAN OROZCO", escuela: "UNIVERSIDAD DE MORELOS", fecha: "25/10/2024", estatus: "Autenticado" },
+    "A2024030": { nombre: "SANDRA CABRERA", escuela: "ESCUELA NORMAL SUPERIOR", fecha: "01/11/2024", estatus: "Autenticado" },
+    "A2024031": { nombre: "FELIPE ROMERO", escuela: "UVM", fecha: "08/11/2024", estatus: "Autenticado" },
+    "A2024032": { nombre: "LORENA ACEVEDO", escuela: "UNIVERSIDAD IBEROAMERICANA", fecha: "15/11/2024", estatus: "Autenticado" },
+    "A2024033": { nombre: "ADRIÁN VALENCIA", escuela: "INSTITUTO DE TECNOLOGÍA", fecha: "22/11/2024", estatus: "Autenticado" },
+    "A2024034": { nombre: "BRENDA GALLARDO", escuela: "UNIVERSIDAD DE COLIMA", fecha: "30/11/2024", estatus: "Autenticado" },
+    "A2024035": { nombre: "GUSTAVO MEDINA", escuela: "TECNOLÓGICO DE CELAYA", fecha: "05/12/2024", estatus: "Autenticado" },
+    "A2024036": { nombre: "IRENE CALDERÓN", escuela: "UNIVERSIDAD DE DURANGO", fecha: "12/12/2024", estatus: "Autenticado" },
+    "A2024037": { nombre: "MANUEL BARRIOS", escuela: "UNIVERSIDAD DE OAXACA", fecha: "20/12/2024", estatus: "Autenticado" },
+    "A2024038": { nombre: "KARLA PACHECO", escuela: "INSTITUTO DE SALUD", fecha: "28/12/2024", estatus: "Autenticado" },
+    "A2024039": { nombre: "ARTURO VILLA", escuela: "UNIVERSIDAD DE TABASCO", fecha: "03/01/2025", estatus: "Autenticado" },
+    "A2024040": { nombre: "YOLANDA MONTES", escuela: "TECNOLÓGICO NACIONAL", fecha: "10/01/2025", estatus: "Autenticado" },
+    "A2024041": { nombre: "ANDRÉS BELTRÁN", escuela: "UNIVERSIDAD DE CAMPECHE", fecha: "18/01/2025", estatus: "Autenticado" },
+    "A2024042": { nombre: "NATALIA GÓMEZ", escuela: "UNIVERSIDAD DE GUANAJUATO", fecha: "25/01/2025", estatus: "Autenticado" },
+    "A2024043": { nombre: "ISAAC QUINTERO", escuela: "COLEGIO DE MÉXICO", fecha: "01/02/2025", estatus: "Autenticado" },
+    "A2024044": { nombre: "REBECA SALGADO", escuela: "UNIVERSIDAD DE ZACATECAS", fecha: "08/02/2025", estatus: "Autenticado" },
+    "A2024045": { nombre: "PABLO HERRERA", escuela: "INSTITUTO DE FÍSICA", fecha: "15/02/2025", estatus: "Autenticado" },
+    "A2024046": { nombre: "XIMENA TOVAR", escuela: "UNIVERSIDAD DE SINALOA", fecha: "22/02/2025", estatus: "Autenticado" },
+    "A2024047": { nombre: "EMILIO ROJAS", escuela: "TECNOLÓGICO DE PUEBLA", fecha: "01/03/2025", estatus: "Autenticado" },
+    "A2024048": { nombre: "SOFÍA ESPINOSA", escuela: "UNIVERSIDAD DE TLAXCALA", fecha: "08/03/2025", estatus: "Autenticado" },
+    "A2024049": { nombre: "VALENTINA CAMPOS", escuela: "UNIVERSIDAD DE AGUASCALIENTES", fecha: "15/03/2025", estatus: "Autenticado" },
+    "A2024050": { nombre: "CÉSAR ARROYO", escuela: "CENTRO DE INVESTIGACIÓN", fecha: "22/03/2025", estatus: "Autenticado" }
 };
 
+/**
+ * FUNCIÓN DE BÚSQUEDA (Para index.html)
+ */
+function handleSearch(event) {
+    event.preventDefault();
+    const folioInput = document.getElementById("folioSEP").value.trim();
+    const errorDiv = document.getElementById("mensaje-error");
 
+    // Validar que no esté vacío
+    if (folioInput === "") {
+        alert("Por favor, ingrese un folio.");
+        if (errorDiv) errorDiv.style.display = "none";
+        return false;
+    }
+
+    // Buscar en la base de datos
+    if (baseDeDatosFolios[folioInput]) {
+        // Guardar datos en memoria para la página de resultados
+        const datos = {
+            folio: folioInput,
+            ...baseDeDatosFolios[folioInput]
+        };
+        localStorage.setItem('folioEncontrado', JSON.stringify(datos));
+        
+        // Redirigir a la página de resultados
+        window.location.href = "resultado.html";
+    } else {
+        // Mostrar mensaje de error si no existe
+        if (errorDiv) {
+            errorDiv.style.display = "block";
+        } else {
+            alert("Folio inválido.");
+        }
+    }
+}
 
 
 
