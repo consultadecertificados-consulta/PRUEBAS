@@ -12,42 +12,55 @@
     <link rel="stylesheet" type="text/css" href="https://siged.sep.gob.mx/SIGED/css/global_siged.css">
 
     <style>
+        /* AJUSTES CABECERA (Imagen 1000046241) */
+        .container-top { margin-top: -38vh; position: relative; z-index: 10; }
+        .hdr_title { text-align: left; padding-left: 15px; }
+        
+        .hdr_title h3 { 
+            font-size: 38px !important; 
+            color: #333333 !important; 
+            font-weight: 600 !important; 
+            margin-bottom: 0px !important;
+            line-height: 1.1;
+            text-shadow: none !important;
+        }
+        .hdr_title h2 { 
+            font-size: 52px !important; 
+            color: #333333 !important; 
+            font-weight: bold !important; 
+            margin-top: 5px !important;
+            line-height: 1.1;
+            text-shadow: none !important;
+        }
+
+        /* ESTILOS DE NAVEGACIÓN Y MENÚS */
         .nav > li { left: 0px !important; margin-left: -100px !important; position: relative; }
         .contenedor { margin-top: 50px; }
-        .container-top { margin-top: -33vh; }
-        .hdr_title h3, .hdr_title h2 { color: #000 !important; font-weight: bold; text-shadow: none !important; }
         
-        /* Leyenda DGAIR (Imagen 1000046240) */
+        /* LEYENDA DGAIR Y RESULTADOS (Imagen 1000046240/31) */
         #leyenda-dgair { 
             display: none; 
             font-size: 28px; 
             font-weight: bold; 
             color: #4D4D4D; 
             margin-bottom: 20px;
-            line-height: 1.2;
+            text-transform: none;
         }
-
-        /* DISEÑO TARJETA (Imagen 1000046231) */
+        
         #seccion-resultado { display: none; margin-bottom: 50px; }
         .card-documento {
             background: #fff; border: 1px solid #eee; padding: 0;
             max-width: 700px; margin: 20px auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            font-family: "Montserrat", sans-serif;
         }
         .header-card { 
-            background: #1d4d3f; 
-            color: #fff; 
-            padding: 10px 20px; 
-            display: inline-block; 
-            font-size: 16px;
-            margin-bottom: 30px;
+            background: #1d4d3f; color: #fff; padding: 10px 20px; 
+            display: inline-block; font-size: 16px; font-weight: bold;
         }
-        .card-body { padding: 0 40px 40px 40px; }
+        .card-body { padding: 40px; }
         .icon-doc { font-size: 50px; color: #333; margin-bottom: 15px; }
         .card-label { font-weight: bold; color: #333; font-size: 16px; margin-top: 20px; }
-        .card-value { color: #666; font-size: 15px; text-transform: uppercase; margin-bottom: 10px; }
+        .card-value { color: #666; font-size: 15px; text-transform: uppercase; }
         
-        /* Ocultar sección de enlaces del footer */
         .main-footer .list-info { display: none !important; }
     </style>
 </head>
@@ -72,12 +85,16 @@
         </nav>
     </header>
 
-    <div><img src="https://siged.sep.gob.mx/SIGED/images/bnr_alumnos.png" style="width: 100%;"></div>
+    <div>
+        <img src="https://siged.sep.gob.mx/SIGED/images/bnr_alumnos.png" style="width: 100%; opacity: 0.8;">
+    </div>
 
     <div class="container container-top">
-        <div class="column col-lg-12 hdr_title">
-            <h3>Sistema de Información y Gestión Educativa</h3>
-            <h2>Consulta de documentos académicos electrónicos</h2>
+        <div class="row">
+            <div class="col-md-8 hdr_title">
+                <h3>Sistema de Información y Gestión Educativa</h3>
+                <h2>Consulta de documentos académicos electrónicos</h2>
+            </div>
         </div>
     </div>
 
@@ -91,38 +108,40 @@
             </ol>
             
             <div class="form-group">
-                <div id="leyenda-dgair">Consulta de títulos electrónicos autenticados por la DGAIR</div>
-                <h3 id="titulo-pagina">TÍTULO AUTENTICADO</h3>
-                <hr class="red" id="hr-roja">
-                
-                <div id="seccion-busqueda">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#" class="nav-link active" style="color: white; background-color: #10312B; margin-left: 100px">Búsqueda</a></li>
-                    </ul>
-                    <div class="tab-content" style="padding: 20px; border: 1px solid #ddd; border-top: 0;">
-                        <form onsubmit="return ejecutarBusqueda(event)">
-                            <div class="form-group">
-                                <label class="control-label">Folio Digital:</label>
-                                <input class="form-control" id="folioSEP" placeholder="Folio Digital del Título Electrónico" type="text">
-                            </div>
-                            <button class="btn btn-primary pull-right" type="submit">Buscar</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div id="seccion-resultado">
-                    <div class="card-documento">
-                        <div class="header-card">Detalle del documento</div>
-                        <div class="card-body">
-                            <div class="icon-doc"><span class="glyphicon glyphicon-file"></span></div>
-                            <div class="card-label">Nombre:</div><div id="res-nombre" class="card-value"></div>
-                            <div class="card-label">Carrera:</div><div id="res-carrera" class="card-value"></div>
-                            <div class="card-label">Nivel:</div><div id="res-nivel" class="card-value"></div>
-                            <div class="card-label">Folio Digital:</div><div id="res-folio" class="card-value"></div>
-                            <div class="card-label">Institución Emisora:</div><div id="res-institucion" class="card-value"></div>
+                <div class="row col-md-12">
+                    <div id="leyenda-dgair">Consulta de títulos electrónicos autenticados por la DGAIR</div>
+                    <h3>TÍTULO AUTENTICADO</h3>
+                    <hr class="red">
+                    
+                    <div id="seccion-busqueda">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#" class="nav-link active" style="color: white; background-color: #10312B; margin-left: 100px">Búsqueda</a></li>
+                        </ul>
+                        <div class="tab-content" style="padding: 20px; border: 1px solid #ddd; border-top: 0;">
+                            <form onsubmit="return ejecutarBusqueda(event)">
+                                <div class="form-group">
+                                    <label class="control-label">Folio Digital:</label>
+                                    <input class="form-control" id="folioSEP" placeholder="Folio Digital del Título Electrónico" type="text">
+                                </div>
+                                <button class="btn btn-primary pull-right" type="submit">Buscar</button>
+                            </form>
                         </div>
                     </div>
-                    <div class="text-center"><button class="btn btn-default" onclick="location.href=window.location.pathname">Nueva consulta</button></div>
+
+                    <div id="seccion-resultado">
+                        <div class="card-documento">
+                            <div class="header-card">Detalle del documento</div>
+                            <div class="card-body">
+                                <div class="icon-doc"><span class="glyphicon glyphicon-file"></span></div>
+                                <div class="card-label">Nombre:</div><div id="res-nombre" class="card-value"></div>
+                                <div class="card-label">Carrera:</div><div id="res-carrera" class="card-value"></div>
+                                <div class="card-label">Nivel:</div><div id="res-nivel" class="card-value"></div>
+                                <div class="card-label">Folio Digital:</div><div id="res-folio" class="card-value"></div>
+                                <div class="card-label">Institución Emisora:</div><div id="res-institucion" class="card-value"></div>
+                            </div>
+                        </div>
+                        <div class="text-center"><button class="btn btn-default" onclick="location.href=window.location.pathname">Nueva consulta</button></div>
+                    </div>
                 </div>
             </div>
         </div>
