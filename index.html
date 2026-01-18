@@ -25,16 +25,16 @@
             text-shadow: none !important;
         }
 
-        /* Estilo para mensaje de error */
-        #error-mensaje {
+        /* Estilo para el mensaje de Folio Inválido */
+        #mensaje-error {
             display: none;
-            margin-top: 15px;
-            color: #D0021B;
-            font-weight: bold;
-            border: 1px solid #D0021B;
-            padding: 10px;
+            margin-top: 20px;
+            padding: 15px;
+            color: #a94442;
+            background-color: #f2dede;
+            border: 1px solid #ebccd1;
             border-radius: 4px;
-            background-color: #f9f2f2;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -67,7 +67,7 @@
     </header>
 
     <div>
-        <img class="img-portada" src="logo.png" alt="Banner Principal">
+        <img class="img-portada" src="logo.png" alt="Portada">
     </div>
 
     <div class="container container-top">
@@ -103,16 +103,16 @@
 
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab-01">
-                            <form role="form" id="searchForm" onsubmit="return validateForm(event)">
+                            <form role="form" id="searchForm" onsubmit="return handleSearch(event)">
                                 <div class="form-group">
                                     <label class="control-label" for="folioSEP">Folio Digital:</label>
                                     <input class="form-control" id="folioSEP" name="folioSEP" placeholder="Captura el folio aquí" type="text">
                                 </div>
                                 <button class="btn btn-primary pull-right" type="submit">Buscar</button>
                             </form>
-                            <div id="error-mensaje">
-                                <span class="glyphicon glyphicon-exclamation-sign"></span> 
-                                El folio ingresado no fue encontrado en los registros de SIGED. Por favor, verifique los datos.
+                            
+                            <div id="mensaje-error" class="text-center">
+                                <i class="glyphicon glyphicon-remove-sign"></i> Folio inválido. Por favor, intente de nuevo.
                             </div>
                         </div>
                     </div>
@@ -125,14 +125,9 @@
         <div class="list-info">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-4"><h5>Enlaces</h5><ul><li><a href="#">Datos Abiertos</a></li><li><a href="#">Publicaciones</a></li></ul></div>
+                    <div class="col-sm-4"><h5>Enlaces</h5><ul><li><a href="#">Datos Abiertos</a></li><li><a href="#">Publicaciones Oficiales</a></li></ul></div>
                     <div class="col-sm-4"><h5>¿Qué es gob.mx?</h5><ul><li><a href="#">English</a></li><li><a href="#">Temas</a></li></ul></div>
                     <div class="col-sm-4"><h5>Contacto</h5><ul><li><a href="#">Formulario de contacto</a></li></ul></div>
-                </div>
-                <div class="row text-center" style="margin-top: 30px;">
-                    <div class="col-sm-12">
-                        <img src="https://framework-gb.cdn.gob.mx/gm/v3/assets/images/logo-header.svg" alt="Logo Gobierno de México" style="width: 180px;">
-                    </div>
                 </div>
             </div>
         </div>
@@ -145,26 +140,30 @@
     <script src="folios.js"></script>
 
     <script type="text/javascript">
-        function validateForm(event) {
-            event.preventDefault(); // Detiene el envío automático
-            
-            var folioInput = document.getElementById("folioSEP").value;
-            var errorDiv = document.getElementById("error-mensaje");
+        function handleSearch(event) {
+            event.preventDefault();
+            const folio = document.getElementById("folioSEP").value.trim();
+            const errorDiv = document.getElementById("mensaje-error");
 
-            if (folioInput === "" || folioInput === null) {
-                alert("Debes capturar un folio.");
+            if (folio === "") {
+                alert("Por favor, ingrese un folio.");
                 errorDiv.style.display = "none";
                 return false;
             }
 
-            // Simulación de búsqueda. Aquí podrías integrar la lógica de folios.js
-            // Si el folio no existe (ejemplo: si es "000"), muestra el error.
-            if (folioInput === "000") {
+            /* Lógica de validación: 
+               Aquí puedes llamar a una función dentro de tu folios.js
+               Ejemplo: if (!existeFolio(folio)) { ... }
+            */
+            
+            // Simulación: si el folio tiene menos de 5 caracteres lo marcamos como inválido
+            if (folio.length < 5) {
                 errorDiv.style.display = "block";
             } else {
                 errorDiv.style.display = "none";
-                alert("Buscando folio: " + folioInput);
-                // Aquí iría el redirect real: window.location.href = ...
+                // Si es válido, redirigir o procesar
+                console.log("Procesando folio válido:", folio);
+                // window.location.href = "resultado.html?folio=" + folio;
             }
         }
     </script>
