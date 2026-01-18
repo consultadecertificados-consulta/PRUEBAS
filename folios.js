@@ -1,56 +1,87 @@
-// folios.js
-
 const baseDeDatosFolios = {
-    // Asegúrate de que el folio (la llave) sea idéntico al que pondrás en el QR
-    "8D2EF0B6-EFB2-4461-9971-2DE64EAA5777": { 
-        nombre: "BELEN CAROLINA OLIVARES ALVAREZ", 
-        carrera: "LICENCIATURA EN PSICOLOGÍA", 
-        nivel: "LICENCIATURA", 
-        institucion: "UNIVERSIDAD LATINOAMERICANA CAMPUS VALLE" 
-    },
-    "OTRO-FOLIO-AQUI": {
-        nombre: "NOMBRE DEL ALUMNO",
-        carrera: "CARRERA EJEMPLO",
-        nivel: "LICENCIATURA",
-        institucion: "INSTITUCIÓN EJEMPLO"
-    }
-    // Repite para tus 50 folios
+    "8D2EF0B6-EFB2-4461-9971-2DE64EAA5777": { nombre: "BELEN CAROLINA OLIVARES ALVAREZ", carrera: "LICENCIATURA EN PSICOLOGÍA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD LATINOAMERICANA CAMPUS VALLE" },
+    "4F9A2B1C-3D4E-5F6G-7H8I-9J0K1L2M3N4O": { nombre: "JUAN CARLOS RAMIREZ GONZALEZ", carrera: "LICENCIATURA EN DERECHO", nivel: "LICENCIATURA", institucion: "INSTITUTO TECNOLÓGICO DE MÉXICO" },
+    "1A2B3C4D-5E6F-7G8H-9I0J-1K2L3M4N5O6P": { nombre: "MARIA FERNANDA LOPEZ RUIZ", carrera: "INGENIERÍA CIVIL", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD NACIONAL AUTÓNOMA DE MÉXICO" },
+    "A1B2C3D4-E5F6-G7H8-I9J0-K1L2M3N4O5P6": { nombre: "RICARDO ARTURO MEZA VARGAS", carrera: "LICENCIATURA EN ADMINISTRACIÓN", nivel: "LICENCIATURA", institucion: "ESCUELA BANCARIA Y COMERCIAL" },
+    "Z9Y8X7W6-V5U4-T3S2-R1Q0-P9O8N7M6L5K4": { nombre: "SARA ESTHELA BLANCO PEÑA", carrera: "LICENCIATURA EN ENFERMERÍA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD AUTÓNOMA DE GUADALAJARA" },
+    "B2C3D4E5-F6G7-H8I9-J0K1-L2M3N4O5P6Q7": { nombre: "DANIEL ALEJANDRO SOTO MARIN", carrera: "INGENIERÍA EN SISTEMAS", nivel: "LICENCIATURA", institucion: "INSTITUTO POLITÉCNICO NACIONAL" },
+    "C3D4E5F6-G7H8-I9J0-K1L2-M3N4O5P6Q7R8": { nombre: "ANDREA PAOLA REYES SILVA", carrera: "LICENCIATURA EN PEDAGOGÍA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD PEDAGÓGICA NACIONAL" },
+    "D4E5F6G7-H8I9-J0K1-L2M3-N4O5P6Q7R8S9": { nombre: "GABRIEL OMAR TORRES LUNA", carrera: "LICENCIATURA EN CONTADURÍA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD AUTÓNOMA DEL ESTADO DE MÉXICO" },
+    "E5F6G7H8-I9J0-K1L2-M3N4-O5P6Q7R8S9T0": { nombre: "CLAUDIA IVETTE DIAZ CASTRO", carrera: "LICENCIATURA EN GASTRONOMÍA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD DEL VALLE DE MÉXICO" },
+    "F6G7H8I9-J0K1-L2M3-N4O5-P6Q7R8S9T0U1": { nombre: "ROBERTO CARLOS FLORES SOLIS", carrera: "INGENIERÍA INDUSTRIAL", nivel: "LICENCIATURA", institucion: "TECNOLÓGICO DE MONTERREY" },
+    "G7H8I9J0-K1L2-M3N4-O5P6-Q7R8S9T0U1V2": { nombre: "VALERIA SOFIA NUÑEZ ACOSTA", carrera: "LICENCIATURA EN DISEÑO GRÁFICO", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD AUTÓNOMA DE QUERÉTARO" },
+    "H8I9J0K1-L2M3-N4O5-P6Q7-R8S9T0U1V2W3": { nombre: "MAURICIO JAVIER SALAS VEGA", carrera: "LICENCIATURA EN ARQUITECTURA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD IBEROAMERICANA" },
+    "I9J0K1L2-M3N4-O5P6-Q7R8-S9T0U1V2W3X4": { nombre: "MONTSERRAT JIMENEZ ORTEGA", carrera: "LICENCIATURA EN MEDICINA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD ANÁHUAC" },
+    "J0K1L2M3-N4O5-P6Q7-R8S9-T0U1V2W3X4Y5": { nombre: "ALFONSO ENRIQUE DUARTE REYES", carrera: "INGENIERÍA MECATRÓNICA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD LA SALLE" },
+    "K1L2M3N4-O5P6-Q7R8-S9T0-U1V2W3X4Y5Z6": { nombre: "XIMENA ALEJANDRA MORA LARA", carrera: "LICENCIATURA EN COMUNICACIÓN", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD AUTÓNOMA DE NUEVO LEÓN" },
+    "L2M3N4O5-P6Q7-R8S9-T0U1-V2W3X4Y5Z6A1": { nombre: "FERNANDO JAIR GUZMAN RIOS", carrera: "LICENCIATURA EN ECONOMÍA", nivel: "LICENCIATURA", institucion: "COLEGIO DE MÉXICO" },
+    "M3N4O5P6-Q7R8-S9T0-U1V2-W3X4Y5Z6A1B2": { nombre: "KARLA BEATRIZ ORTIZ CAMPOS", carrera: "LICENCIATURA EN HISTORIA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD AUTÓNOMA METROPOLITANA" },
+    "N4O5P6Q7-R8S9-T0U1-V2W3-X4Y5Z6A1B2C3": { nombre: "ALBERTO ISAAC PEÑA NIETO", carrera: "LICENCIATURA EN FILOSOFÍA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD DE GUADALAJARA" },
+    "O5P6Q7R8-S9T0-U1V2-W3X4-Y5Z6A1B2C3D4": { nombre: "PATRICIA ELENA CHAVEZ REZA", carrera: "LICENCIATURA EN TRABAJO SOCIAL", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD DE SONORA" },
+    "P6Q7R8S9-T0U1-V2W3-X4Y5-Z6A1B2C3D4E5": { nombre: "HUGO ARMANDO GOMEZ PAREDES", carrera: "INGENIERÍA QUÍMICA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD AUTÓNOMA DE SAN LUIS POTOSÍ" },
+    "Q7R8S9T0-U1V2-W3X4-Y5Z6-A1B2C3D4E5F6": { nombre: "DIANA LAURA MENDOZA CANO", carrera: "LICENCIATURA EN TURISMO", nivel: "LICENCIATURA", institucion: "POLITÉCNICO DE CHIHUAHUA" },
+    "R8S9T0U1-V2W3-X4Y5-Z6A1-B2C3D4E5F6G7": { nombre: "SERGIO ARTURO AGUILAR MEJIA", carrera: "LICENCIATURA EN MERCADOTECNIA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD DE MONTERREY" },
+    "S9T0U1V2-W3X4-Y5Z6-A1B2-C3D4E5F6G7H8": { nombre: "LORENA MARISOL NAVA ELIZONDO", carrera: "LICENCIATURA EN BIOLOGÍA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD DE COLIMA" },
+    "T0U1V2W3-X4Y5-Z6A1-B2C3-D4E5F6G7H8I9": { nombre: "EMILIO SEBASTIAN CRUZ OREA", carrera: "LICENCIATURA EN MÚSICA", nivel: "LICENCIATURA", institucion: "CONSERVATORIO NACIONAL" },
+    "U1V2W3X4-Y5Z6-A1B2-C3D4-E5F6G7H8I9J0": { nombre: "MIRIAM JANETH PINEDA ROJAS", carrera: "LICENCIATURA EN SOCIOLOGÍA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD AUTÓNOMA DE CHIAPAS" },
+    "V2W3X4Y5-Z6A1-B2C3-D4E5-F6G7H8I9J0K1": { nombre: "CESAR AUGUSTO VILLA LOPEZ", carrera: "INGENIERÍA AMBIENTAL", nivel: "LICENCIATURA", institucion: "TECNOLÓGICO DE TOLUCA" },
+    "W3X4Y5Z6-A1B2-C3D4-E5F6-G7H8I9J0K1L2": { nombre: "YESSICA LIZBETH BERNAL VACA", carrera: "LICENCIATURA EN RELACIONES INTERNACIONALES", nivel: "LICENCIATURA", institucion: "ITAM" },
+    "X4Y5Z6A1-B2C3-D4E5-F6G7-H8I9J0K1L2M3": { nombre: "MARIO ESTEBAN FUENTES GOMEZ", carrera: "LICENCIATURA EN NEGOCIOS", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD PANAMERICANA" },
+    "Y5Z6A1B2-C3D4-E5F6-G7H8-I9J0K1L2M3N4": { nombre: "ELENA GUADALUPE SAENZ MORIN", carrera: "LICENCIATURA EN NUTRICIÓN", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD DE CIENCIAS" },
+    "Z6A1B2C3-D4E5-F6G7-H8I9-J0K1L2M3N4O5": { nombre: "JACOBO ISMAEL LIRA TORRES", carrera: "LICENCIATURA EN FÍSICA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD DE VERACRUZ" },
+    "A1B2C3D4-9999-E5F6-G7H8-I9J0K1L2M3N4": { nombre: "PAULINA MICHELLE CERDA LUNA", carrera: "LICENCIATURA EN ARTES", nivel: "LICENCIATURA", institucion: "CENTRO DE LAS ARTES" },
+    "B2C3D4E5-8888-F6G7-H8I9-J0K1L2M3N4O5": { nombre: "RODRIGO GAEL SUAREZ DURAN", carrera: "LICENCIATURA EN DEPORTES", nivel: "LICENCIATURA", institucion: "ESCUELA SUPERIOR DE EDUCACIÓN FÍSICA" },
+    "C3D4E5F6-7777-G7H8-I9J0-K1L2M3N4O5P6": { nombre: "MARISOL IVONNE QUINTERO SOSA", carrera: "LICENCIATURA EN IDIOMAS", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD AUTÓNOMA DE TLAXCALA" },
+    "D4E5F6G7-6666-H8I9-J0K1-L2M3N4O5P6Q7": { nombre: "EDUARDO JAVIER FLORES BARRIOS", carrera: "INGENIERÍA PETROLERA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD DEL PETRÓLEO" },
+    "E5F6G7H8-5555-I9J0-K1L2-M3N4O5P6Q7R8": { nombre: "SABRINA VANESSA GOMEZ ELIAS", carrera: "LICENCIATURA EN ODONTOLOGÍA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD NACIONAL" },
+    "F6G7H8I9-4444-J0K1-L2M3-N4O5P6Q7R8S9": { nombre: "ARTURO DANIEL MANZANO SOL", carrera: "LICENCIATURA EN MATEMÁTICAS", nivel: "LICENCIATURA", institucion: "CENTRO DE INVESTIGACIÓN" },
+    "G7H8I9J0-3333-K1L2-M3N4-O5P6Q7R8S9T0": { nombre: "LUCIA REGINA ARANDA VARGAS", carrera: "LICENCIATURA EN TEATRO", nivel: "LICENCIATURA", institucion: "INSTITUTO DE BELLAS ARTES" },
+    "H8I9J0K1-2222-L2M3-N4O5-P6Q7R8S9T0U1": { nombre: "MIGUEL ANGEL CORTES RIVAS", carrera: "LICENCIATURA EN DERECHO", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD DEL ESTADO" },
+    "I9J0K1L2-1111-M3N4-O5P6-Q7R8S9T0U1V2": { nombre: "ADRIANA JUDITH NAVA RIOS", carrera: "LICENCIATURA EN QUÍMICA", nivel: "LICENCIATURA", institucion: "FACULTAD DE QUÍMICA" },
+    "J0K1L2M3-0000-N4O5-P6Q7-R8S9T0U1V2W3": { nombre: "ESTEBAN JOAQUIN MORALES LUZ", carrera: "LICENCIATURA EN GEOLOGÍA", nivel: "LICENCIATURA", institucion: "INSTITUTO GEOLÓGICO" },
+    "K1L2M3N4-AAAA-O5P6-Q7R8-S9T0U1V2W3X4": { nombre: "GLORIA MARINA SALGADO BARRERA", carrera: "LICENCIATURA EN DISEÑO MODA", nivel: "LICENCIATURA", institucion: "ESCUELA DE MODA" },
+    "L2M3N4O5-BBBB-P6Q7-R8S9-T0U1V2W3X4Y5": { nombre: "FELIPE DE JESUS SOLANO ROSAS", carrera: "LICENCIATURA EN CRIMINOLOGÍA", nivel: "LICENCIATURA", institucion: "ACADEMIA DE POLICÍA" },
+    "M3N4O5P6-CCCC-Q7R8-S9T0-U1V2W3X4Y5Z6": { nombre: "ROSALIA EMMA VALLEJO GOMEZ", carrera: "LICENCIATURA EN ARCHIVONOMÍA", nivel: "LICENCIATURA", institucion: "ARCHIVO GENERAL" },
+    "N4O5P6Q7-DDDD-R8S9-T0U1-V2W3X4Y5Z6A1": { nombre: "CRISTIAN ALEXIS PARRA MOYA", carrera: "LICENCIATURA EN AVIACIÓN", nivel: "LICENCIATURA", institucion: "ESCUELA DE VUELO" },
+    "O5P6Q7R8-EEEE-S9T0-U1V2-W3X4Y5Z6A1B2": { nombre: "TANIA LIZBETH ROJAS MARIN", carrera: "LICENCIATURA EN OPTOMETRÍA", nivel: "LICENCIATURA", institucion: "CENTRO ÓPTICO" },
+    "P6Q7R8S9-FFFF-T0U1-V2W3-X4Y5Z6A1B2C3": { nombre: "IGNACIO JAVIER BECERRA SILVA", carrera: "LICENCIATURA EN AGRONOMÍA", nivel: "LICENCIATURA", institucion: "UNIVERSIDAD DEL CAMPO" },
+    "Q7R8S9T0-GGGG-U1V2-W3X4-Y5Z6A1B2C3D4": { nombre: "DULCE MARIA LUNA ESPARZA", carrera: "LICENCIATURA EN DANZA", nivel: "LICENCIATURA", institucion: "ESCUELA DE DANZA" },
+    "R8S9T0U1-HHHH-V2W3-X4Y5-Z6A1B2C3D4E5": { nombre: "OSCAR EDUARDO RUIZ MORA", carrera: "LICENCIATURA EN CINE", nivel: "LICENCIATURA", institucion: "CENTRO CINEMATOGRÁFICO" },
+    "S9T0U1V2-IIII-W3X4-Y5Z6-A1B2C3D4E5F6": { nombre: "BERENICE SARAHI TOVAR PEREZ", carrera: "LICENCIATURA EN COMERCIO", nivel: "LICENCIATURA", institucion: "INSTITUTO DE COMERCIO" },
+    "T0U1V2W3-JJJJ-X4Y5-Z6A1-B2C3D4E5F6G7": { nombre: "MARCO ANTONIO VEGA LARA", carrera: "INGENIERÍA CIVIL", nivel: "LICENCIATURA", institucion: "FACULTAD DE INGENIERÍA" }
 };
 
+// Lógica de búsqueda
 function ejecutarBusqueda(event) {
     if (event) event.preventDefault();
     const folioInput = document.getElementById("folioSEP").value.trim();
     const busqueda = document.getElementById("seccion-busqueda");
     const resultado = document.getElementById("seccion-resultado");
-    const leyendaDgair = document.getElementById("leyenda-dgair");
+    const leyenda = document.getElementById("leyenda-dgair");
 
     if (baseDeDatosFolios[folioInput]) {
         const data = baseDeDatosFolios[folioInput];
-        
-        // Inyecta los datos en los IDs correspondientes del HTML
         document.getElementById("res-nombre").innerText = data.nombre;
         document.getElementById("res-carrera").innerText = data.carrera;
         document.getElementById("res-nivel").innerText = data.nivel;
         document.getElementById("res-folio").innerText = folioInput;
         document.getElementById("res-institucion").innerText = data.institucion;
 
-        // Muestra los elementos de la consulta
-        leyendaDgair.style.display = "block";
         busqueda.style.display = "none";
+        leyenda.style.display = "block";
         resultado.style.display = "block";
     } else if (folioInput !== "") {
-        alert("Folio no encontrado.");
+        alert("Folio no encontrado");
     }
     return false;
 }
 
-// Lógica para detectar el folio desde el QR (URL) al cargar
-window.onload = function() {
-    const params = new URLSearchParams(window.location.search);
-    const folioQR = params.get('folio');
-
-    if (folioQR) {
-        document.getElementById("folioSEP").value = folioQR;
+// Lógica para detectar el folio desde el QR (URL)
+window.addEventListener('load', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const folioUrl = urlParams.get('folio');
+    if (folioUrl) {
+        document.getElementById("folioSEP").value = folioUrl;
         ejecutarBusqueda();
     }
-};
+});
