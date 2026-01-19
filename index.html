@@ -43,7 +43,6 @@
 
         .sticky-nav-container { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         
-        /* HEADER AJUSTADO: Logo y Accesibilidad juntos */
         nav.gob-header { background-color: var(--sep-rojo-obscuro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
         .header-left-group { display: flex; align-items: center; gap: 20px; }
         .logo-gob { height: 32px; }
@@ -57,7 +56,7 @@
 
         .barra-dgb { background-color: var(--gob-oro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; color: white; }
         .dgb-brand { font-size: 20px; font-weight: 600; }
-        .hamburguesa-dgb Bachillerato { cursor: pointer; padding: 5px; font-size: 20px; }
+        .hamburguesa-dgb { cursor: pointer; padding: 5px; font-size: 20px; }
         .menu-desplegable-dgb { display: none; background-color: var(--gob-oro); width: 100%; padding: 10px 30px 20px; border-top: 1px solid rgba(255,255,255,0.2); }
         .menu-desplegable-dgb.show { display: block; }
         .menu-desplegable-dgb a { display: block; color: white; text-decoration: none; padding: 15px 0; font-size: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -65,21 +64,22 @@
         .header-image-container { width: 100%; background: #fff; border-bottom: 1px solid #ddd; }
         .header-image-container img { width: 100%; height: auto; display: block; object-fit: contain; }
 
+        /* ESTILO ACTUALIZADO SEGÚN TU IMAGEN */
         .leyenda-superior {
             max-width: 900px;
             margin: 40px auto 10px;
             padding: 0 15px 15px;
             text-align: center;
-            font-size: 24px;
-            font-weight: 700;
+            font-family: 'Lora', serif; /* Tipo de letra de la imagen */
+            font-size: 32px; /* Tamaño grande como en la imagen */
+            font-weight: 600;
             color: #4D4D4D;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            text-transform: none; /* Permite minúsculas */
+            letter-spacing: 0.5px;
             border-bottom: 3px solid var(--gob-oro);
             line-height: 1.2;
         }
 
-        /* PANEL DE ACCESIBILIDAD LATERAL */
         .acc-panel-sidebar { position: fixed; left: -320px; top: 0; width: 280px; height: 100vh; background: #fff; z-index: 10002; transition: 0.4s; padding: 25px; box-shadow: 5px 0 20px rgba(0,0,0,0.4); }
         .acc-panel-sidebar.active { left: 0; }
         .acc-header { font-weight: 700; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; display: flex; justify-content: space-between; color: #333; }
@@ -95,7 +95,6 @@
 
         .info-box-blue-search { background-color: var(--bg-info-azul); border: 1px solid var(--border-info-azul); color: var(--texto-info-azul); padding: 20px; border-radius: 4px; max-width: 550px; margin: 20px auto; display: flex; align-items: center; gap: 15px; font-size: 14px; }
 
-        /* CORRECCIÓN DE VISUALIZACIÓN DE RESULTADOS */
         #resultado { display: none; margin-top: 40px; background: white; padding: 35px; border-radius: 8px; border-left: 8px solid var(--estatus-verde); text-align: left; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .info-item { border-bottom: 1px solid #eee; padding: 12px 0; display: flex; flex-direction: column; }
         .info-label { font-weight: 700; color: #333; font-size: 13px; text-transform: uppercase; margin-bottom: 2px; }
@@ -132,7 +131,7 @@
         </div>
     </nav>
     <div class="barra-dgb">
-        <div class="dgb-brand">DGB BACHILLERATO</div>
+        <div class="dgb-brand">DGB</div> 
         <div class="hamburguesa-dgb" onclick="toggleDgbMenu()"><i class="fas fa-bars"></i></div>
     </div>
     <div id="menuDgb" class="menu-desplegable-dgb">
@@ -144,7 +143,7 @@
 
 <div class="header-image-container"><img src="logo.png" alt="SEP"></div>
 
-<div class="leyenda-superior">Subsecretaría de Educación Media Superior y Superior</div>
+<div class="leyenda-superior">Consulta de certificados del bachillerato general</div>
 
 <div id="accPanel" class="acc-panel-sidebar">
     <div class="acc-header"><span>Accesibilidad</span><span onclick="toggleAccPanel()" style="cursor:pointer;">&times;</span></div>
