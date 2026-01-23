@@ -24,13 +24,33 @@
             --error-bg: #F9E6E9;
         }
 
-        /* Clases de Accesibilidad */
-        .grayscale-mode { filter: grayscale(100%); }
+        /* ESTILOS ACCESIBILIDAD OFICIAL SIGED/SEP */
         .high-contrast { background: #000 !important; color: #fff100 !important; }
-        .high-contrast * { background-color: #000 !important; color: #fff100 !important; border-color: #fff100 !important; }
-        .increase-text { font-size: 1.15em !important; }
-        .increase-spacing { letter-spacing: 2px !important; }
+        .high-contrast *:not(.acc-navbar *) { background-color: #000 !important; color: #fff100 !important; border-color: #fff100 !important; }
 
+        .acc-navbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 15px;
+            border-left: 1px solid rgba(255,255,255,0.3);
+            padding-left: 15px;
+        }
+
+        .acc-btn {
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            opacity: 0.8;
+            transition: 0.3s;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .acc-btn:hover { opacity: 1; transform: scale(1.1); }
+
+        /* RESTO DE TUS ESTILOS ORIGINALES */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
@@ -44,108 +64,214 @@
             color: #333;
         }
 
-        /* PANEL DE ACCESIBILIDAD MODIFICADO (ESTILO LATERAL) */
-        .acc-panel-sidebar { 
-            position: fixed; 
-            left: -320px; 
-            top: 0; 
-            width: 300px; 
-            height: 100vh; 
-            background: #fff; 
-            z-index: 10002; 
-            transition: 0.4s; 
-            padding: 25px; 
-            box-shadow: 5px 0 20px rgba(0,0,0,0.4); 
-            color: #333;
-        }
-        .acc-panel-sidebar.active { left: 0; }
-        .acc-header { 
-            font-weight: 700; 
-            margin-bottom: 20px; 
-            border-bottom: 2px solid var(--gob-oro); 
-            padding-bottom: 10px; 
-            display: flex; 
-            justify-content: space-between; 
-            font-size: 18px;
-        }
-        .acc-item-btn { 
-            display: block; 
-            width: 100%; 
-            padding: 15px; 
-            margin-bottom: 15px; 
-            background: #f8f9fa; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            text-align: left; 
-            font-weight: 600; 
-            border: 1px solid #dee2e6; 
-            color: #333;
-            transition: 0.2s;
-        }
-        .acc-item-btn:hover { background: #e9ecef; border-color: var(--gob-oro); }
-        .acc-close { cursor: pointer; font-size: 24px; line-height: 1; }
-
         .sticky-nav-container { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         
         nav.gob-header { background-color: var(--sep-rojo-obscuro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .header-left-group { display: flex; align-items: center; gap: 20px; }
+        .header-left-group { display: flex; align-items: center; }
         .logo-gob { height: 32px; }
-        .acc-inline-trigger { color: white; cursor: pointer; font-size: 20px; opacity: 0.8; transition: 0.3s; }
-        .acc-inline-trigger:hover { opacity: 1; }
         
         .menu-icon { color: white; font-size: 24px; cursor: pointer; }
         .nav-menu { display: none; position: absolute; right: 30px; top: 50px; background: var(--sep-rojo-obscuro); min-width: 200px; border-radius: 4px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
         .nav-menu.show { display: block; }
-        /* El resto de tus estilos se mantienen intactos */
+        .nav-menu a { color: white; padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+        .barra-dgb { background-color: var(--gob-oro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; color: white; }
+        .dgb-brand { font-size: 20px; font-weight: 600; }
+        .hamburguesa-dgb { cursor: pointer; padding: 5px; font-size: 20px; }
+        .menu-desplegable-dgb { display: none; background-color: var(--gob-oro); width: 100%; padding: 10px 30px 20px; border-top: 1px solid rgba(255,255,255,0.2); }
+        .menu-desplegable-dgb.show { display: block; }
+        .menu-desplegable-dgb a { display: block; color: white; text-decoration: none; padding: 15px 0; font-size: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+        .header-image-container { width: 100%; background: #fff; border-bottom: 1px solid #ddd; }
+        .header-image-container img { width: 100%; height: auto; display: block; object-fit: contain; }
+
+        .leyenda-superior {
+            max-width: 900px;
+            margin: 40px auto 10px;
+            padding: 0 15px 15px;
+            text-align: center;
+            font-family: 'Lora', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: #4D4D4D;
+            border-bottom: 3px solid var(--gob-oro);
+            line-height: 1.2;
+        }
+
+        main { flex: 1; max-width: 900px; margin: 10px auto 30px; padding: 0 15px; width: 100%; }
+        .search-outer-box { background: #ffffff; border: 2px solid #D4C19C; border-radius: 10px; padding: 30px; max-width: 550px; margin: 0 auto 20px; text-align: center; }
+        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 18px; margin-bottom: 15px; font-family: 'Lora', serif; text-align: center; }
+        .btn-new { width: 100%; padding: 14px; border: none; border-radius: 4px; font-size: 20px; cursor: pointer; margin-bottom: 10px; color: white; font-family: 'Montserrat'; font-weight: 500; text-decoration: none; display: block; }
+        .btn-buscar { background-color: var(--btn-buscar-verde); }
+        .btn-limpiar { background-color: var(--btn-limpiar-gris); }
+        .btn-ayuda { background-color: transparent; color: var(--gob-oro); border: 1px solid var(--gob-oro); font-size: 16px; margin-top: 5px; }
+
+        .info-box-blue-search { background-color: var(--bg-info-azul); border: 1px solid var(--border-info-azul); color: var(--texto-info-azul); padding: 20px; border-radius: 4px; max-width: 550px; margin: 20px auto; display: flex; align-items: center; gap: 15px; font-size: 14px; }
+
+        #resultado { display: none; margin-top: 40px; background: white; padding: 35px; border-radius: 8px; border-left: 8px solid var(--estatus-verde); text-align: left; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .info-item { border-bottom: 1px solid #eee; padding: 12px 0; display: flex; flex-direction: column; }
+        .info-label { font-weight: 700; color: #333; font-size: 13px; text-transform: uppercase; margin-bottom: 2px; }
+        .info-value { font-family: 'Lora', serif; color: #444; font-size: 17px; word-break: normal; overflow-wrap: break-word; line-height: 1.4; }
+        
+        .cards-flex-container { display: flex; justify-content: center; gap: 15px; margin: 25px 0; flex-wrap: wrap; }
+        .card-box { flex: 1; min-width: 220px; padding: 25px 15px; border-radius: 4px; border: 1px solid; text-align: center; }
+        .card-verde { background: #E3F2E1; border-color: #B7D9B1; color: #3D7A34; }
+        .card-azul { background: #D9F0F7; border-color: #ADE1F0; color: #316B8C; }
+
+        footer { background: var(--sep-rojo-obscuro); color: white; padding: 50px 30px 20px; margin-top: 50px; }
+        .footer-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h4 { margin-bottom: 20px; font-size: 16px; border-bottom: 1px solid var(--gob-oro); padding-bottom: 10px; display: inline-block; font-weight: 600; }
+        .footer-col a { color: white; text-decoration: none; display: block; margin-bottom: 12px; font-size: 13px; opacity: 0.8; }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; font-weight: 300; }
     </style>
 </head>
 <body>
-
-<div id="accPanel" class="acc-panel-sidebar">
-    <div class="acc-header">
-        <span>Accesibilidad</span>
-        <span class="acc-close" onclick="toggleAccPanel()">&times;</span>
-    </div>
-    <button class="acc-item-btn" onclick="toggleGrayscale()">Escala de grises</button>
-    <button class="acc-item-btn" onclick="toggleContrast()">Alto contraste</button>
-    <button class="acc-item-btn" onclick="resetAcc()">Restablecer valores</button>
-</div>
 
 <div class="sticky-nav-container">
     <nav class="gob-header">
         <div class="header-left-group">
             <a href="https://www.gob.mx"><img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México"></a>
-            <i class="fas fa-universal-access acc-inline-trigger" onclick="toggleAccPanel()" title="Opciones de Accesibilidad"></i>
+            
+            <div class="acc-navbar">
+                <button class="acc-btn" onclick="changeFontSize('inc')" title="Aumentar letra">A+</button>
+                <button class="acc-btn" onclick="changeFontSize('dec')" title="Disminuir letra">A-</button>
+                <button class="acc-btn" onclick="toggleContrast()" title="Contraste"><i class="fas fa-adjust"></i></button>
+                <button class="acc-btn" onclick="resetAcc()" title="Restablecer"><i class="fas fa-redo"></i></button>
+            </div>
         </div>
+        
         <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
         <div id="navMenu" class="nav-menu">
             <a href="https://www.gob.mx/tramites">Trámites</a>
             <a href="https://www.gob.mx/gobierno">Gobierno</a>
         </div>
     </nav>
+
+    <div class="barra-dgb">
+        <div class="dgb-brand">DGB</div> 
+        <div class="hamburguesa-dgb" onclick="toggleDgbMenu()"><i class="fas fa-bars"></i></div>
+    </div>
+    
+    <div id="menuDgb" class="menu-desplegable-dgb">
+        <a href="https://www.gob.mx/sep">¿Quiénes somos?</a>
+        <a href="#">Consultas</a>
+        <a href="https://www.gob.mx/privacidad">Aviso de Privacidad</a>
+    </div>
+</div>
+
+<div class="header-image-container"><img src="logo.png" alt="SEP"></div>
+
+<div class="leyenda-superior">Consulta de certificados del bachillerato general</div>
+
+<main>
+    <div class="search-outer-box">
+        <input type="text" id="folioInput" placeholder="Ingrese el folio" onkeypress="if(event.key==='Enter') buscar()">
+        <button class="btn-new btn-buscar" onclick="buscar()">Buscar</button>
+        <button class="btn-new btn-limpiar" onclick="limpiar()">Restablecer</button>
+        <a href="https://www.gob.mx/sep/articulos/sabes-como-validar-tu-certificado-electronico-de-bachillerato" target="_blank" class="btn-new btn-ayuda">Ubica el folio en tu certificado</a>
     </div>
 
+    <div class="info-box-blue-search">
+        <i class="fas fa-info-circle" style="font-size: 24px;"></i>
+        <span>Los certificados estarán disponibles para su consulta un día después de su emisión.</span>
+    </div>
+
+    <div id="errorContainer" style="display:none; text-align:center; color:var(--error-rojo); margin-top:20px; background: var(--error-bg); padding: 15px; border-radius: 6px;">
+        <strong>Folio Inválido</strong>
+    </div>
+
+    <div id="resultado">
+        <h2 style="font-weight:700; border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; margin-bottom: 20px;">Detalle del documento</h2>
+        <div id="infoDetalle"></div>
+        <div class="cards-flex-container" id="tarjetasContainer"></div>
+        <div class="leyenda-atencion-azul">
+            <strong>¡Atención!</strong> La información mostrada es resultado de la integración enviada por las autoridades educativas competentes.
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="150" style="filter: brightness(0) invert(1);">
+        </div>
+        <div class="footer-col">
+            <h4>Enlaces</h4>
+            <a href="https://participa.gob.mx">Participa</a>
+            <a href="https://www.gob.mx/terminos">Términos y Condiciones</a>
+            <a href="https://www.gob.mx/privacidad">Aviso de Privacidad</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contacto</h4>
+            <a href="mailto:controlescolar.estatal@sems.sidgbe.gob.mx">Soporte Técnico</a>
+            <a href="https://www.gob.mx/atencion">Atención Ciudadana</a>
+        </div>
+    </div>
+    <div class="footer-bottom">SEP | DGB | MÉXICO 2026</div>
+</footer>
+
+<script src="folios.js"></script>
 <script>
-    function toggleAccPanel() {
-        document.getElementById('accPanel').classList.toggle('active');
+    function toggleMenu() { document.getElementById('navMenu').classList.toggle('show'); }
+    function toggleDgbMenu() { document.getElementById('menuDgb').classList.toggle('show'); }
+
+    /* FUNCIONES DE ACCESIBILIDAD */
+    function toggleContrast() { 
+        document.body.classList.toggle('high-contrast'); 
     }
 
-    function toggleGrayscale() {
-        document.body.classList.toggle('grayscale-mode');
+    let fontSize = 100;
+    function changeFontSize(action) {
+        if(action === 'inc' && fontSize < 130) fontSize += 5;
+        if(action === 'dec' && fontSize > 90) fontSize -= 5;
+        document.body.style.fontSize = fontSize + "%";
     }
 
-    function toggleContrast() {
-        document.body.classList.toggle('high-contrast');
+    function resetAcc() { 
+        document.body.classList.remove('high-contrast'); 
+        fontSize = 100;
+        document.body.style.fontSize = "100%";
     }
 
-    function resetAcc() {
-        document.body.classList.remove('grayscale-mode', 'high-contrast', 'increase-text', 'increase-spacing');
+    /* FUNCIONES DE BÚSQUEDA */
+    function limpiar() {
+        document.getElementById('folioInput').value = "";
+        document.getElementById('resultado').style.display = 'none';
+        document.getElementById('errorContainer').style.display = 'none';
     }
 
-    function toggleMenu() { 
-        document.getElementById('navMenu').classList.toggle('show'); 
+    function buscar() {
+        const inputFolio = document.getElementById('folioInput').value.trim().toUpperCase();
+        const resDiv = document.getElementById('resultado');
+        const errDiv = document.getElementById('errorContainer');
+        resDiv.style.display = 'none';
+        errDiv.style.display = 'none';
+
+        if (typeof baseDatos !== 'undefined' && baseDatos[inputFolio]) {
+            const data = baseDatos[inputFolio];
+            let listHTML = "";
+            for (let clave in data) {
+                const keyUpper = clave.toUpperCase();
+                if (!['PROMEDIO', 'PROMEDIO_TEXTO', 'ESTATUS'].includes(keyUpper)) {
+                    listHTML += `<div class="info-item"><span class="info-label">${clave.replace(/_/g, ' ')}:</span><span class="info-value">${data[clave]}</span></div>`;
+                }
+            }
+            document.getElementById('infoDetalle').innerHTML = listHTML;
+            document.getElementById('tarjetasContainer').innerHTML = `
+                <div class="card-box card-verde"><b>PROMEDIO:</b><br><span style="font-size:22px; font-weight:500;">${data.PROMEDIO || data.promedio || '0.0'}</span><br><span style="font-size:10px; font-style:italic;">${data.PROMEDIO_TEXTO || ''}</span></div>
+                <div class="card-box card-azul"><b>ESTATUS:</b><br><span style="font-size:20px; font-weight:500;">${data.ESTATUS || data.estatus || 'REGISTRADO'}</span></div>`;
+            resDiv.style.display = 'block';
+            resDiv.scrollIntoView({ behavior: 'smooth' });
+        } else if (inputFolio !== "") {
+            errDiv.style.display = 'block';
+        }
     }
+
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const f = urlParams.get('folio');
+        if (f) { document.getElementById('folioInput').value = f; buscar(); }
+    };
 </script>
-
 </body>
 </html>
