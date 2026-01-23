@@ -24,33 +24,10 @@
             --error-bg: #F9E6E9;
         }
 
-        /* ESTILOS ACCESIBILIDAD OFICIAL SIGED/SEP */
+        .grayscale-mode { filter: grayscale(100%); }
         .high-contrast { background: #000 !important; color: #fff100 !important; }
-        .high-contrast *:not(.acc-navbar *) { background-color: #000 !important; color: #fff100 !important; border-color: #fff100 !important; }
+        .high-contrast * { background-color: #000 !important; color: #fff100 !important; border-color: #fff100 !important; }
 
-        .acc-navbar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-left: 15px;
-            border-left: 1px solid rgba(255,255,255,0.3);
-            padding-left: 15px;
-        }
-
-        .acc-btn {
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-            opacity: 0.8;
-            transition: 0.3s;
-            background: none;
-            border: none;
-            padding: 5px;
-        }
-
-        .acc-btn:hover { opacity: 1; transform: scale(1.1); }
-
-        /* RESTO DE TUS ESTILOS ORIGINALES */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
@@ -66,9 +43,12 @@
 
         .sticky-nav-container { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         
+        /* HEADER AJUSTADO: Logo y Accesibilidad juntos */
         nav.gob-header { background-color: var(--sep-rojo-obscuro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .header-left-group { display: flex; align-items: center; }
+        .header-left-group { display: flex; align-items: center; gap: 20px; }
         .logo-gob { height: 32px; }
+        .acc-inline-trigger { color: white; cursor: pointer; font-size: 20px; opacity: 0.8; transition: 0.3s; }
+        .acc-inline-trigger:hover { opacity: 1; }
         
         .menu-icon { color: white; font-size: 24px; cursor: pointer; }
         .nav-menu { display: none; position: absolute; right: 30px; top: 50px; background: var(--sep-rojo-obscuro); min-width: 200px; border-radius: 4px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
@@ -90,13 +70,20 @@
             margin: 40px auto 10px;
             padding: 0 15px 15px;
             text-align: center;
-            font-family: 'Lora', serif;
-            font-size: 32px;
-            font-weight: 600;
+            font-size: 24px;
+            font-weight: 700;
             color: #4D4D4D;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             border-bottom: 3px solid var(--gob-oro);
             line-height: 1.2;
         }
+
+        /* PANEL DE ACCESIBILIDAD LATERAL */
+        .acc-panel-sidebar { position: fixed; left: -320px; top: 0; width: 280px; height: 100vh; background: #fff; z-index: 10002; transition: 0.4s; padding: 25px; box-shadow: 5px 0 20px rgba(0,0,0,0.4); }
+        .acc-panel-sidebar.active { left: 0; }
+        .acc-header { font-weight: 700; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); padding-bottom: 10px; display: flex; justify-content: space-between; color: #333; }
+        .acc-item { display: block; width: 100%; padding: 12px; margin-bottom: 10px; background: #f0f0f0; border-radius: 6px; cursor: pointer; text-align: center; font-weight: 600; border: 1px solid #ddd; color: #333; }
 
         main { flex: 1; max-width: 900px; margin: 10px auto 30px; padding: 0 15px; width: 100%; }
         .search-outer-box { background: #ffffff; border: 2px solid #D4C19C; border-radius: 10px; padding: 30px; max-width: 550px; margin: 0 auto 20px; text-align: center; }
@@ -108,6 +95,7 @@
 
         .info-box-blue-search { background-color: var(--bg-info-azul); border: 1px solid var(--border-info-azul); color: var(--texto-info-azul); padding: 20px; border-radius: 4px; max-width: 550px; margin: 20px auto; display: flex; align-items: center; gap: 15px; font-size: 14px; }
 
+        /* CORRECCIÓN DE VISUALIZACIÓN DE RESULTADOS */
         #resultado { display: none; margin-top: 40px; background: white; padding: 35px; border-radius: 8px; border-left: 8px solid var(--estatus-verde); text-align: left; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .info-item { border-bottom: 1px solid #eee; padding: 12px 0; display: flex; flex-direction: column; }
         .info-label { font-weight: 700; color: #333; font-size: 13px; text-transform: uppercase; margin-bottom: 2px; }
@@ -118,10 +106,14 @@
         .card-verde { background: #E3F2E1; border-color: #B7D9B1; color: #3D7A34; }
         .card-azul { background: #D9F0F7; border-color: #ADE1F0; color: #316B8C; }
 
+        .leyenda-atencion-azul { margin-top: 30px; padding: 20px; border-radius: 4px; background-color: var(--bg-info-azul); border: 1px solid var(--border-info-azul); color: var(--texto-info-azul); line-height: 1.6; font-family: 'Montserrat', sans-serif; font-size: 14px; }
+
         footer { background: var(--sep-rojo-obscuro); color: white; padding: 50px 30px 20px; margin-top: 50px; }
         .footer-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
         .footer-col h4 { margin-bottom: 20px; font-size: 16px; border-bottom: 1px solid var(--gob-oro); padding-bottom: 10px; display: inline-block; font-weight: 600; }
         .footer-col a { color: white; text-decoration: none; display: block; margin-bottom: 12px; font-size: 13px; opacity: 0.8; }
+        .social-links { display: flex; gap: 20px; margin-top: 15px; }
+        .social-links a { color: white; font-size: 24px; opacity: 1; display: inline; }
         .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; font-weight: 300; }
     </style>
 </head>
@@ -131,27 +123,18 @@
     <nav class="gob-header">
         <div class="header-left-group">
             <a href="https://www.gob.mx"><img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México"></a>
-            
-            <div class="acc-navbar">
-                <button class="acc-btn" onclick="changeFontSize('inc')" title="Aumentar letra">A+</button>
-                <button class="acc-btn" onclick="changeFontSize('dec')" title="Disminuir letra">A-</button>
-                <button class="acc-btn" onclick="toggleContrast()" title="Contraste"><i class="fas fa-adjust"></i></button>
-                <button class="acc-btn" onclick="resetAcc()" title="Restablecer"><i class="fas fa-redo"></i></button>
-            </div>
+            <i class="fas fa-universal-access acc-inline-trigger" onclick="toggleAccPanel()" title="Opciones de Accesibilidad"></i>
         </div>
-        
         <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
         <div id="navMenu" class="nav-menu">
             <a href="https://www.gob.mx/tramites">Trámites</a>
             <a href="https://www.gob.mx/gobierno">Gobierno</a>
         </div>
     </nav>
-
     <div class="barra-dgb">
-        <div class="dgb-brand">DGB</div> 
+        <div class="dgb-brand">DGB</div>
         <div class="hamburguesa-dgb" onclick="toggleDgbMenu()"><i class="fas fa-bars"></i></div>
     </div>
-    
     <div id="menuDgb" class="menu-desplegable-dgb">
         <a href="https://www.gob.mx/sep">¿Quiénes somos?</a>
         <a href="#">Consultas</a>
@@ -161,7 +144,14 @@
 
 <div class="header-image-container"><img src="logo.png" alt="SEP"></div>
 
-<div class="leyenda-superior">Consulta de certificados del bachillerato general</div>
+<div class="leyenda-superior">Subsecretaría de Educación Media Superior y Superior</div>
+
+<div id="accPanel" class="acc-panel-sidebar">
+    <div class="acc-header"><span>Accesibilidad</span><span onclick="toggleAccPanel()" style="cursor:pointer;">&times;</span></div>
+    <button class="acc-item" onclick="toggleGrayscale()">Escala de grises</button>
+    <button class="acc-item" onclick="toggleContrast()">Alto contraste</button>
+    <button class="acc-item" onclick="resetAcc()">Restablecer</button>
+</div>
 
 <main>
     <div class="search-outer-box">
@@ -193,47 +183,49 @@
 <footer>
     <div class="footer-container">
         <div class="footer-col">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="150" style="filter: brightness(0) invert(1);">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="180" style="filter: brightness(0) invert(1); margin-bottom: 20px;">
+            <p style="font-size: 13px; line-height: 1.6; opacity: 0.9;">
+                Secretaría de Educación Pública<br>
+                Dirección General del Bachillerato<br>
+                Ciudad de México, 2026.
+            </p>
         </div>
         <div class="footer-col">
-            <h4>Enlaces</h4>
-            <a href="https://participa.gob.mx">Participa</a>
-            <a href="https://www.gob.mx/terminos">Términos y Condiciones</a>
+            <h4>Información Institucional</h4>
+            <a href="https://www.gob.mx/sep/que-hacemos">¿Qué hacemos?</a>
+            <a href="https://www.gob.mx/sep/documentos">Documentos</a>
+            <a href="https://www.gob.mx/sep/archivo/acciones_y_programas">Transparencia</a>
             <a href="https://www.gob.mx/privacidad">Aviso de Privacidad</a>
         </div>
         <div class="footer-col">
-            <h4>Contacto</h4>
-            <a href="mailto:controlescolar.estatal@sems.sidgbe.gob.mx">Soporte Técnico</a>
+            <h4>Atención y Soporte</h4>
             <a href="https://www.gob.mx/atencion">Atención Ciudadana</a>
+            <a href="mailto:controlescolar.estatal@sems.sidgbe.gob.mx">Soporte Técnico Certificación</a>
+            <a href="https://www.gob.mx/tramites">Directorio de Trámites</a>
+        </div>
+        <div class="footer-col">
+            <h4>Síguenos</h4>
+            <div class="social-links">
+                <a href="https://www.facebook.com/gobmexico" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/gobmx" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/gobmexico" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
     </div>
-    <div class="footer-bottom">SEP | DGB | MÉXICO 2026</div>
+    <div class="footer-bottom">
+        &copy; 2026 Secretaría de Educación Pública - Algunos derechos reservados.
+    </div>
 </footer>
 
 <script src="folios.js"></script>
 <script>
     function toggleMenu() { document.getElementById('navMenu').classList.toggle('show'); }
     function toggleDgbMenu() { document.getElementById('menuDgb').classList.toggle('show'); }
+    function toggleAccPanel() { document.getElementById('accPanel').classList.toggle('active'); }
+    function toggleGrayscale() { document.body.classList.toggle('grayscale-mode'); }
+    function toggleContrast() { document.body.classList.toggle('high-contrast'); }
+    function resetAcc() { document.body.classList.remove('grayscale-mode', 'high-contrast'); }
 
-    /* FUNCIONES DE ACCESIBILIDAD */
-    function toggleContrast() { 
-        document.body.classList.toggle('high-contrast'); 
-    }
-
-    let fontSize = 100;
-    function changeFontSize(action) {
-        if(action === 'inc' && fontSize < 130) fontSize += 5;
-        if(action === 'dec' && fontSize > 90) fontSize -= 5;
-        document.body.style.fontSize = fontSize + "%";
-    }
-
-    function resetAcc() { 
-        document.body.classList.remove('high-contrast'); 
-        fontSize = 100;
-        document.body.style.fontSize = "100%";
-    }
-
-    /* FUNCIONES DE BÚSQUEDA */
     function limpiar() {
         document.getElementById('folioInput').value = "";
         document.getElementById('resultado').style.display = 'none';
@@ -259,7 +251,7 @@
             document.getElementById('infoDetalle').innerHTML = listHTML;
             document.getElementById('tarjetasContainer').innerHTML = `
                 <div class="card-box card-verde"><b>PROMEDIO:</b><br><span style="font-size:22px; font-weight:500;">${data.PROMEDIO || data.promedio || '0.0'}</span><br><span style="font-size:10px; font-style:italic;">${data.PROMEDIO_TEXTO || ''}</span></div>
-                <div class="card-box card-azul"><b>ESTATUS:</b><br><span style="font-size:20px; font-weight:500;">${data.ESTATUS || data.estatus || 'REGISTRADO'}</span></div>`;
+                <div class="card-box card-azul"><b>ESTATUS:</b><br><span style="font-size:20px; font-weight:600;">${data.ESTATUS || data.estatus || 'REGISTRADO'}</span></div>`;
             resDiv.style.display = 'block';
             resDiv.scrollIntoView({ behavior: 'smooth' });
         } else if (inputFolio !== "") {
