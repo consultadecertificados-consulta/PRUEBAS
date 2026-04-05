@@ -7,10 +7,10 @@
     
     <link rel="icon" type="image/png" href="favicon.png">
     
-    <link href="https://googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="https://cloudflare.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     
-    <link href="https://cdn.gob.mx" rel="stylesheet">
+    <link href="https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css" rel="stylesheet">
     
     <style>
         :root {
@@ -30,102 +30,76 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #ffffff;
+            background-color: #f4f4f4;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             color: #333;
         }
 
-        /* Navegación Superior */
+        /* Navigations */
         .sticky-nav-container { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         nav.gob-header { background-color: var(--sep-rojo-obscuro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
         .header-left-group { display: flex; align-items: center; gap: 20px; }
         .logo-gob { height: 60px; }
         .menu-icon { color: white; font-size: 24px; cursor: pointer; }
+        
+        .nav-menu { display: none; position: absolute; right: 30px; top: 50px; background: var(--sep-rojo-obscuro); min-width: 200px; border-radius: 4px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
+        .nav-menu.show { display: block; }
+        .nav-menu a { color: white; padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
         .barra-dgb { background-color: var(--gob-oro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; color: white; }
         .dgb-brand { font-size: 20px; font-weight: 600; }
 
-        /* --- NUEVOS ESTILOS PARA EL BREADCRUMB (IMAGEN) --- */
+        /* Breadcrumb (Estilo imagen) */
         .breadcrumb-section {
             max-width: 900px;
-            margin: 40px auto 20px;
-            padding: 0 20px;
-            font-family: 'Montserrat', sans-serif;
+            margin: 40px auto 10px;
+            padding: 0 15px;
         }
-
-        .breadcrumb-nav {
-            font-size: 28px;
-            font-weight: 500;
+        .breadcrumb-text {
+            font-size: 26px;
             color: #4D4D4D;
             line-height: 1.2;
         }
+        .breadcrumb-text span { color: #ccc; margin: 0 5px; font-weight: 300; }
+        .breadcrumb-text b { display: block; font-weight: 700; margin-top: 5px; }
 
-        .breadcrumb-nav span.sep {
-            color: #999;
-            font-weight: 300;
-            margin: 0 10px;
-        }
-
-        .breadcrumb-nav .docs-text {
-            display: block;
-            font-weight: 700;
-            margin-top: 5px;
-        }
-
-        /* --- AJUSTES A LA CAJA DE BÚSQUEDA --- */
-        main { flex: 1; max-width: 900px; margin: 0 auto 30px; padding: 0 15px; width: 100%; }
+        /* Main Search Box */
+        main { flex: 1; max-width: 900px; margin: 10px auto 50px; padding: 0 15px; width: 100%; }
+        .search-outer-box { background: #ffffff; border: 2px solid #D4C19C; border-radius: 10px; padding: 35px; max-width: 550px; margin: 0 auto 20px; text-align: center; }
         
-        .search-outer-box { 
-            background: #ffffff; 
-            border: 2px solid #D4C19C; /* Borde dorado de la imagen */
-            border-radius: 12px; 
-            padding: 40px; 
-            max-width: 550px; 
-            margin: 20px auto; 
-            text-align: center; 
-        }
-
-        input { 
+        input[type="text"] { 
             width: 100%; 
             padding: 15px; 
             border: 1px solid #ccc; 
             border-radius: 4px; 
-            font-size: 22px; 
-            margin-bottom: 25px; 
-            font-family: 'Lora', serif; 
-            color: #666;
-        }
-
-        .btn-new { 
-            width: 100%; 
-            padding: 14px; 
-            border: none; 
-            border-radius: 4px; 
             font-size: 20px; 
-            cursor: pointer; 
-            margin-bottom: 15px; 
-            color: white; 
-            font-family: 'Montserrat'; 
-            font-weight: 500; 
-            text-decoration: none; 
-            display: block; 
+            margin-bottom: 20px; 
+            font-family: 'Lora', serif; 
+            text-align: center; 
         }
 
+        .btn-new { width: 100%; padding: 14px; border: none; border-radius: 4px; font-size: 19px; cursor: pointer; margin-bottom: 12px; color: white; font-family: 'Montserrat'; font-weight: 600; display: block; text-decoration: none; }
         .btn-buscar { background-color: var(--btn-buscar-verde); }
         .btn-limpiar { background-color: var(--btn-limpiar-gris); }
         
         .link-ayuda { 
             color: #C09A5B; 
             text-decoration: underline; 
-            font-size: 18px; 
-            display: inline-block;
-            margin-top: 10px;
-            font-weight: 400;
+            font-size: 16px; 
+            display: inline-block; 
+            margin-top: 15px;
+            font-weight: 500;
         }
 
-        footer { background: var(--sep-rojo-obscuro); color: white; padding: 40px 30px; margin-top: 50px; text-align: center; }
+        /* Footer */
+        footer { background: var(--sep-rojo-obscuro); color: white; padding: 50px 30px 20px; margin-top: auto; }
+        .footer-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h4 { margin-bottom: 20px; font-size: 16px; border-bottom: 1px solid var(--gob-oro); padding-bottom: 10px; font-weight: 600; }
+        .footer-col a { color: white; text-decoration: none; display: block; margin-bottom: 12px; font-size: 13px; opacity: 0.8; }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; }
+
     </style>
 </head>
 <body>
@@ -133,39 +107,67 @@
 <div class="sticky-nav-container">
     <nav class="gob-header">
         <div class="header-left-group">
-            <a href="https://www.gob.mx"><img class="logo-gob" src="https://consultadelestadoactual.info" alt="Gobierno de México"></a>
+            <a href="https://www.gob.mx"><img class="logo-gob" src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" alt="Gobierno de México"></a>
         </div>
-        <i class="fas fa-bars menu-icon"></i>
+        <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
+        <div id="navMenu" class="nav-menu">
+            <a href="https://www.gob.mx/tramites">Trámites</a>
+            <a href="https://www.gob.mx/gobierno">Gobierno</a>
+        </div>
     </nav>
     <div class="barra-dgb">
         <div class="dgb-brand">DGB</div>
     </div>
 </div>
 
-<!-- SECCIÓN AGREGADA SEGÚN LA IMAGEN -->
 <div class="breadcrumb-section">
-    <div class="breadcrumb-nav">
-        Inicio <span class="sep">/</span> Consultas 
-        <span class="docs-text">Documentos electrónicos académicos</span>
+    <div class="breadcrumb-text">
+        Inicio <span>/</span> Consultas <span>/</span>
+        <b>Documentos electrónicos académicos</b>
     </div>
 </div>
 
 <main>
     <div class="search-outer-box">
-        <form>
-            <input type="text" placeholder="Ingrese el folio" aria-label="Ingrese el folio">
-            
-            <button type="submit" class="btn-new btn-buscar">Buscar</button>
-            <button type="reset" class="btn-new btn-limpiar">Restablecer</button>
-            
+        <form onsubmit="return false;">
+            <input type="text" id="folioInput" placeholder="Ingrese el folio">
+            <button class="btn-new btn-buscar">Buscar</button>
+            <button type="reset" class="btn-new btn-limpiar" onclick="document.getElementById('folioInput').value=''">Restablecer</button>
             <a href="#" class="link-ayuda">Ubica el folio en tu certificado</a>
         </form>
     </div>
 </main>
 
 <footer>
-    <p>&copy; 2024 Dirección General de Bachillerato - Secretaría de Educación Pública</p>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h4>Enlaces</h4>
+            <a href="https://participa.gob.mx">Participación ciudadana</a>
+            <a href="https://www.gob.mx">Publicaciones Oficiales</a>
+            <a href="http://infomex.org.mx">Plataforma Nacional de Transparencia</a>
+        </div>
+        <div class="footer-col">
+            <h4>¿Qué es gob.mx?</h4>
+            <a href="https://www.gob.mx">Es el portal único de trámites, información y participación ciudadana.</a>
+            <a href="https://www.gob.mx">Temas</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contacto</h4>
+            <a href="#">Mesa de ayuda: dudas e información</a>
+            <a href="mailto:denuncia@sfp.gob.mx">denuncia@sfp.gob.mx</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        SECRETARÍA DE EDUCACIÓN PÚBLICA - DIRECCIÓN GENERAL DE BACHILLERATO
+    </div>
 </footer>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById("navMenu");
+        menu.classList.toggle("show");
+    }
+</script>
 
 </body>
 </html>
