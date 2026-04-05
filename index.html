@@ -35,8 +35,6 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #f4f4f4;
-            background-image: url("https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css");
-            background-repeat: repeat;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -79,14 +77,46 @@
         }
 
         main { flex: 1; max-width: 900px; margin: 10px auto 30px; padding: 0 15px; width: 100%; }
-        .search-outer-box { background: #ffffff; border: 2px solid #D4C19C; border-radius: 10px; padding: 30px; max-width: 550px; margin: 0 auto 20px; text-align: center; }
+        
+        /* NUEVO: Pestaña superior */
+        .tab-header {
+            background-color: var(--sep-rojo-obscuro);
+            color: white;
+            padding: 10px 20px;
+            display: inline-block;
+            border-radius: 8px 8px 0 0;
+            font-weight: 600;
+            font-size: 14px;
+            margin-left: 0;
+        }
+
+        .search-outer-box { 
+            background: #ffffff; 
+            border: 2px solid #D4C19C; 
+            border-radius: 0 10px 10px 10px; /* Ajustado para unir con la pestaña */
+            padding: 30px; 
+            max-width: 100%; /* Se adapta al contenedor main */
+            margin: 0 auto 20px; 
+            text-align: center; 
+        }
+
+        /* MEDIA QUERY PARA PC */
+        @media (min-width: 768px) {
+            .search-outer-box {
+                max-width: 900px; /* Expansión en PC */
+            }
+            .tab-header {
+                margin-left: 0;
+            }
+        }
+
         input[type="text"] { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 18px; margin-bottom: 15px; font-family: 'Lora', serif; text-align: center; }
         .btn-new { width: 100%; padding: 14px; border: none; border-radius: 4px; font-size: 20px; cursor: pointer; margin-bottom: 10px; color: white; font-family: 'Montserrat'; font-weight: 500; text-decoration: none; display: block; }
         .btn-buscar { background-color: var(--btn-buscar-verde); }
         .btn-limpiar { background-color: var(--btn-limpiar-gris); }
         .btn-ayuda { background-color: transparent; color: var(--gob-oro); border: 1px solid var(--gob-oro); font-size: 16px; margin-top: 5px; }
 
-        .info-box-blue-search { background-color: var(--bg-info-azul); border: 1px solid var(--border-info-azul); color: var(--texto-info-azul); padding: 20px; border-radius: 4px; max-width: 550px; margin: 20px auto; display: flex; align-items: center; gap: 15px; font-size: 14px; }
+        .info-box-blue-search { background-color: var(--bg-info-azul); border: 1px solid var(--border-info-azul); color: var(--texto-info-azul); padding: 20px; border-radius: 4px; max-width: 900px; margin: 20px auto; display: flex; align-items: center; gap: 15px; font-size: 14px; }
 
         #resultado { display: none; margin-top: 40px; background: white; padding: 35px; border-radius: 8px; border-left: 8px solid var(--estatus-verde); text-align: left; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .info-item { border-bottom: 1px solid #eee; padding: 12px 0; display: flex; flex-direction: column; }
@@ -140,11 +170,14 @@
 <div class="leyenda-superior">Subsecretaría de Educación Media Superior y Superior</div>
 
 <main>
-    <div class="search-outer-box">
-        <input type="text" id="folioInput" placeholder="Ingrese el folio" onkeypress="if(event.key==='Enter') buscar()">
-        <button class="btn-new btn-buscar" onclick="buscar()">Buscar</button>
-        <button class="btn-new btn-limpiar" onclick="limpiar()">Restablecer</button>
-        <a href="https://siged.sep.gob.mx/SIGED/archivos/UbicaFolio.pdf" target="_blank" class="btn-new btn-ayuda">Ubica el folio en tu certificado</a>
+    <div style="max-width: 900px; margin: 0 auto;">
+        <div class="tab-header">Consulta de Certificado</div>
+        <div class="search-outer-box">
+            <input type="text" id="folioInput" placeholder="Ingrese el folio" onkeypress="if(event.key==='Enter') buscar()">
+            <button class="btn-new btn-buscar" onclick="buscar()">Buscar</button>
+            <button class="btn-new btn-limpiar" onclick="limpiar()">Restablecer</button>
+            <a href="https://siged.sep.gob.mx/SIGED/archivos/UbicaFolio.pdf" target="_blank" class="btn-new btn-ayuda">Ubica el folio en tu certificado</a>
+        </div>
     </div>
 
     <div class="info-box-blue-search">
