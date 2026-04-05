@@ -22,7 +22,13 @@
             --bg-info-azul: #D9EDF7;
             --border-info-azul: #BCE8F1;
             --texto-info-azul: #31708F;
+            --error-rojo: #B00020;
+            --error-bg: #F9E6E9;
         }
+
+        .grayscale-mode { filter: grayscale(100%); }
+        .high-contrast { background: #000 !important; color: #fff100 !important; }
+        .high-contrast * { background-color: #000 !important; color: #fff100 !important; border-color: #fff100 !important; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -35,150 +41,131 @@
             color: #333;
         }
 
-        /* Navigations */
         .sticky-nav-container { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        
         nav.gob-header { background-color: var(--sep-rojo-obscuro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
         .header-left-group { display: flex; align-items: center; gap: 20px; }
         .logo-gob { height: 60px; }
-        .menu-icon { color: white; font-size: 24px; cursor: pointer; }
         
+        .menu-icon { color: white; font-size: 24px; cursor: pointer; }
+        .nav-menu { display: none; position: absolute; right: 30px; top: 50px; background: var(--sep-rojo-obscuro); min-width: 200px; border-radius: 4px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
+        .nav-menu.show { display: block; }
+        .nav-menu a { color: white; padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
         .barra-dgb { background-color: var(--gob-oro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; color: white; }
         .dgb-brand { font-size: 20px; font-weight: 600; }
+        .hamburguesa-dgb { cursor: pointer; padding: 5px; font-size: 20px; }
 
-        /* Breadcrumb (Estilo imagen solicitada) */
-        .breadcrumb-section {
+        /* NUEVO ESTILO DE LA IMAGEN (BREADCRUMB) */
+        .breadcrumb-container {
             max-width: 900px;
             margin: 40px auto 10px;
             padding: 0 15px;
+            font-family: 'Montserrat', sans-serif;
         }
         .breadcrumb-text {
             font-size: 26px;
+            font-weight: 400;
             color: #4D4D4D;
             line-height: 1.2;
         }
-        .breadcrumb-text span { color: #ccc; margin: 0 5px; font-weight: 300; }
+        .breadcrumb-text span.sep { color: #ccc; margin: 0 8px; }
         .breadcrumb-text b { display: block; font-weight: 700; margin-top: 5px; }
 
-        /* Contenido Principal */
-        main { flex: 1; max-width: 900px; margin: 10px auto 50px; padding: 0 15px; width: 100%; }
-
-        /* Caja de Búsqueda */
+        main { flex: 1; max-width: 900px; margin: 10px auto 30px; padding: 0 15px; width: 100%; }
+        
+        /* CAJA DE BUSQUEDA SEGUN IMAGEN */
         .search-outer-box { 
             background: #ffffff; 
             border: 2px solid #D4C19C; 
             border-radius: 10px; 
-            padding: 40px; 
+            padding: 30px; 
             max-width: 550px; 
-            margin: 20px auto; 
+            margin: 0 auto 20px; 
             text-align: center; 
         }
         input[type="text"] { 
             width: 100%; 
-            padding: 15px; 
+            padding: 12px; 
             border: 1px solid #ccc; 
             border-radius: 4px; 
-            font-size: 20px; 
-            margin-bottom: 20px; 
+            font-size: 18px; 
+            margin-bottom: 15px; 
+            font-family: 'Lora', serif; 
             text-align: center; 
-            font-family: 'Lora', serif;
         }
-        .btn-new { width: 100%; padding: 14px; border: none; border-radius: 4px; font-size: 19px; cursor: pointer; margin-bottom: 12px; color: white; font-weight: 600; display: block; text-decoration: none; }
+        .btn-new { width: 100%; padding: 14px; border: none; border-radius: 4px; font-size: 20px; cursor: pointer; margin-bottom: 10px; color: white; font-family: 'Montserrat'; font-weight: 500; text-decoration: none; display: block; }
         .btn-buscar { background-color: var(--btn-buscar-verde); }
         .btn-limpiar { background-color: var(--btn-limpiar-gris); }
-        .link-ayuda { color: #C09A5B; text-decoration: underline; font-size: 16px; display: inline-block; margin-top: 10px; }
+        
+        .link-ayuda { color: #C09A5B; text-decoration: underline; font-size: 16px; display: block; margin-top: 15px; }
 
-        /* Tarjetas de Información Adicional */
-        .info-box-blue-search { 
-            background-color: var(--bg-info-azul); 
-            border: 1px solid var(--border-info-azul); 
-            color: var(--texto-info-azul); 
-            padding: 20px; 
-            border-radius: 4px; 
-            max-width: 550px; 
-            margin: 20px auto; 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; 
-            font-size: 14px; 
-        }
-
+        /* EL RESTO DE TUS ESTILOS ORIGINALES */
+        #resultado { display: none; margin-top: 40px; background: white; padding: 35px; border-radius: 8px; border-left: 8px solid var(--estatus-verde); text-align: left; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .info-item { border-bottom: 1px solid #eee; padding: 12px 0; display: flex; flex-direction: column; }
+        .info-label { font-weight: 700; color: #333; font-size: 13px; text-transform: uppercase; margin-bottom: 2px; }
+        .info-value { font-family: 'Lora', serif; color: #444; font-size: 17px; word-break: normal; overflow-wrap: break-word; line-height: 1.4; }
+        
         .cards-flex-container { display: flex; justify-content: center; gap: 15px; margin: 25px 0; flex-wrap: wrap; }
         .card-box { flex: 1; min-width: 220px; padding: 25px 15px; border-radius: 4px; border: 1px solid; text-align: center; }
         .card-verde { background: #E3F2E1; border-color: #B7D9B1; color: #3D7A34; }
         .card-azul { background: #D9F0F7; border-color: #ADE1F0; color: #316B8C; }
 
-        .leyenda-atencion-azul { 
-            margin-top: 30px; 
-            padding: 20px; 
-            border-radius: 4px; 
-            background-color: var(--bg-info-azul); 
-            border: 1px solid var(--border-info-azul); 
-            color: var(--texto-info-azul); 
-            line-height: 1.6; 
-            font-size: 14px; 
-        }
+        .leyenda-atencion-azul { margin-top: 30px; padding: 20px; border-radius: 4px; background-color: var(--bg-info-azul); border: 1px solid var(--border-info-azul); color: var(--texto-info-azul); line-height: 1.6; font-family: 'Montserrat', sans-serif; font-size: 14px; }
 
-        /* Footer Completo */
         footer { background: var(--sep-rojo-obscuro); color: white; padding: 50px 30px 20px; margin-top: 50px; }
         .footer-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .footer-col h4 { margin-bottom: 20px; font-size: 16px; border-bottom: 1px solid var(--gob-oro); padding-bottom: 10px; font-weight: 600; display: inline-block; }
+        .footer-col h4 { margin-bottom: 20px; font-size: 16px; border-bottom: 1px solid var(--gob-oro); padding-bottom: 10px; display: inline-block; font-weight: 600; }
         .footer-col a { color: white; text-decoration: none; display: block; margin-bottom: 12px; font-size: 13px; opacity: 0.8; }
-        .social-links { display: flex; gap: 20px; margin-top: 15px; }
-        .social-links a { font-size: 24px; opacity: 1; display: inline; }
         .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; font-weight: 300; }
     </style>
 </head>
 <body>
+
+<div id="accessibility-menu"></div>
 
 <div class="sticky-nav-container">
     <nav class="gob-header">
         <div class="header-left-group">
             <a href="https://www.gob.mx"><img class="logo-gob" src="https://consultadelestadoactual.info" alt="Gobierno de México"></a>
         </div>
-        <i class="fas fa-bars menu-icon"></i>
+        <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
+        <div id="navMenu" class="nav-menu">
+            <a href="https://www.gob.mx">Trámites</a>
+            <a href="https://www.gob.mx">Gobierno</a>
+        </div>
     </nav>
     <div class="barra-dgb">
         <div class="dgb-brand">DGB</div>
+        <div class="hamburguesa-dgb" onclick="toggleDgbMenu()"><i class="fas fa-bars"></i></div>
     </div>
 </div>
 
-<div class="breadcrumb-section">
+<!-- REEMPLAZO DE LEYENDA SUPERIOR POR EL DISEÑO DE LA IMAGEN -->
+<div class="breadcrumb-container">
     <div class="breadcrumb-text">
-        Inicio <span>/</span> Consultas <span>/</span>
+        Inicio <span class="sep">/</span> Consultas <span class="sep">/</span>
         <b>Documentos electrónicos académicos</b>
     </div>
 </div>
 
 <main>
-    <!-- Formulario de Consulta -->
     <div class="search-outer-box">
-        <input type="text" placeholder="Ingrese el folio" id="folioInput">
-        <button class="btn-new btn-buscar">Buscar</button>
-        <button class="btn-new btn-limpiar" onclick="document.getElementById('folioInput').value=''">Restablecer</button>
+        <input type="text" id="folioBusqueda" placeholder="Ingrese el folio">
+        <button class="btn-new btn-buscar" onclick="buscarFolio()">Buscar</button>
+        <button class="btn-new btn-limpiar" onclick="limpiar()">Restablecer</button>
         <a href="#" class="link-ayuda">Ubica el folio en tu certificado</a>
     </div>
 
-    <!-- Sección Informativa Azul (Icono de información) -->
-    <div class="info-box-blue-search">
-        <i class="fas fa-info-circle" style="font-size: 24px;"></i>
-        <p>Asegúrate de ingresar el folio tal como aparece en tu documento para obtener un resultado correcto.</p>
+    <!-- MANTENEMOS TU SECCIÓN DE RESULTADOS ORIGINAL -->
+    <div id="resultado">
+        <div class="info-item"><div class="info-label">Estatus</div><div class="info-value">VALIDO</div></div>
+        <div class="info-item"><div class="info-label">Nombre</div><div class="info-value" id="res-nombre"></div></div>
+        <!-- ... resto de tus campos ... -->
     </div>
 
-    <!-- Tarjetas de Estatus -->
-    <div class="cards-flex-container">
-        <div class="card-box card-verde">
-            <i class="fas fa-check-circle fa-2x"></i>
-            <p style="margin-top:10px; font-weight:600;">Documento Válido</p>
-        </div>
-        <div class="card-box card-azul">
-            <i class="fas fa-file-download fa-2x"></i>
-            <p style="margin-top:10px; font-weight:600;">Descargar Copia</p>
-        </div>
-    </div>
-
-    <!-- Leyenda de Atención -->
     <div class="leyenda-atencion-azul">
-        <strong>Atención:</strong> Si tienes problemas con tu folio o el documento no aparece, favor de contactar a la Mesa de Ayuda de la Dirección General de Bachillerato.
+        <strong>Atención:</strong> Si el documento no coincide, favor de contactar a la autoridad correspondiente.
     </div>
 </main>
 
@@ -188,29 +175,26 @@
             <h4>Enlaces</h4>
             <a href="#">Participación ciudadana</a>
             <a href="#">Publicaciones oficiales</a>
-            <a href="#">Plataforma Nacional de Transparencia</a>
         </div>
         <div class="footer-col">
             <h4>¿Qué es gob.mx?</h4>
-            <a href="#">Es el portal único de trámites e información.</a>
-            <a href="#">Temas</a>
-            <a href="#">Accesibilidad</a>
+            <a href="#">Portal único de trámites e información.</a>
         </div>
         <div class="footer-col">
             <h4>Contacto</h4>
-            <a href="#">Mesa de ayuda: dudas e información</a>
             <a href="#">denuncia@sfp.gob.mx</a>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
         </div>
     </div>
     <div class="footer-bottom">
-        SECRETARÍA DE EDUCACIÓN PÚBLICA - DIRECCIÓN GENERAL DE BACHILLERATO <br>
-        © 2024 Gobierno de México
+        SECRETARÍA DE EDUCACIÓN PÚBLICA - DIRECCIÓN GENERAL DE BACHILLERATO
     </div>
 </footer>
+
+<script>
+    function toggleMenu() { document.getElementById("navMenu").classList.toggle("show"); }
+    function limpiar() { document.getElementById("folioBusqueda").value = ""; }
+    // Aquí iría tu lógica de buscarFolio() que ya tenías
+</script>
 
 </body>
 </html>
