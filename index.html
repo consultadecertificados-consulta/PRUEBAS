@@ -13,170 +13,90 @@
     <link href="https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css" rel="stylesheet">
     
     <style>
-        :root {
-            --sep-rojo-obscuro: #4B1021; 
-            --gob-oro: #9D843E;   
-            --btn-buscar-verde: #285848;
-            --btn-limpiar-gris: #767676;
-            --estatus-verde: #235E3F;
-            --bg-info-azul: #D9EDF7;
-            --border-info-azul: #BCE8F1;
-            --texto-info-azul: #31708F;
-            --error-rojo: #B00020;
-            --error-bg: #F9E6E9;
-        }
-
-        .grayscale-mode { filter: grayscale(100%); }
-        .high-contrast { background: #000 !important; color: #fff100 !important; }
-        .high-contrast * { background-color: #000 !important; color: #fff100 !important; border-color: #fff100 !important; }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f4f4f4;
-            background-image: url("https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css");
-            background-repeat: repeat;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            color: #333;
-        }
-
-        .sticky-nav-container { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        
-        nav.gob-header { background-color: var(--sep-rojo-obscuro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .header-left-group { display: flex; align-items: center; gap: 20px; }
-        .logo-gob { height: 60px; }
-        
-        .menu-icon { color: white; font-size: 24px; cursor: pointer; }
-        .nav-menu { display: none; position: absolute; right: 30px; top: 50px; background: var(--sep-rojo-obscuro); min-width: 200px; border-radius: 4px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
-        .nav-menu.show { display: block; }
-        .nav-menu a { color: white; padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-
-        .barra-dgb { background-color: var(--gob-oro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; color: white; }
-        .dgb-brand { font-size: 20px; font-weight: 600; }
-        .hamburguesa-dgb { cursor: pointer; padding: 5px; font-size: 20px; }
-        .menu-desplegable-dgb { display: none; background-color: var(--gob-oro); width: 100%; padding: 10px 30px 20px; border-top: 1px solid rgba(255,255,255,0.2); }
-        .menu-desplegable-dgb.show { display: block; }
-        .menu-desplegable-dgb a { display: block; color: white; text-decoration: none; padding: 15px 0; font-size: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-
-        .header-image-container { width: 100%; background: #fff; border-bottom: 1px solid #ddd; }
-        .header-image-container img { width: 100%; height: auto; display: block; object-fit: contain; }
-
-        .leyenda-superior {
-            max-width: 900px;
-            margin: 40px auto 10px;
-            padding: 0 15px 15px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: 700;
-            color: #4D4D4D;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 3px solid var(--gob-oro);
-            line-height: 1.2;
-        }
-
-        main { flex: 1; max-width: 900px; margin: 10px auto 30px; padding: 0 15px; width: 100%; }
-      /* --- ESTILOS ACTUALIZADOS PARA QUE SE EXPANDA --- */
-
-.search-outer-box { 
-    background: #ffffff; 
-    border: 1px solid #D4C19C; 
-    border-radius: 8px; 
-    padding: 30px; 
-    max-width: 900px; /* <--- Esto permite la expansión en PC */
-    width: 100%;
-    margin: 20px auto; 
-    text-align: center; 
-}
-
-/* 2. El input: quitamos el max-width de 400px que tenías antes */
-input { 
-    width: 100%; 
-    max-width: 100%; /* <--- Ahora siempre ocupa todo el ancho del cuadro */
-    padding: 12px; 
-    margin-bottom: 20px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    font-size: 16px; 
-    box-sizing: border-box;
-}
-
-/* 3. Nuevo contenedor para los botones (añádelo si no existe) */
-.button-group {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-/* Estilo general de los botones */
-.btn-new { 
-    flex: 1; /* Esto hace que ambos midan lo mismo y se expandan */
-    padding: 12px; 
-    border: none; 
-    border-radius: 4px; 
-    font-size: 18px; 
-    cursor: pointer; 
-    color: white; 
-    font-family: 'Montserrat', sans-serif;
-}
-
-.btn-buscar { background-color: #285848; }
-.btn-limpiar { background-color: #767676; }
-
-/* Link dorado de abajo */
-.btn-ayuda-link { 
-    color: #9D843E; 
-    text-decoration: underline; 
-    font-size: 14px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-@media (max-width: 600px) {
-    .button-group { flex-direction: column; }
+    :root {
+        --sep-rojo-obscuro: #4B1021; 
+        --gob-oro: #9D843E;   
+        --btn-buscar-verde: #285848;
+        --btn-limpiar-gris: #767676;
+        --estatus-verde: #235E3F;
+        --bg-info-azul: #D9EDF7;
+        --border-info-azul: #BCE8F1;
+        --texto-info-azul: #31708F;
     }
-}
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f4f4f4;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        color: #333;
+    }
 
-        .btn-new { width: 100%; padding: 14px; border: none; border-radius: 4px; font-size: 20px; cursor: pointer; margin-bottom: 10px; color: white; font-family: 'Montserrat'; font-weight: 500; text-decoration: none; display: block; }
-        .btn-buscar { background-color: var(--btn-buscar-verde); }
-        .btn-limpiar { background-color: var(--btn-limpiar-gris); }
-        .btn-ayuda { background-color: transparent; color: var(--gob-oro); border: 1px solid var(--gob-oro); font-size: 16px; margin-top: 5px; }
+    /* Contenedor Principal del Buscador */
+    .search-outer-box { 
+        background: #ffffff; 
+        border: 1px solid #D4C19C; 
+        border-radius: 8px; 
+        padding: 30px; 
+        max-width: 900px; 
+        width: 100%;
+        margin: 20px auto; 
+        text-align: center; 
+    }
 
-        .info-box-blue-search { background-color: var(--bg-info-azul); border: 1px solid var(--border-info-azul); color: var(--texto-info-azul); padding: 20px; border-radius: 4px; max-width: 550px; margin: 20px auto; display: flex; align-items: center; gap: 15px; font-size: 14px; }
+    input { 
+        width: 100%; 
+        padding: 12px; 
+        margin-bottom: 20px; 
+        border: 1px solid #ccc; 
+        border-radius: 4px; 
+        font-size: 16px; 
+    }
 
-        #resultado { display: none; margin-top: 40px; background: white; padding: 35px; border-radius: 8px; border-left: 8px solid var(--estatus-verde); text-align: left; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .info-item { border-bottom: 1px solid #eee; padding: 12px 0; display: flex; flex-direction: column; }
-        .info-label { font-weight: 700; color: #333; font-size: 13px; text-transform: uppercase; margin-bottom: 2px; }
-        .info-value { font-family: 'Lora', serif; color: #444; font-size: 17px; word-break: normal; overflow-wrap: break-word; line-height: 1.4; }
-        
-        .cards-flex-container { display: flex; justify-content: center; gap: 15px; margin: 25px 0; flex-wrap: wrap; }
-        .card-box { flex: 1; min-width: 220px; padding: 25px 15px; border-radius: 4px; border: 1px solid; text-align: center; }
-        .card-verde { background: #E3F2E1; border-color: #B7D9B1; color: #3D7A34; }
-        .card-azul { background: #D9F0F7; border-color: #ADE1F0; color: #316B8C; }
+    /* Grupo de Botones */
+    .button-group {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
 
-        .leyenda-atencion-azul { margin-top: 30px; padding: 20px; border-radius: 4px; background-color: var(--bg-info-azul); border: 1px solid var(--border-info-azul); color: var(--texto-info-azul); line-height: 1.6; font-family: 'Montserrat', sans-serif; font-size: 14px; }
+    .btn-new { 
+        flex: 1; 
+        padding: 14px; 
+        border: none; 
+        border-radius: 4px; 
+        font-size: 18px; 
+        cursor: pointer; 
+        color: white; 
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        transition: 0.3s;
+    }
 
-        footer { background: var(--sep-rojo-obscuro); color: white; padding: 50px 30px 20px; margin-top: 50px; }
-        .footer-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .footer-col h4 { margin-bottom: 20px; font-size: 16px; border-bottom: 1px solid var(--gob-oro); padding-bottom: 10px; display: inline-block; font-weight: 600; }
-        .footer-col a { color: white; text-decoration: none; display: block; margin-bottom: 12px; font-size: 13px; opacity: 0.8; }
-        .social-links { display: flex; gap: 20px; margin-top: 15px; }
-        .social-links a { color: white; font-size: 24px; opacity: 1; display: inline; }
-        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; font-weight: 300; }
-          }
+    .btn-buscar { background-color: var(--btn-buscar-verde); }
+    .btn-limpiar { background-color: var(--btn-limpiar-gris); }
+    
+    .btn-buscar:hover { background-color: #1e4236; }
+    .btn-limpiar:hover { background-color: #5a5a5a; }
 
-        /* Expansión en PC */
-        @media (min-width: 1024px) {
-            input { max-width: 400px; }
-            input:focus { max-width: 100%; border-color: var(--gob-oro); outline: none; }
-        }
-    </style>
+    .btn-ayuda-link { 
+        color: var(--gob-oro); 
+        text-decoration: underline; 
+        font-size: 14px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Responsive: Botones uno encima de otro en celulares */
+    @media (max-width: 600px) {
+        .button-group { flex-direction: column; }
+    }
+</style>
+
 </head>
 <body>
 
@@ -217,10 +137,19 @@ input {
     <input type="text" placeholder="Ingrese el folio">
     
     <!-- Este contenedor es la clave para que se expandan juntos -->
-    <div class="button-group">
-        <button class="btn-new btn-buscar">Buscar</button>
-        <button class="btn-new btn-limpiar">Restablecer</button>
+   <main>
+    <div class="search-outer-box">
+        <input type="text" placeholder="Ingrese su CURP o Folio...">
+        
+        <div class="button-group">
+            <button class="btn-new btn-buscar">BUSCAR</button>
+            <button class="btn-new btn-limpiar">LIMPIAR</button>
+        </div>
+
+        <button class="btn-ayuda-link">¿Necesitas ayuda para consultar?</button>
     </div>
+</main>
+
 
     <a href="#" class="help-link" style="color: #9D843E; text-decoration: underline;">Ubica el folio en tu certificado</a>
 </div>
