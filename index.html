@@ -87,6 +87,15 @@
     transition: max-width 0.5s ease; /* <--- Esta es la "magia" de la animación */
     /* ... resto de tus estilos (bordes, fuentes) ... */
 }
+        /* min-width: 1024px asegura que esto solo pase en computadoras */
+@media (min-width: 1024px) {
+    input:focus { 
+        max-width: 100%; /* <--- Al hacer clic, crece hasta llenar el cuadro blanco */
+        border-color: var(--gob-oro); /* Cambia el color del borde al mismo tiempo */
+        outline: none;
+    }
+}
+
 
         .btn-new { width: 100%; padding: 14px; border: none; border-radius: 4px; font-size: 20px; cursor: pointer; margin-bottom: 10px; color: white; font-family: 'Montserrat'; font-weight: 500; text-decoration: none; display: block; }
         .btn-buscar { background-color: var(--btn-buscar-verde); }
