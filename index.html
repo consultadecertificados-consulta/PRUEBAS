@@ -7,10 +7,10 @@
     
     <link rel="icon" type="image/png" href="favicon.png">
     
-    <!-- Fuentes y librerías originales -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="https://cloudflare.com">
-    <link href="https://cdn.gob.mx" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
+    <link href="https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css" rel="stylesheet">
     
     <style>
         :root {
@@ -26,7 +26,6 @@
             --error-bg: #F9E6E9;
         }
 
-        /* Estilos de accesibilidad */
         .grayscale-mode { filter: grayscale(100%); }
         .high-contrast { background: #000 !important; color: #fff100 !important; }
         .high-contrast * { background-color: #000 !important; color: #fff100 !important; border-color: #fff100 !important; }
@@ -36,82 +35,114 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #f4f4f4;
+            background-image: url("https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css");
+            background-repeat: repeat;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             color: #333;
         }
 
-        /* Navegación y Header */
         .sticky-nav-container { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        
         nav.gob-header { background-color: var(--sep-rojo-obscuro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
         .header-left-group { display: flex; align-items: center; gap: 20px; }
         .logo-gob { height: 60px; }
-        .menu-icon { color: white; font-size: 24px; cursor: pointer; }
         
+        .menu-icon { color: white; font-size: 24px; cursor: pointer; }
+        .nav-menu { display: none; position: absolute; right: 30px; top: 50px; background: var(--sep-rojo-obscuro); min-width: 200px; border-radius: 4px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
+        .nav-menu.show { display: block; }
+        .nav-menu a { color: white; padding: 12px 20px; text-decoration: none; display: block; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
         .barra-dgb { background-color: var(--gob-oro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; color: white; }
         .dgb-brand { font-size: 20px; font-weight: 600; }
         .hamburguesa-dgb { cursor: pointer; padding: 5px; font-size: 20px; }
+        .menu-desplegable-dgb { display: none; background-color: var(--gob-oro); width: 100%; padding: 10px 30px 20px; border-top: 1px solid rgba(255,255,255,0.2); }
+        .menu-desplegable-dgb.show { display: block; }
 
         .leyenda-superior {
             max-width: 900px;
             margin: 40px auto 10px;
             padding: 0 15px 15px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: 700;
+            text-align: left;
+            font-size: 16px;
             color: #4D4D4D;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 3px solid var(--gob-oro);
-            line-height: 1.2;
         }
 
-        /* Contenedor del Buscador */
+        .breadcrumb { font-size: 14px; margin-bottom: 5px; color: #666; }
+        .breadcrumb span { color: #333; font-weight: bold; }
+
         main { flex: 1; max-width: 900px; margin: 10px auto 30px; padding: 0 15px; width: 100%; }
+        
+        /* CUADRO BLANCO COMO EN TU IMAGEN */
         .search-outer-box { 
             background: #ffffff; 
-            border: 2px solid #D4C19C; 
-            border-radius: 10px; 
-            padding: 30px; 
-            max-width: 550px; 
+            border: 1px solid #D4C19C; 
+            border-radius: 8px; 
+            padding: 40px; 
+            max-width: 850px; 
             margin: 0 auto 20px; 
-            text-align: center; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        /* --- AQUÍ ESTÁ EL CAMBIO QUE PEDISTE --- */
-        input[type="text"] { 
+        /* BARRA DE BÚSQUEDA LARGA CON EFECTO */
+        input { 
             width: 100%; 
-            max-width: 280px; /* Tamaño inicial en PC */
+            max-width: 400px; /* Tamaño inicial mediano */
             padding: 12px; 
             border: 1px solid #ccc; 
             border-radius: 4px; 
             font-size: 18px; 
-            margin-bottom: 15px; 
+            margin-bottom: 20px; 
             font-family: 'Lora', serif; 
-            text-align: center;
-            transition: max-width 0.5s ease; /* Efecto de expansión suave */
+            text-align: left;
+            display: block;
+            transition: max-width 0.4s ease-in-out;
         }
 
+        /* Se expande en PC al hacer clic */
         @media (min-width: 1024px) {
-            input[type="text"]:focus { 
-                max-width: 100%; /* Se expande al ancho total del cuadro blanco */
+            input:focus { 
+                max-width: 100%; 
                 border-color: var(--gob-oro);
                 outline: none;
-                box-shadow: 0 0 10px rgba(157, 132, 62, 0.2);
             }
         }
-        /* --------------------------------------- */
 
-        .btn-new { width: 100%; padding: 14px; border: none; border-radius: 4px; font-size: 20px; cursor: pointer; margin-bottom: 10px; color: white; font-family: 'Montserrat'; font-weight: 500; text-decoration: none; display: block; }
+        /* CONTENEDOR DE BOTONES A LA PAR */
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .btn-new { 
+            flex: 1;
+            min-width: 150px;
+            padding: 14px; 
+            border: none; 
+            border-radius: 4px; 
+            font-size: 18px; 
+            cursor: pointer; 
+            color: white; 
+            font-family: 'Montserrat'; 
+            font-weight: 500;
+            text-align: center;
+        }
+        
         .btn-buscar { background-color: var(--btn-buscar-verde); }
         .btn-limpiar { background-color: var(--btn-limpiar-gris); }
 
-        footer { background: var(--sep-rojo-obscuro); color: white; padding: 50px 30px 20px; margin-top: 50px; }
-        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; font-weight: 300; }
+        .link-ayuda {
+            display: block;
+            margin-top: 15px;
+            color: var(--gob-oro);
+            text-decoration: underline;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        footer { background: var(--sep-rojo-obscuro); color: white; padding: 30px; margin-top: auto; text-align: center; font-size: 12px; }
     </style>
 </head>
 <body>
@@ -119,7 +150,7 @@
 <div class="sticky-nav-container">
     <nav class="gob-header">
         <div class="header-left-group">
-            <a href="https://www.gob.mx"><img class="logo-gob" src="https://consultadelestadoactual.info" alt="Gobierno de México"></a>
+            <a href="#"><img class="logo-gob" src="https://consultadelestadoactual.info/images/gobierno-de-mexico.svg" alt="Gobierno de México"></a>
         </div>
         <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
     </nav>
@@ -129,27 +160,32 @@
     </div>
 </div>
 
-<div class="leyenda-superior">Consulta de Certificación Electrónica</div>
+<div class="leyenda-superior">
+    <div class="breadcrumb">Inicio / Consultas</div>
+    <span>Documentos académicos electrónicos</span>
+</div>
 
 <main>
     <div class="search-outer-box">
-        <!-- El campo de búsqueda que se expande -->
-        <input type="text" placeholder="Introduce el folio de búsqueda">
+        <input type="text" placeholder="Ingrese el folio">
         
-        <button class="btn-new btn-buscar">BUSCAR</button>
-        <button class="btn-new btn-limpiar">LIMPIAR</button>
+        <div class="button-group">
+            <button class="btn-new btn-buscar">Buscar</button>
+            <button class="btn-new btn-limpiar">Restablecer</button>
+        </div>
+        
+        <a href="#" class="link-ayuda">Ubica el folio en tu certificado</a>
     </div>
 </main>
 
 <footer>
-    <div class="footer-bottom">
-        &copy; 2024 Dirección General del Bachillerato - Secretaría de Educación Pública
-    </div>
+    &copy; 2024 Dirección General del Bachillerato
 </footer>
 
 <script>
     function toggleMenu() {
-        // Lógica para mostrar/ocultar menú si fuera necesario
+        var menu = document.getElementById("navMenu");
+        if(menu) menu.classList.toggle("show");
     }
 </script>
 
