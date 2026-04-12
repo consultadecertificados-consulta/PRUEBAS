@@ -79,22 +79,70 @@
         }
 
         main { flex: 1; max-width: 900px; margin: 10px auto 30px; padding: 0 15px; width: 100%; }
-        .search-outer-box { background: #ffffff; border: 2px solid #D4C19C; border-radius: 10px; padding: 30px; max-width: 550px; margin: 0 auto 20px; text-align: center; }
-       input { 
-    width: 100%;           /* En móviles ocupa todo el ancho */
-    max-width: 400px;      /* <--- Este es el tamaño "corto" inicial en PC */
-    padding: 12px; 
-    transition: max-width 0.5s ease; /* <--- Esta es la "magia" de la animación */
-    /* ... resto de tus estilos (bordes, fuentes) ... */
+      /* --- ESTILOS ACTUALIZADOS PARA QUE SE EXPANDA --- */
+
+/* El cuadro blanco principal */
+.search-outer-box { 
+    background: #ffffff; 
+    border: 1px solid #D4C19C; 
+    border-radius: 8px; 
+    padding: 30px; 
+    max-width: 850px; /* <--- Esto permite que se expanda a lo ancho en PC */
+    width: 95%;       /* Para que no toque las orillas en celular */
+    margin: 20px auto; 
+    text-align: center; 
 }
-        /* min-width: 1024px asegura que esto solo pase en computadoras */
-@media (min-width: 1024px) {
-    input:focus { 
-        max-width: 100%; /* <--- Al hacer clic, crece hasta llenar el cuadro blanco */
-        border-color: var(--gob-oro); /* Cambia el color del borde al mismo tiempo */
-        outline: none;
+
+/* El campo donde escriben el folio */
+input { 
+    width: 100%; 
+    padding: 12px; 
+    margin-bottom: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 16px; 
+    box-sizing: border-box; /* Evita que el input se salga del cuadro */
+}
+
+/* Contenedor para que los botones salgan juntos */
+.button-container {
+    display: flex;
+    gap: 10px; /* Espacio entre botones */
+    margin-bottom: 15px;
+}
+
+/* Estilo general de los botones */
+.btn-new { 
+    flex: 1; /* Esto hace que ambos midan lo mismo y se expandan */
+    padding: 12px; 
+    border: none; 
+    border-radius: 4px; 
+    font-size: 18px; 
+    cursor: pointer; 
+    color: white; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-buscar { background-color: #285848; }
+.btn-limpiar { background-color: #767676; }
+
+/* Link dorado de abajo */
+.btn-ayuda-link { 
+    color: #9D843E; 
+    text-decoration: underline; 
+    font-size: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Ajuste para celulares: que los botones se pongan uno arriba del otro */
+@media (max-width: 600px) {
+    .button-container {
+        flex-direction: column;
     }
 }
+
 
 
         .btn-new { width: 100%; padding: 14px; border: none; border-radius: 4px; font-size: 20px; cursor: pointer; margin-bottom: 10px; color: white; font-family: 'Montserrat'; font-weight: 500; text-decoration: none; display: block; }
@@ -163,9 +211,22 @@
 <div class="leyenda-superior">Subsecretaría de Educación Media Superior y Superior</div>
     </div>
 
-<div class="header-content">
-    <div class="breadcrumb">Inicio / Consultas</div>
-    <div class="titulo-doc">Documentos académicos electrónicos</div>
+<main>
+    <p style="color: #666; font-size: 14px;">Inicio / Consultas</p>
+    <h2 style="font-size: 18px; margin-bottom: 15px;">Documentos académicos electrónicos</h2>
+
+    <div class="search-outer-box">
+        <input type="text" placeholder="Ingrese el folio">
+        
+        <div class="button-container">
+            <button class="btn-new btn-buscar">Buscar</button>
+            <button class="btn-new btn-limpiar">Restablecer</button>
+        </div>
+
+        <button class="btn-ayuda-link">Ubica el folio en tu certificado</button>
+    </div>
+</main>
+
 </div>
 
 <main>
