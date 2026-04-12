@@ -80,7 +80,31 @@
 
         main { flex: 1; max-width: 900px; margin: 10px auto 30px; padding: 0 15px; width: 100%; }
         .search-outer-box { background: #ffffff; border: 2px solid #D4C19C; border-radius: 10px; padding: 30px; max-width: 550px; margin: 0 auto 20px; text-align: center; }
-        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 18px; margin-bottom: 15px; font-family: 'Lora', serif; text-align: center; }
+        /* Estilo base del input */
+input[type="text"] { 
+    width: 100%; /* Ancho dentro de su contenedor padre */
+    max-width: 300px; /* Ancho inicial pequeño */
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 18px; 
+    margin-bottom: 15px; 
+    font-family: 'Lora', serif; 
+    text-align: center;
+    transition: all 0.4s ease-in-out; /* Animación suave */
+    display: inline-block;
+}
+
+/* Expansión al hacer clic (Solo en PC / Pantallas de más de 1024px) */
+@media (min-width: 1024px) {
+    input[type="text"]:focus { 
+        max-width: 100%; /* Se expande al total del contenedor .search-outer-box */
+        border-color: var(--gob-oro); /* Cambia al color dorado de tu marca */
+        box-shadow: 0 0 8px rgba(157, 132, 62, 0.3);
+        outline: none;
+    }
+}
+
         .btn-new { width: 100%; padding: 14px; border: none; border-radius: 4px; font-size: 20px; cursor: pointer; margin-bottom: 10px; color: white; font-family: 'Montserrat'; font-weight: 500; text-decoration: none; display: block; }
         .btn-buscar { background-color: var(--btn-buscar-verde); }
         .btn-limpiar { background-color: var(--btn-limpiar-gris); }
