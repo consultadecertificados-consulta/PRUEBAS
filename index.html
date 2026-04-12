@@ -7,9 +7,7 @@
     
     <link rel="icon" type="image/png" href="favicon.png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     
     <link href="https://framework-gb.cdn.gob.mx/gm/accesibilidad/css/gobmx-accesibilidad.min.css" rel="stylesheet">
@@ -62,12 +60,18 @@
         .header-image-container { width: 100%; background: #fff; }
         .header-image-container img { width: 100%; height: auto; display: block; }
 
-       .leyenda-superior {
-    /* ... otros estilos ... */
-    font-family: 'Arvo', serif; /* Aquí reemplazas 'Montserrat' por 'Arvo' */
-    font-weight: 700;
-    text-transform: none; /* Arvo se ve mejor en mayúsculas y minúsculas */
-}
+        .leyenda-superior {
+            max-width: 900px;
+            margin: 40px auto 10px;
+            padding: 0 15px 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #4D4D4D;
+            text-transform: uppercase;
+            border-bottom: 3px solid var(--gob-oro);
+        }
+
         main { flex: 1; max-width: 900px; margin: 10px auto 30px; padding: 0 15px; width: 100%; }
 
         /* Caja de Búsqueda */
