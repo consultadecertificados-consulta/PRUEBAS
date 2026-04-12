@@ -30,15 +30,15 @@
 
         body {
     font-family: 'Montserrat', sans-serif;
-    /* Color de fondo base */
-    background-color: #f4f4f4; 
-    /* El tapiz: Usamos una imagen pequeña que se repite */
-    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-    background-repeat: repeat;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     color: #333;
+    
+    /* SOLUCIÓN: Color de fondo + Imagen + Mezcla */
+    background-color: #eeeeee; 
+    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+    background-attachment: fixed; /* Mantiene el fondo quieto al hacer scroll */
 }
 
 
