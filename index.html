@@ -81,34 +81,34 @@
         main { flex: 1; max-width: 900px; margin: 10px auto 30px; padding: 0 15px; width: 100%; }
       /* --- ESTILOS ACTUALIZADOS PARA QUE SE EXPANDA --- */
 
-/* El cuadro blanco principal */
 .search-outer-box { 
     background: #ffffff; 
     border: 1px solid #D4C19C; 
     border-radius: 8px; 
     padding: 30px; 
-    max-width: 850px; /* <--- Esto permite que se expanda a lo ancho en PC */
-    width: 95%;       /* Para que no toque las orillas en celular */
+    max-width: 900px; /* <--- Esto permite la expansión en PC */
+    width: 100%;
     margin: 20px auto; 
     text-align: center; 
 }
 
-/* El campo donde escriben el folio */
+/* 2. El input: quitamos el max-width de 400px que tenías antes */
 input { 
     width: 100%; 
+    max-width: 100%; /* <--- Ahora siempre ocupa todo el ancho del cuadro */
     padding: 12px; 
     margin-bottom: 20px; 
     border: 1px solid #ccc; 
     border-radius: 4px; 
     font-size: 16px; 
-    box-sizing: border-box; /* Evita que el input se salga del cuadro */
+    box-sizing: border-box;
 }
 
-/* Contenedor para que los botones salgan juntos */
-.button-container {
+/* 3. Nuevo contenedor para los botones (añádelo si no existe) */
+.button-group {
     display: flex;
-    gap: 10px; /* Espacio entre botones */
-    margin-bottom: 15px;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
 /* Estilo general de los botones */
@@ -136,10 +136,8 @@ input {
     cursor: pointer;
 }
 
-/* Ajuste para celulares: que los botones se pongan uno arriba del otro */
 @media (max-width: 600px) {
-    .button-container {
-        flex-direction: column;
+    .button-group { flex-direction: column; }
     }
 }
 
@@ -215,13 +213,18 @@ input {
     <p style="color: #666; font-size: 14px;">Inicio / Consultas</p>
     <h2 style="font-size: 18px; margin-bottom: 15px;">Documentos académicos electrónicos</h2>
 
-    <div class="search-outer-box">
-        <input type="text" placeholder="Ingrese el folio">
-        
-        <div class="button-container">
-            <button class="btn-new btn-buscar">Buscar</button>
-            <button class="btn-new btn-limpiar">Restablecer</button>
-        </div>
+   <div class="search-outer-box">
+    <input type="text" placeholder="Ingrese el folio">
+    
+    <!-- Este contenedor es la clave para que se expandan juntos -->
+    <div class="button-group">
+        <button class="btn-new btn-buscar">Buscar</button>
+        <button class="btn-new btn-limpiar">Restablecer</button>
+    </div>
+
+    <a href="#" class="help-link" style="color: #9D843E; text-decoration: underline;">Ubica el folio en tu certificado</a>
+</div>
+
 
         <button class="btn-ayuda-link">Ubica el folio en tu certificado</button>
     </div>
