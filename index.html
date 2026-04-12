@@ -29,13 +29,18 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f4f4f4;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            color: #333;
-        }
+    font-family: 'Montserrat', sans-serif;
+    /* Color de fondo base */
+    background-color: #f4f4f4; 
+    /* El tapiz: Usamos una imagen pequeña que se repite */
+    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+    background-repeat: repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+}
+
 
         /* Navegación Superior */
         .sticky-nav-container { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
