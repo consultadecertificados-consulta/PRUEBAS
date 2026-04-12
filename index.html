@@ -6,8 +6,11 @@
     <title>Consulta de Certificación Electrónica | DGB</title>
     
     <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Fuentes y librerías originales -->
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
+    <link href="https://cdn.gob.mx" rel="stylesheet">
     
     <style>
         :root {
@@ -15,24 +18,74 @@
             --gob-oro: #9D843E;   
             --btn-buscar-verde: #285848;
             --btn-limpiar-gris: #767676;
+            --estatus-verde: #235E3F;
+            --bg-info-azul: #D9EDF7;
+            --border-info-azul: #BCE8F1;
+            --texto-info-azul: #31708F;
+            --error-rojo: #B00020;
+            --error-bg: #F9E6E9;
         }
 
-        body { font-family: 'Montserrat', sans-serif; background-color: #f4f4f4; margin: 0; }
+        /* Estilos de accesibilidad */
+        .grayscale-mode { filter: grayscale(100%); }
+        .high-contrast { background: #000 !important; color: #fff100 !important; }
+        .high-contrast * { background-color: #000 !important; color: #fff100 !important; border-color: #fff100 !important; }
 
-        /* Contenedor principal */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        /* Navegación y Header */
+        .sticky-nav-container { position: sticky; top: 0; z-index: 1000; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        nav.gob-header { background-color: var(--sep-rojo-obscuro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header-left-group { display: flex; align-items: center; gap: 20px; }
+        .logo-gob { height: 60px; }
+        .menu-icon { color: white; font-size: 24px; cursor: pointer; }
+        
+        .barra-dgb { background-color: var(--gob-oro); padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; color: white; }
+        .dgb-brand { font-size: 20px; font-weight: 600; }
+        .hamburguesa-dgb { cursor: pointer; padding: 5px; font-size: 20px; }
+
+        .leyenda-superior {
+            max-width: 900px;
+            margin: 40px auto 10px;
+            padding: 0 15px 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #4D4D4D;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid var(--gob-oro);
+            line-height: 1.2;
+        }
+
+        /* Contenedor del Buscador */
+        main { flex: 1; max-width: 900px; margin: 10px auto 30px; padding: 0 15px; width: 100%; }
         .search-outer-box { 
             background: #ffffff; 
             border: 2px solid #D4C19C; 
             border-radius: 10px; 
             padding: 30px; 
-            max-width: 600px; /* Ancho máximo del cuadro blanco */
-            margin: 50px auto; 
+            max-width: 550px; 
+            margin: 0 auto 20px; 
             text-align: center; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* --- LA MODIFICACIÓN ESTÁ AQUÍ --- */
+        /* --- AQUÍ ESTÁ EL CAMBIO QUE PEDISTE --- */
         input[type="text"] { 
-            width: 250px; /* Ancho corto inicial */
+            width: 100%; 
+            max-width: 280px; /* Tamaño inicial en PC */
             padding: 12px; 
             border: 1px solid #ccc; 
             border-radius: 4px; 
@@ -40,34 +93,65 @@
             margin-bottom: 15px; 
             font-family: 'Lora', serif; 
             text-align: center;
-            transition: width 0.4s ease-in-out; /* Animación de expansión */
-            display: inline-block;
+            transition: max-width 0.5s ease; /* Efecto de expansión suave */
         }
 
-        /* Expansión en PC al hacer clic */
         @media (min-width: 1024px) {
             input[type="text"]:focus { 
-                width: 100%; /* Se expande a lo largo de todo el cuadro */
+                max-width: 100%; /* Se expande al ancho total del cuadro blanco */
                 border-color: var(--gob-oro);
                 outline: none;
+                box-shadow: 0 0 10px rgba(157, 132, 62, 0.2);
             }
         }
-        /* ---------------------------------- */
+        /* --------------------------------------- */
 
         .btn-new { width: 100%; padding: 14px; border: none; border-radius: 4px; font-size: 20px; cursor: pointer; margin-bottom: 10px; color: white; font-family: 'Montserrat'; font-weight: 500; text-decoration: none; display: block; }
         .btn-buscar { background-color: var(--btn-buscar-verde); }
         .btn-limpiar { background-color: var(--btn-limpiar-gris); }
+
+        footer { background: var(--sep-rojo-obscuro); color: white; padding: 50px 30px 20px; margin-top: 50px; }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; font-weight: 300; }
     </style>
 </head>
 <body>
 
-    <main>
-        <div class="search-outer-box">
-            <input type="text" placeholder="Introduce el folio de búsqueda">
-            <button class="btn-new btn-buscar">BUSCAR</button>
-            <button class="btn-new btn-limpiar">LIMPIAR</button>
+<div class="sticky-nav-container">
+    <nav class="gob-header">
+        <div class="header-left-group">
+            <a href="https://www.gob.mx"><img class="logo-gob" src="https://consultadelestadoactual.info" alt="Gobierno de México"></a>
         </div>
-    </main>
+        <i class="fas fa-bars menu-icon" onclick="toggleMenu()"></i>
+    </nav>
+    <div class="barra-dgb">
+        <div class="dgb-brand">DGB</div>
+        <div class="hamburguesa-dgb"><i class="fas fa-bars"></i></div>
+    </div>
+</div>
+
+<div class="leyenda-superior">Consulta de Certificación Electrónica</div>
+
+<main>
+    <div class="search-outer-box">
+        <!-- El campo de búsqueda que se expande -->
+        <input type="text" placeholder="Introduce el folio de búsqueda">
+        
+        <button class="btn-new btn-buscar">BUSCAR</button>
+        <button class="btn-new btn-limpiar">LIMPIAR</button>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-bottom">
+        &copy; 2024 Dirección General del Bachillerato - Secretaría de Educación Pública
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        // Lógica para mostrar/ocultar menú si fuera necesario
+    }
+</script>
 
 </body>
 </html>
