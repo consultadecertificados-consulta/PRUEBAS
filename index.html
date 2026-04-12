@@ -222,18 +222,8 @@
 <script src="https://siged.sep.gob.mx/SIGED/js/jquery-3.5.1.min.js"></script>
 <script src="https://framework-gb.cdn.gob.mx/gm/accesibilidad/js/gobmx-accesibilidad.min.js"></script>
 
+<script src="folios.js"></script>
 <script>
-    const baseDatos = {
-        "TEST1234": {
-            "FOLIO": "TEST1234",
-            "NOMBRE": "USUARIO DE PRUEBA",
-            "INSTITUCIÓN": "PLANTEL EJEMPLO DGB",
-            "PROMEDIO": "9.8",
-            "PROMEDIO_TEXTO": "NUEVE PUNTO OCHO",
-            "ESTATUS": "REGISTRADO"
-        }
-    };
-
     function toggleMenu() { document.getElementById('navMenu').classList.toggle('show'); }
     function toggleDgbMenu() { document.getElementById('menuDgb').classList.toggle('show'); }
 
@@ -247,33 +237,34 @@
         const inputFolio = document.getElementById('folioInput').value.trim().toUpperCase();
         const resDiv = document.getElementById('resultado');
         const errDiv = document.getElementById('errorContainer');
-        
         resDiv.style.display = 'none';
         errDiv.style.display = 'none';
 
-        if (inputFolio === "") return;
-
-        if (baseDatos[inputFolio]) {
+        if (typeof baseDatos !== 'undefined' && baseDatos[inputFolio]) {
             const data = baseDatos[inputFolio];
             let listHTML = "";
-            
             for (let clave in data) {
-                if (!['PROMEDIO', 'PROMEDIO_TEXTO', 'ESTATUS'].includes(clave)) {
-                    listHTML += `<div class="info-item"><span class="info-label">${clave}:</span><span class="info-value">${data[clave]}</span></div>`;
+                const keyUpper = clave.toUpperCase();
+                if (!['PROMEDIO', 'PROMEDIO_TEXTO', 'ESTATUS'].includes(keyUpper)) {
+                    listHTML += `<div class="info-item"><span class="info-label">${clave.replace(/_/g, ' ')}:</span><span class="info-value">${data[clave]}</span></div>`;
                 }
             }
-            
             document.getElementById('infoDetalle').innerHTML = listHTML;
             document.getElementById('tarjetasContainer').innerHTML = `
-                <div class="card-box card-verde"><b>PROMEDIO:</b><br><span style="font-size:22px; font-weight:700;">${data.PROMEDIO}</span><br><small>${data.PROMEDIO_TEXTO}</small></div>
-                <div class="card-box card-azul"><b>ESTATUS:</b><br><span style="font-size:20px; font-weight:700;">${data.ESTATUS}</span></div>`;
-            
+                <div class="card-box card-verde"><b>PROMEDIO:</b><br><span style="font-size:22px; font-weight:500;">${data.PROMEDIO || data.promedio || '0.0'}</span><br><span style="font-size:10px; font-style:italic;">${data.PROMEDIO_TEXTO || ''}</span></div>
+                <div class="card-box card-azul"><b>ESTATUS:</b><br><span style="font-size:20px; font-weight:600;">${data.ESTATUS || data.estatus || 'REGISTRADO'}</span></div>`;
             resDiv.style.display = 'block';
             resDiv.scrollIntoView({ behavior: 'smooth' });
-        } else {
+        } else if (inputFolio !== "") {
             errDiv.style.display = 'block';
         }
     }
+
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const f = urlParams.get('folio');
+        if (f) { document.getElementById('folioInput').value = f; buscar(); }
+    };
 </script>
 </body>
 </html>
