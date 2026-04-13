@@ -29,21 +29,26 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
+    fontbody {
     font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     color: #333;
 
-    /* Aumentamos el tono del fondo (un gris más fuerte) */
-    background-color: #e2e2e2; 
+    /* Fondo gris acero para que los cubos blancos resalten */
+    background-color: #ced4da; 
     
-    /* Usamos una textura con más contraste */
-    background-image: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url("https://www.transparenttextures.com/patterns/cubes.png");
-
-    /* Ajustamos la velocidad a 40s para que el movimiento sea más obvio */
-    animation: moverTapiz 40s linear infinite;
+    /* Textura de cubos con mayor opacidad visual */
+    background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+    
+    /* Animación constante */
+    animation: moverTapiz 50s linear infinite;
+    
+    /* Este ajuste opcional hace que todo el fondo gane contraste */
+    background-blend-mode: multiply;
 }
+
 
 
 
