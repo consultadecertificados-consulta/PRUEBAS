@@ -28,24 +28,20 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
+        body {
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #333;
     
-    /* ELIGE TU COLOR AQUÍ (ejemplo: un azul institucional) */
-    background-color: #003366; 
+    /* Fondo con textura */
+    background-color: #f4f4f4;
+    background-image: url("https://www.transparenttextures.com/patterns/gray-jean.png");
     
-    /* El patrón que elegiste */
-    background-image: url("https://www.transparenttextures.com/patterns/white-diamond.png");
-    
-    /* ESTA LÍNEA DA EL COLOR: mezcla el fondo con la imagen */
-    background-blend-mode: multiply; 
-    
-    opacity: 0.3; /* Ajusta la intensidad */
+    /* Activamos la animación */
     animation: moverTapiz 60s linear infinite;
-}
+        }
 
 
 
