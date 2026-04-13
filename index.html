@@ -35,11 +35,14 @@
     flex-direction: column;
     color: #333;
     
-    /* SOLUCIÓN: Color de fondo + Imagen + Mezcla */
-    background-color: #eeeeee; 
+    /* Fondo con textura */
+    background-color: #f4f4f4;
     background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-    background-attachment: fixed; /* Mantiene el fondo quieto al hacer scroll */
+    
+    /* Activamos la animación */
+    animation: moverTapiz 60s linear infinite;
 }
+
 
 
         /* Navegación Superior */
@@ -125,6 +128,16 @@
         .social-links a { color: white; font-size: 20px; opacity: 1; display: inline; }
 
         @media (max-width: 600px) { .button-container { flex-direction: column; } }
+        @keyframes moverTapiz {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        /* Desplaza la imagen de fondo 1000px en diagonal */
+        background-position: 1000px 1000px;
+    }
+        }
+        
     </style>
 </head>
 <body>
