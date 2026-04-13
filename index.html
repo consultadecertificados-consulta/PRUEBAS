@@ -36,13 +36,24 @@
     color: #333;
     
     /* Fondo con textura */
-   body {
-    background-color: #333; /* Un gris casi negro */
+ body {
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+
+    /* 1. Color de fondo: Gris medio para que resalte el blanco de los cubos */
+    background-color: #bbbbbb; 
+
+    /* 2. La imagen de los cubos */
     background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
-}
-    
-    /* Activamos la animación */
-    animation: moverTapiz 60s linear infinite;
+
+    /* 3. El truco: 'overlay' hace que los cubos brillen sobre el fondo */
+    background-blend-mode: overlay;
+
+    /* 4. Animación */
+    animation: moverTapiz 40s linear infinite;
 }
 
 
