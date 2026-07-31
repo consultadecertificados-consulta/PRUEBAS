@@ -58,4 +58,10 @@ const baseDatos = {
     "CBG376039130611": { nombre: "ROXANA ORTEGA BALDERAS", matricula: "1756R415656", emisor: "DIRECCION GENERAL DE BACHILLERATO ABIERTO", plantel: "HIDALGO-13EEX0001D", plan: "BACHILLERATO INTENSIVO GENERAL", promedio: "8.5", periodo: "21-07-2023 al 15-08-2025", estatus: "REGISTRADO", timbrado: "2025-08-25 17:00:00" },
     "CBG376039130711": { nombre: "VICTOR JESUS BALDERAS HERNANDEZ", matricula: "1757M405757", emisor: "DIRECCION GENERAL DE BACHILLERATO ABIERTO", plantel: "HIDALGO-13EEX0001D", plan: "BACHILLERATO INTENSIVO GENERAL", promedio: "8.5", periodo: "21-07-2023 al 15-08-2025", estatus: "REGISTRADO", timbrado: "2025-08-25 17:20:11" },
     "CBG376039130811": { nombre: "LINDA YAJARI VICENTE VAZQUEZ", matricula: "1758R395858", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO ABIERTO DEL ESTADO DE VERACRUZ", plantel: "COATZACOALCOS-30EEX0002T", plan: "BACHILLERATO INTENSIVO GENERAL", promedio: "8.5", periodo: "21-07-2020 al 25-08-2022", estatus: "REGISTRADO", timbrado: "2020-08-20 16:20:11" },
-    }
+    };
+
+
+// Exportar base de datos para uso en validador.js
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = baseDatos;
+                      }
