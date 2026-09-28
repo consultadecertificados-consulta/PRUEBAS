@@ -1,504 +1,296 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Módulo de Consulta Electrónica| Preparatoria Abierta</title>
-    <meta name="description" content="Módulo institucional de referencia documental por folio para documentos emitidos en el marco aplicable sistema abierto">
-
-    <link href="/favicon.ico" rel="shortcut icon">
-    <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Certificación Electrónica | SEMS</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
     <style>
-      :root {
-        --gob-wine: #611232;
-        --gob-wine-light: #7b1e3e;
-        --gob-gold: #b38e5d;
-        --gob-dark: #13322B;
-        --bg-color: #f8f9fa;
-        --text-color: #333333;
-      }
-
-      body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        -webkit-font-smoothing: antialiased;
-      }
-
-      /* Hero Interior */
-      .hero-interior {
-        background: linear-gradient(135deg, #4d0a27 0%, #611232 40%, #7b1e3e 100%);
-        color: #ffffff;
-        padding: 50px 0 40px 0;
-        margin-bottom: 30px;
-        position: relative;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      }
-
-      .hero-interior::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: linear-gradient(90deg, var(--gob-gold) 0%, #d8be9d 100%);
-      }
-
-       .hero-interior h1 {
-        font-size: 38px;
-        font-weight: 700;
-        margin-top: 5px;
-        margin-bottom: 10px;
-        letter-spacing: -1px;
-      }
-
-      .hero-interior .lead {
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 18px;
-        font-weight: 300;
-      }
-
-      .eyebrow-light {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 13px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-weight: 600;
-      }
-
-      /* Componentes base */
-      .breadcrumb {
-        background: transparent;
-        padding-left: 0;
-        margin-bottom: 25px;
-        font-size: 15px;
-      }
-
-      /* Tarjeta de Búsqueda */
-      .search-card {
-        background: #ffffff;
-        border: 1px solid #eaeaea;
-        border-radius: 12px;
-        padding: 40px;
-        margin-bottom: 40px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-      }
-
-      .border-right-modern {
-        border-right: 1px solid #eaeaea;
-        padding-right: 40px;
-      }
-
-      .form-control-modern {
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        box-shadow: none;
-        transition: all 0.3s ease;
-        height: 54px;
-        font-size: 18px;
-        font-weight: 600;
-        color: var(--gob-wine);
-        text-transform: uppercase;
-      }
-
-      .form-control-modern:focus {
-        border-color: var(--gob-wine-light);
-        box-shadow: 0 0 0 4px rgba(123, 30, 62, 0.1);
-      }
-
-      .btn-ultra-modern {
-        background-color: var(--gob-wine);
-        border-color: var(--gob-wine);
-        color: #ffffff;
-        padding: 12px 35px;
-        font-weight: 600;
-        font-size: 16px;
-        border-radius: 6px;
-        box-shadow: 0 4px 10px rgba(97, 18, 50, 0.2);
-        transition: all 0.3s ease;
-      }
-
-      .btn-ultra-modern:hover {
-        background-color: var(--gob-wine-light);
-        border-color: var(--gob-wine-light);
-        color: #ffffff;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px rgba(97, 18, 50, 0.3);
-      }
-
-      .btn-outline-modern {
-        background-color: transparent;
-        border: 2px solid #ddd;
-        color: #666;
-        padding: 10px 25px;
-        font-weight: 600;
-        font-size: 16px;
-        border-radius: 6px;
-        transition: all 0.3s ease;
-        margin-left: 10px;
-      }
-
-      /* Panel y Tabla */
-      .panel-modern {
-        border: 1px solid #eaeaea;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-        overflow: hidden;
-      }
-
-      .panel-modern .panel-heading {
-        background-color: #ffffff;
-        border-bottom: 1px solid #eaeaea;
-        padding: 20px 25px;
-      }
-
-      .panel-modern .panel-title {
-        color: var(--text-color);
-        font-weight: 700;
-        font-size: 20px;
-      }
-
-      .table-modern > tbody > tr > th,
-      .table-modern > tbody > tr > td {
-        padding: 18px 25px;
-        border-top: 1px solid #f0f0f0;
-        vertical-align: middle;
-      }
-
-     .table-modern > tbody > tr > th {
-        color: #555;
-        font-weight: 600;
-        font-size: 15px;
-      }
-
-      .table-modern > tbody > tr > td {
-        font-size: 16px;
-        color: #222;
-      }
-
-      .table-modern > tbody > tr.active > th {
-        background-color: rgba(97, 18, 50, 0.04);
-        color: var(--gob-wine);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 13px;
-        border-top: 2px solid rgba(97, 18, 50, 0.1);
-        border-bottom: 2px solid rgba(97, 18, 50, 0.1);
-        padding: 12px 25px;
-      }
-
-      /* Píldora VÁLIDO personalizada */
-      .badge-valido {
-        display: inline-flex;
-        align-items: center;
-        background-color: #198754; 
-        color: white;
-        padding: 8px 16px;
-        border-radius: 30px;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        box-shadow: 0 3px 8px rgba(25, 135, 84, 0.3);
-      }
-
-      /* Cajas de código y firma super modernas */
-      .code-box {
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 13px;
-        word-break: break-all;
-        color: #1f2d3d;
-        background: #f4f6f8;
-        padding: 18px;
-        border: 1px solid #dce1e6;
-        border-radius: 8px;
-        line-height: 1.6;
-        letter-spacing: 0.5px;
-      }
-       .alert-modern {
-        border: none;
-        border-left: 5px solid;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-        padding: 20px;
-      }
-      .alert-success-modern { background-color: #f4fdf8; border-left-color: #198754; color: #146c43; }
-      .alert-info-modern { background-color: #f4f8fd; border-left-color: #0d6efd; color: #0a58ca; }
-    
-}
-          .alert-success-modern { background-color: #f4fdf8; border-left-color: #198754; color: #146c43; }
-      .alert-info-modern { background-color: #f4f8fd; border-left-color: #0d6efd; color: #0a58ca; }
-
-      /* 👇 AQUÍ VA EL BLOQUE NUEVO */
-      @media (max-width: 768px) {
-        .search-card {
-          padding: 30px 25px;
+        :root {
+            --gob-guinda: #621132; 
+            --gob-guinda-claro: #9D2449;
+            --sep-rojo: #A42145; /* Rojo Institucional SEP */
+            --gob-oro: #9D843E;   
+            --gob-verde-oscuro: #11322B; 
+            --gob-gris-boton: #757575;   
+            --acc-bg: #EAEAEA;
+            --acc-rosa-icono: #C28497;
         }
-        .border-right-modern {
-          border-right: none;
-          padding-right: 0;
-          margin-bottom: 30px;
-        }
-        .table-modern > tbody > tr > th,
-        .table-modern > tbody > tr > td {
-          padding: 15px 20px;
-          font-size: 15px;
-          display: block;
-          width: 100%;
-          box-sizing: border-box;
-        }
-        .table-modern > tbody > tr > th {
-          background: #f8f9fa;
-          font-weight: 700;
-        }
-        .code-box {
-          font-size: 12px;
-          padding: 15px;
-          overflow-x: auto;
-          max-width: 100%;
-        }
-        .hero-interior h1 {
-          font-size: 30px;
-        }
-        .hero-interior .lead {
-          font-size: 17px;
-        }
-        .panel-modern {
-          margin-left: 5px;
-          margin-right: 5px;
-        }
-      }
-      /* 👆 FIN DEL BLOQUE */
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: #f4f4f4;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 100 100'%3E%3Cpath d='M0 0l50 50L0 100' stroke='%23d8d8d8' fill='none' stroke-width='1'/%3E%3Cpath d='M100 0L50 50l50 50' stroke='%23d8d8d8' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- PANEL DE ACCESIBILIDAD --- */
+        .acc-panel-sidebar {
+            position: fixed; left: -320px; top: 0; width: 300px; height: 100vh;
+            background: var(--acc-bg); z-index: 9999; transition: 0.3s ease;
+            padding: 20px 15px; font-family: 'Montserrat', sans-serif;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2); overflow-y: auto;
+        }
+        .acc-panel-sidebar.active { left: 0; }
+        .acc-trigger {
+            position: fixed; left: 0; top: 50%; transform: translateY(-50%);
+            background: var(--gob-guinda-claro); color: white; padding: 15px 10px;
+            border-radius: 0 5px 5px 0; cursor: pointer; z-index: 10000;
+        }
+        .acc-reset-btn {
+            background: var(--gob-guinda-claro); color: white; display: flex; align-items: center;
+            padding: 12px; border-radius: 8px; margin-bottom: 25px; cursor: pointer; font-weight: bold;
+        }
+        .acc-item { display: flex; align-items: center; margin-bottom: 12px; cursor: pointer; color: #B37185; font-size: 13px; font-weight: 600; }
+        .acc-icon-box {
+            width: 45px; height: 45px; background: var(--acc-rosa-icono); border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            margin-right: 15px; color: white; font-size: 20px; flex-shrink: 0;
+        }
+        .grayscale-mode { filter: grayscale(100%); }
+        .dyslexic-mode { font-family: 'OpenDyslexic', sans-serif !important; }
+
+        /* Navegación Superior */
+        nav.gob-header {
+            background-color: #0B231E;
+            padding: 10px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-gob { height: 45px; }
+        .nav-links-gob { display: flex; gap: 20px; list-style: none; }
+        .nav-links-gob a { color: white; text-decoration: none; font-size: 14px; font-family: 'Montserrat', sans-serif; }
+
+        .header-image-container { 
+            width: 100%; height: auto; border-bottom: 8px solid var(--gob-oro); background: #fff;
+        }
+        .header-image-container img { width: 100%; height: auto; display: block; }
+
+        /* Contenido Principal */
+        main { flex: 1; max-width: 1000px; margin: 40px auto; padding: 0 20px; text-align: center; width: 100%; }
+
+        .titulos-sep { margin-bottom: 30px; font-family: 'Montserrat', sans-serif; }
+        .titulos-sep h2 { font-weight: 700; font-size: 26px; color: #444; }
+        .titulos-sep h3 { font-weight: 400; font-size: 18px; color: #666; margin-top: 5px; }
+        .titulos-sep .linea-decorativa { 
+            width: 60px; height: 3px; background: var(--gob-oro); margin: 15px auto;
+        }
+
+        .search-container {
+            background: #ffffff;
+            border-top: 4px solid var(--gob-guinda-claro);
+            border-radius: 4px; padding: 40px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        input[type="text"] {
+            width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 4px;
+            font-size: 18px; margin-bottom: 25px; font-family: 'Montserrat', sans-serif; text-transform: uppercase;
+        }
+
+        .button-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+
+        .btn-buscar { 
+            background-color: var(--sep-rojo); 
+            color: white; padding: 12px 40px; border: none; border-radius: 4px;
+            font-family: 'Montserrat', sans-serif; font-weight: 700; cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-buscar:hover { background-color: var(--gob-guinda); transform: translateY(-2px); }
+
+        .btn-restablecer { 
+            background-color: var(--gob-gris-boton); 
+            color: white; padding: 12px 25px; border: none; border-radius: 4px;
+            font-family: 'Montserrat', sans-serif; cursor: pointer;
+        }
+
+        /* Resultados con Rojo SEP */
+        #resultado { 
+            display: none; margin-top: 40px; text-align: left; background: white; 
+            padding: 30px; border-radius: 8px; border: 1px solid #ddd;
+            border-left: 5px solid var(--sep-rojo);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); animation: fadeIn 0.5s;
+            margin-bottom: 50px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .grid-resultados { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        .info-item { font-family: 'Montserrat', sans-serif; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; }
+        .info-label { font-weight: 700; color: #333; font-size: 12px; display: block; text-transform: uppercase; }
+        .info-value { font-weight: 400; color: #555; font-size: 15px; display: block; margin-top: 3px; }
+
+        .badge-registro {
+            background-color: var(--gob-guinda-claro);
+            color: white; padding: 3px 10px; border-radius: 4px; font-weight: 700; font-size: 12px;
+        }
+
+        /* Footer */
+        footer { background-color: #13322B; color: white; padding: 50px 0 20px 0; font-family: 'Montserrat', sans-serif; }
+        .footer-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; padding: 0 20px; }
+        .footer-col h4 { font-size: 16px; margin-bottom: 20px; border-bottom: 1px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
+        .footer-col a { color: white; text-decoration: none; display: block; font-size: 13px; margin-bottom: 10px; opacity: 0.8; }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; opacity: 0.6; }
+
+        @media (max-width: 600px) { .grid-resultados { grid-template-columns: 1fr; } }
     </style>
-    
-    </style>
-  </head>
-  <body>
+</head>
+<body>
 
-    <main class="page">
-      
-      <section class="hero-interior">
-        <div class="container">
-          <span class="eyebrow-light">Módulo de Consulta</span>
-          <h1>Certificado de Preparatoria Abierta ¿No concluiste tus estudios y necesitas un certificado con validez oficial? Te ayudamos a tramitarlo de forma inmediata y con total validez ante las autoridades educativas. </h1>
-          <p class="lead" style="margin-bottom:0;">Capture el folio del documento para ubicar la información registral asociada en el sistema institucional.</p>
+<div class="acc-trigger" onclick="document.getElementById('accPanel').classList.toggle('active')">
+    <i class="fas fa-universal-access fa-2x"></i>
+</div>
+
+<div id="accPanel" class="acc-panel-sidebar">
+    <div class="acc-reset-btn" onclick="resetAcc()"><i class="fas fa-undo-alt" style="margin-right:15px"></i> Restablecer</div>
+    <div class="acc-item" onclick="document.body.classList.toggle('grayscale-mode')"><div class="acc-icon-box"><i class="fas fa-adjust"></i></div> Cambiar escala de grises</div>
+    <div class="acc-item"><div class="acc-icon-box"><i class="fas fa-ear-listen"></i></div> Usar un lector de pantalla</div>
+    <div class="acc-item"><div class="acc-icon-box"><i class="fas fa-mouse-pointer"></i></div> Cambiar tamaño de cursor</div>
+    <div class="acc-item"><div class="acc-icon-box"><i class="fas fa-palette"></i></div> Cambiar el contraste de color</div>
+    <div class="acc-item"><div class="acc-icon-box"><i class="fas fa-equals"></i></div> Mascara de lectura</div>
+    <div class="acc-item"><div class="acc-icon-box"><i class="fas fa-underline"></i></div> Guia de Lectura</div>
+    <div class="acc-item" onclick="document.body.classList.toggle('dyslexic-mode')"><div class="acc-icon-box"><i class="fas fa-italic"></i></div> Cambio de tipografia dislexia</div>
+    <div class="acc-item"><div class="acc-icon-box"><i class="fas fa-arrows-alt-v"></i></div> Espaciado vertical</div>
+</div>
+
+<nav class="gob-header">
+    <a href="https://www.gob.mx">
+        <img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+    </a>
+    <ul class="nav-links-gob">
+        <li><a href="https://www.gob.mx/tramites">Trámites</a></li>
+        <li><a href="https://www.gob.mx/gobierno">Gobierno</a></li>
+        <li><a href="#"><i class="fas fa-search"></i></a></li>
+    </ul>
+</nav>
+
+<div class="header-image-container">
+    <a href="index.html">
+        <img src="logo.png" alt="Registro Nacional de Profesionistas">
+    </a>
+</div>
+
+<main>
+    <div class="titulos-sep">
+        <h2>Sistema de Certificación Electrónica</h2>
+        <h3>Subsecretaría de Educación Media Superior</h3>
+        <div class="linea-decorativa"></div>
+    </div>
+
+    <div class="search-container">
+        <p style="text-align: left; font-size: 14px; margin-bottom: 15px; font-family: 'Montserrat';">Ingrese el folio de control para validar el documento:</p>
+        <input type="text" id="folioInput" placeholder="" maxlength="20">
+        <div class="button-group">
+            <button class="btn-buscar" onclick="buscar()">CONSULTAR</button>
+            <button class="btn-restablecer" onclick="restablecer()">LIMPIAR</button>
         </div>
-      </section>
+    </div>
 
-      <div class="container">
-
-        <ol class="breadcrumb">
-          <li><a href="#">Inicio</a></li>
-          <li class="active">Referencia documental por folio</li>
-        </ol>
-        
-        
-        <div class="search-card">
-          <div class="row">
-            <div class="col-md-7 border-right-modern">
-              <form id="formConsulta" autocomplete="off" novalidate>
-                <div class="form-group" style="margin-bottom: 25px;">
-                  <label for="folio" style="font-size: 16px; margin-bottom: 10px;">Folio del documento</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-modern"
-                    id="folio"
-                    name="folio"
-                    maxlength="100"
-                    placeholder="Ejemplo: CBG123456789876"
-                    required
-                  >
-                  <p class="help-block" style="margin-top: 8px; color: #777;">Capture el folio exactamente como aparece en el documento.</p>
-                </div>
-
-                <div style="margin-top: 30px;">
-                  <button type="submit" class="btn btn-ultra-modern">Consultar Folio</button>
-                  <button type="button" id="btnLimpiar" class="btn btn-outline-modern">Limpiar</button>
-                </div>
-              </form>
-            </div>
-
-            <div class="col-md-5" style="padding-left: 30px;">
-              <h4 style="margin-top:0; color: var(--gob-wine); font-weight: 700;">Atención institucional</h4>
-              <p style="color: #666; font-size: 15px; line-height: 1.6;">
-                Si requiere precisión administrativa, observación o corrección de información, favor de comunicarse al correo de atención oficial:
-              </p>
-              <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 15px; border: 1px solid #eaeaea; word-break: break-all;">
-                <a href="mailto:acuerdo445@sidgbe.gob.mx" style="color: var(--gob-wine); font-weight: 600; font-size: 15px;">
-                  acuerdo445@sidgbe-gob.mx
-                </a>
-              </div>
-            </div>
-          </div>
+    <div id="resultado">
+        <div style="margin-bottom: 20px;">
+            <h4 style="font-family: 'Montserrat'; color: var(--sep-rojo);">Resultado de la Validación</h4>
+            <p style="font-size: 13px; color: #666;">El documento ha sido localizado y autenticado exitosamente.</p>
         </div>
+        <div id="infoDetalle" class="grid-resultados"></div>
+    </div>
+</main>
 
-        <!-- Contenedor dinámico de resultados -->
-        <div id="resultadoConsulta" style="margin-top: 30px;"></div>
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" width="150" style="filter: brightness(0) invert(1); margin-bottom: 20px;">
+        </div>
+        <div class="footer-col">
+            <h4>Enlaces</h4>
+            <a href="https://participa.gob.mx" target="_blank">Participa</a>
+            <a href="https://www.gob.mx/publicaciones" target="_blank">Publicaciones Oficiales</a>
+        </div>
+        <div class="footer-col">
+            <h4>¿Qué es gob.mx?</h4>
+            <a href="https://www.gob.mx/terminos" target="_blank">Términos y Condiciones</a>
+            <a href="https://www.gob.mx/aviso_de_privacidad" target="_blank">Aviso de Privacidad</a>
+        </div>
+        <div class="footer-col">
+            <h4>Contacto</h4>
+            <a href="mailto:controlescolar.estatal@sems.sidgbe.gob.mx">Mesa de ayuda</a>
+            <div style="margin-top: 15px;">
+                <a href="#" style="color:white; margin-right:15px;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="color:white;"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        SEP | SEMS | Registro Federal de Educación Media Superior | México 2026
+    </div>
+</footer>
 
-      </div>
-    </main>
-
-    <script src="https://cdn.gob.mx"></script>
-
-    <!-- Conexión al archivo externo -->
-    <script src="folios.js"></script>
+<script src="folios.js"></script>
 
 <script>
-  document.getElementById('formConsulta').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const folioInput = document.getElementById('folio').value.trim().toUpperCase();
-    const contenedor = document.getElementById('resultadoConsulta');
-    
-    if (!folioInput) {
-      contenedor.innerHTML = `<div class="alert alert-modern alert-danger-modern"><strong>Error:</strong> Por favor, capture un número de folio.</div>`;
-      return;
+    function resetAcc() {
+        document.body.classList.remove('grayscale-mode', 'dyslexic-mode');
     }
 
-    if (typeof baseDatos === 'undefined') {
-      contenedor.innerHTML = `<div class="alert alert-modern alert-danger-modern"><strong>Error de sistema:</strong> No se pudo cargar 'folios.js'.</div>`;
-      return;
-    }
+    function ejecutarBusqueda(folioKey) {
+        if (!folioKey) return;
+        const folio = folioKey.trim().toUpperCase();
+        const resDiv = document.getElementById('resultado');
+        const detalle = document.getElementById('infoDetalle');
 
-    if (baseDatos[folioInput]) {
-      const data = baseDatos[folioInput];
-      
-      const hashSimulado = btoa(data.nombre + data.matricula).substring(0, 32).toUpperCase();
-      const cadenaOriginal = `||1.1|${folioInput}|${data.matricula}|${data.timbrado}|${data.estatus}||`;
-
-      contenedor.innerHTML = `
-       <div class="panel panel-modern" style="margin-bottom: 60px;">
-            <div class="panel-heading">
-              <h3 class="panel-title">Ficha de correspondencia registral</h3>
-            </div>
-          <div class="panel-body" style="padding: 0;">
-
-<div style="padding: 25px 25px 0 25px;">
-                <div class="alert alert-modern alert-success-modern" style="margin-bottom: 15px;">
-                  <strong><i class="glyphicon glyphicon-ok" style="margin-right: 5px;"></i> Resultado:</strong> Se localizaron datos registrales asociados al folio capturado.                </div>
-                <div class="alert alert-modern alert-info-modern" style="margin-bottom: 25px;">
-                  La información mostrada corresponde a los datos registrales localizados con base en el folio capturado
-                  y se presenta para fines de correspondencia documental.
+        if (window.baseDatos && window.baseDatos[folio]) {
+            const d = window.baseDatos[folio];
+            detalle.innerHTML = `
+                <div class="info-item"><span class="info-label">Nombre del Alumno:</span> <span class="info-value">${d.nombre}</span></div>
+                <div class="info-item"><span class="info-label">Matrícula:</span> <span class="info-value">${d.matricula}</span></div>
+                <div class="info-item"><span class="info-label">Plan Académico:</span> <span class="info-value">${d.plan}</span></div>
+                <div class="info-item"><span class="info-label">Folio de Control:</span> <span class="info-value">${folio}</span></div>
+                <div class="info-item"><span class="info-label">Promedio Final:</span> <span class="info-value">${d.promedio}</span></div>
+                <div class="info-item"><span class="info-label">Créditos Totales:</span> <span class="info-value">${d.creditos}</span></div>
+                <div class="info-item"><span class="info-label">Estatus:</span> <span class="badge-registro">${d.estatus}</span></div>
+                <div class="info-item"><span class="info-label">Fecha de Validación:</span> <span class="info-value">${d.timbrado}</span></div>
+                <div class="info-item" style="grid-column: span 2;">
+                    <span class="info-label">Institución / Plantel:</span> 
+                    <span class="info-value">${d.plantel} - ${d.emisor}</span>
                 </div>
-              </div>
-            
-<div class="table-responsive">
-                <table class="table table-modern table-hover">
-                  <tbody>
-                    <tr class="active">
-                      <th colspan="2"><i class="glyphicon glyphicon-user" style="margin-right: 8px;"></i> Datos de la persona titular</th>
-                    </tr>
-                <tr>
-                 
-                  <th>Folio Consultado</th>
-                  <td><strong>${folioInput}</strong></td>
-                </tr>
-                <tr>
-                  <th width="35%">Nombre completo</th>
-                  <td>${data.nombre}</td>
-                </tr>
-                <tr>
-                  <th>CURP</th>
-                  <td>${data.curp || 'NO REGISTRADO'}</td>
-                </tr>
-                <tr>
-                  <th>Número de matrícula</th>
-                  <td>${data.matricula}</td>
-                </tr>
-                <tr class="active">
-                  <th colspan="2"><i class="glyphicon glyphicon-education" style="margin-right: 8px;"></i> Datos del servicio educativo</th>
-                </tr>
-                <tr>
-                  <th>Institución educativa emisora</th>
-                  <td>${data.emisor}</td>
-                </tr>
-                <tr>
-                  <th>Plantel / CCT</th>
-                  <td>${data.plantel}</td>
-                </tr>
-                <tr class="active">
-                      <th colspan="2"><i class="glyphicon glyphicon-list-alt" style="margin-right: 8px;"></i> Trayectoria académica</th>
-                    </tr>
-                    <tr>
-                  <th>Plan de Estudios</th>
-                  <td>${data.plan}</td>
-                </tr>
-                <tr>
-                  <th>Periodo de Estudios</th>
-                  <td>${data.periodo}</td>
-                </tr>
-                <tr>
-                  <th>Créditos obtenidos</th>
-                      <td>360</td>
-                    </tr>
-                  <th>Promedio General</th>
-                  <td><strong>${data.promedio}</strong></td>
-                </tr>
-                  <tr class="active">
-                  <th colspan="2"><i class="glyphicon glyphicon-file" style="margin-right: 8px;"></i> Datos del documento</th>
-                    </tr>
-                    <tr>
-                  <th>Estatus actual</th>
-                  <td>
-                  <span class="badge-valido">✓ ${data.estatus}</span></td>
-                </tr>
-                <tr>
-                 <th>Folio Consultado</th>
-                  <td><strong>${folioInput}</strong></td>
-                </tr>
-                <tr>
-                  <th>Fecha de Timbrado</th>
-                  <td>${data.timbrado}</td>
-                </tr>
-                <tr class="active">
-                      <th colspan="2"><i class="glyphicon glyphicon-qrcode" style="margin-right: 8px;"></i> Nodo de Autoridad Firmante</th>
-                    </tr>
-                    <tr>
-                      <td colspan="2" style="padding: 25px;">
-                        <div style="margin-bottom: 25px;">
-                          <strong style="display: block; margin-bottom: 8px; color: var(--gob-wine); font-size: 15px;">Cadena Original del complemento de certificación :</strong>
-                          <div class="code-box">fHwzLjB8MTZ8MDlERVgwMDAxU3xESVJFQ0NJw5NOIEdFTkVSQUwgREUgQkFDSElMTEVSQVRPfERJUkVDQ0nDk04gR0VORVJBTCBERSBCQUNISUxMRVJBVE98Q0VQQzk5MDgwM01OTExSWTA3fENZTlRISUEgQ0xFTUVOVEUgUEVSRVp8MTUwMVI4NTA2MjN8MTEvMDMvMjAyNSAxNDoyOTozNXwxNzZ8OC44fEJBQ0hJTExFUkFUTyBHRU5FUkFMIENPTiBGT1JNQUNJw5NOIExBQk9SQUwgQsOBU0lDQSBZIEVYVEVORElEQXx8</div>
-                        </div>
-                        
-                        <div>
-                          <strong style="display: block; margin-bottom: 8px; color: var(--gob-wine); font-size: 15px;">Sello Digital de la Autoridad (Firma Electrónica Avanzada):</strong>
-                          <div class="code-box">0q9e4q+Qec8cT4apI5ZJADZCG0KEzK020Lr5yOuBJx+PwdhYHQgAXwlnwQoweSFDHxXT7K3T1Xgn9+ZPEULtifXuUra0XyfiRm3VtMJzmoChlkb9yJ/thQ61xQoKJpWHNM0u1ipPoM3Hq3S9RF8NashHFscbDo7CZufGzYms1SKQ0p3TEe8O/Khqt7UBpiHspIWY0Ozmcf4YDEWyhwZRyOFol2r1HLlaW0LTfab7HCm9WQh8aCcxnQJlH8QheT58LPt3wSf0wbCOPfMIH4eswLQHkB1tS4/SQ8Mrn3cNP8jOXR9V54qlQg8oNYDRiM2JS+fciOq4wp9C/65hlkdtoHSbbMCMUxGffDWd8YMQlX0haIpFsYhHdqHtCC4iEoSLdyWohfPzyQsvMhzNB96ryE1ebWSQeD2gURSgEuo8y7o=</div>
-                        </div>
-                      </td>
-                    </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="alert alert-modern alert-info-modern" style="margin-top: 20px;">
-          <strong>Verificación de autenticidad:</strong> Este documento digital ha sido timbrado y verificado mediante los protocolos del Acuerdo 445.
-        </div>`;
-    } else {
-      contenedor.innerHTML = `<div class="alert alert-modern alert-danger-modern"><strong>Sin registros:</strong> El folio <strong>${folioInput}</strong> no se encuentra en el sistema.</div>`;
+            `;
+            resDiv.style.display = 'block';
+            resDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            alert("No se encontró el folio en el Registro Nacional.");
+            resDiv.style.display = 'none';
+        }
     }
-  });
 
-  document.getElementById('btnLimpiar').addEventListener('click', function() {
-    document.getElementById('folio').value = '';
-    document.getElementById('resultadoConsulta').innerHTML = '';
-  });
-
-  // ✅ ESTE ES EL BLOQUE QUE FALTABA PARA QUE FUNCIONE EL ENLACE
-  window.addEventListener('load', function() {
-    const parametros = new URLSearchParams(window.location.search);
-    const folioDesdeUrl = parametros.get('folio');
-    if (folioDesdeUrl) {
-      const campoFolio = document.getElementById('folio');
-      campoFolio.value = folioDesdeUrl.trim().toUpperCase();
-      document.getElementById('formConsulta').dispatchEvent(new Event('submit'));
+    function buscar() {
+        const f = document.getElementById('folioInput').value;
+        if (!f) { alert("Por favor, ingrese un folio."); return; }
+        ejecutarBusqueda(f);
     }
-  });
-  // ✅ FIN DEL BLOQUE
 
+    function restablecer() {
+        document.getElementById('folioInput').value = "";
+        document.getElementById('resultado').style.display = 'none';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const folioQR = urlParams.get('folio');
+        if (folioQR) {
+            document.getElementById('folioInput').value = folioQR.toUpperCase();
+            ejecutarBusqueda(folioQR);
+        }
+    };
 </script>
 
-    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
-  </body>
+</body>
 </html>
